@@ -5,8 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build"
+    "preinstall": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "server": "python3 manage.py runserver",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
   },
+  "cacheDirectories": [
+    "client/node_modules"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/harshithl1777/beacon.git"
@@ -17,5 +24,9 @@
   "bugs": {
     "url": "https://github.com/harshithl1777/beacon/issues"
   },
-  "homepage": "https://github.com/harshithl1777/beacon#readme"
+  "homepage": "https://github.com/harshithl1777/beacon#readme",
+  "_id": "beacon@1.0.0",
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  }
 }
