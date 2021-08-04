@@ -9,8 +9,10 @@ djangorestframework = "*"
 whitenoise = "*"
 gunicorn = "*"
 django-heroku = "*"
+pytest = "*"
 
 [dev-packages]
+pytest = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,0 +1,163 @@
+{
+	"extends": ["prettier", "plugin:css-modules/recommended"],
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true
+	},
+	"root": true,
+	"globals": {
+		"chrome": false,
+		"describe": false,
+		"expect": false,
+		"it": false
+	},
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+			"legacyDecorators": true
+		}
+	},
+	"plugins": ["react", "import", "@babel", "css-modules"],
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"moduleDirectory": ["node_modules", "src/"]
+			}
+		},
+		"css-modules": {
+			"basePath": "src/"
+		},
+		"react": {
+			"version": "detect"
+		}
+	},
+	"rules": {
+		"array-callback-return": 0,
+		"array-bracket-spacing": 1,
+		"camelcase": 1,
+		"class-methods-use-this": 1,
+		"comma-dangle": 0,
+		"consistent-return": 0,
+		"css-modules/no-unused-class": 1,
+		"css-modules/no-undef-class": 2,
+		"default-case": 1,
+		"dot-notation": 1,
+		"eqeqeq": 1,
+		"id-length": 0,
+		"import/no-extraneous-dependencies": 0,
+		"import/extensions": 0,
+		"import/first": 0,
+		"import/named": 2,
+		"import/no-unresolved": 0,
+		"import/prefer-default-export": 0,
+		"indent": 0,
+		"jsx-a11y/anchor-has-content": 0,
+		"jsx-a11y/anchor-is-valid": 0,
+		"jsx-a11y/click-events-have-key-events": 0,
+		"jsx-a11y/interactive-supports-focus": 0,
+		"jsx-a11y/media-has-caption": 0,
+		"jsx-a11y/mouse-events-have-key-events": 0,
+		"jsx-a11y/no-autofocus": 0,
+		"jsx-a11y/no-static-element-interactions": 0,
+		"max-len": [
+			1,
+			{
+				"code": 150
+			}
+		],
+		"new-cap": 1,
+		"no-console": [
+			2,
+			{
+				"allow": ["warn", "error"]
+			}
+		],
+		"no-else-return": 0,
+		"no-empty": 0,
+		"no-extra-semi": 1,
+		"@babel/no-invalid-this": "error",
+		"no-lonely-if": 1,
+		"no-nested-ternary": 1,
+		"no-plusplus": 0,
+		"no-underscore-dangle": 0,
+		"no-unused-expressions": [
+			2,
+			{
+				"allowShortCircuit": true,
+				"allowTernary": true
+			}
+		],
+		"no-unused-vars": [
+			1,
+			{
+				"argsIgnorePattern": "^_",
+				"ignoreRestSiblings": true
+			}
+		],
+		"no-use-before-define": [1, "nofunc"],
+		"no-useless-computed-key": 1,
+		"no-useless-return": 0,
+		"no-var": 1,
+		"no-void": 0,
+		"object-property-newline": 1,
+		"object-shorthand": 1,
+		"one-var": 1,
+		"operator-assignment": 0,
+		"padded-blocks": 0,
+		"prefer-const": 1,
+		"prefer-destructuring": 1,
+		"prefer-rest-params": 0,
+		"prefer-template": 0,
+		"quote-props": [1, "as-needed"],
+		"quotes": [1, "single", "avoid-escape"],
+		"jsx-quotes": [1, "prefer-single"],
+		"radix": 1,
+		"react/jsx-uses-vars": 1,
+		"react/jsx-uses-react": 1,
+		"react/default-props-match-prop-types": 1,
+		"react/forbid-prop-types": 0,
+		"react/jsx-curly-brace-presence": 1,
+		"react/jsx-no-bind": 1,
+		"react/jsx-max-props-per-line": 0,
+		"react/prop-types": 1,
+		"react/no-unused-prop-types": 1,
+		"react/jsx-boolean-value": 0,
+		"react/jsx-closing-bracket-location": 1,
+		"react/jsx-closing-tag-location": 1,
+		"react/jsx-curly-spacing": 1,
+		"react/jsx-equals-spacing": 1,
+		"react/jsx-filename-extension": 1,
+		"react/jsx-indent": 0,
+		"react/jsx-indent-props": 1,
+		"react/jsx-tag-spacing": 1,
+		"react/no-danger": 1,
+		"react/no-multi-comp": 0,
+		"react/no-unescaped-entities": [
+			2,
+			{
+				"forbid": [">", "}"]
+			}
+		],
+		"react/prefer-stateless-function": 0,
+		"react/require-default-props": 1,
+		"react/sort-comp": 0,
+		"react/wrap-multilines": 0,
+		"semi": 0,
+		"space-infix-ops": 1,
+		"spaced-comment": 0,
+		"vars-on-top": 1,
+		"react/jsx-key": 1
+	},
+	"overrides": [
+		{
+			// We want to use jsx syntax in our tests.
+			"files": ["*spec.js"],
+			"rules": {
+				"react/jsx-filename-extension": 0
+			}
+		}
+	]
+}
