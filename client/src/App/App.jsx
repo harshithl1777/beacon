@@ -7,7 +7,7 @@ import 'App/global.scss';
 const App = () => {
 	return (
 		<div>
-			Hello
+			Hello world
 			<Button />
 		</div>
 	);
