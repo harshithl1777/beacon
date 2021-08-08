@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-server": "pytest",
+    "test-client": "cd client && npm test",
     "build": "cd client && npm run build",
     "server": "python3 manage.py runserver",
     "preinstall": "cd client && npm install",
