@@ -12,4 +12,4 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Run tests
-      run: jest
+      run: npm run test-client
