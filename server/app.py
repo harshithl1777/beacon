@@ -8,4 +8,4 @@ def index():
 
 @app.route('/users')
 def users():
-    return 'No users available'
+    return 'No users available right now'
