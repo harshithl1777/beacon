@@ -22,10 +22,22 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
@@ -41,6 +53,12 @@
   },
   "devDependencies": {
     "@babel/eslint-plugin": "^7.14.5",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/node-logger": "^6.3.7",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.7",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-airbnb": "*",
     "eslint-plugin-css-modules": "^2.11.0",

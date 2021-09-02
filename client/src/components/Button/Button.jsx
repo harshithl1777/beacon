@@ -1,5 +1,7 @@
-import styles from 'components/Button/Button.module.scss';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
+import styles from 'components/Button/Button.module.scss';
 
 const Button = (props) => {
 	const { text, type, disabled, ...rest } = props;

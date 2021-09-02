@@ -1,4 +1,8 @@
 {
     "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "editor.codeActionsOnSave": null,
+    "files.exclude": {
+        "**/node_modules": true
+    }
 }
