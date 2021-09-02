@@ -1,5 +1,9 @@
 {
-	"extends": ["eslint:recommended", "plugin:css-modules/recommended"],
+	"extends": [
+		"eslint:recommended",
+		"prettier",
+		"plugin:css-modules/recommended"
+	],
 	"env": {
 		"browser": true,
 		"node": true,
