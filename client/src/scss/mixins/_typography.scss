@@ -1,0 +1,101 @@
+$bold: 600;
+$medium: 500;
+$regular: 400;
+$poppins: 'Poppins', sans-serif;
+$inter: Inter;
+
+@mixin title-1-bold {
+	font-family: $poppins;
+	font-weight: $bold;
+	font-size: 30px;
+}
+
+@mixin title-2-bold {
+	font-family: $poppins;
+	font-weight: $bold;
+	font-size: 22px;
+}
+
+@mixin title-3-bold {
+	font-family: $poppins;
+	font-weight: $bold;
+	font-size: 18px;
+}
+
+@mixin title-4-bold {
+	font-family: $poppins;
+	font-weight: $bold;
+	font-size: 16px;
+}
+
+@mixin header-1-regular {
+	font-family: $poppins;
+	font-weight: $regular;
+	font-size: 14px;
+}
+
+@mixin header-1-medium {
+	font-family: $poppins;
+	font-weight: $medium;
+	font-size: 14px;
+}
+
+@mixin header-1-bold {
+	font-family: $poppins;
+	font-weight: $bold;
+	font-size: 14px;
+}
+
+@mixin header-2-regular {
+	font-family: $poppins;
+	font-weight: $regular;
+	font-size: 12px;
+}
+
+@mixin header-2-medium {
+	font-family: $poppins;
+	font-weight: $medium;
+	font-size: 12px;
+}
+
+@mixin header-2-bold {
+	font-family: $poppins;
+	font-weight: $bold;
+	font-size: 12px;
+}
+
+@mixin body-1-regular {
+	font-family: $inter;
+	font-weight: $regular;
+	font-size: 14px;
+}
+
+@mixin body-1-medium {
+	font-family: $inter;
+	font-weight: $medium;
+	font-size: 14px;
+}
+
+@mixin body-1-bold {
+	font-family: $inter;
+	font-weight: $bold;
+	font-size: 14px;
+}
+
+@mixin body-2-regular {
+	font-family: $inter;
+	font-weight: $regular;
+	font-size: 12px;
+}
+
+@mixin body-2-medium {
+	font-family: $inter;
+	font-weight: $medium;
+	font-size: 12px;
+}
+
+@mixin body-2-bold {
+	font-family: $inter;
+	font-weight: $bold;
+	font-size: 12px;
+}
