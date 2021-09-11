@@ -9,8 +9,7 @@
     "build": "cd client && npm run build",
     "server": "cd server && FLASK_ENV=development flask run",
     "preinstall": "cd client && npm install",
-    "client": "cd client && npm start",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
+    "client": "cd client && npm start"
   },
   "cacheDirectories": [
     "client/node_modules"
@@ -26,8 +25,5 @@
     "url": "https://github.com/harshithl1777/beacon/issues"
   },
   "homepage": "https://github.com/harshithl1777/beacon#readme",
-  "_id": "beacon@1.0.0",
-  "devDependencies": {
-    "concurrently": "^6.2.0"
-  }
+  "_id": "beacon@1.0.0"
 }
