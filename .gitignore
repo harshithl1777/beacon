@@ -25,3 +25,6 @@ yarn-error.log*
 # pytest
 **/.pytest_cache
 **/__pycache__
+
+/env
+/server/config
