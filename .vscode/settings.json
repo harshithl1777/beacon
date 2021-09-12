@@ -3,6 +3,7 @@
     "python.linting.enabled": true,
     "editor.codeActionsOnSave": null,
     "files.exclude": {
-        "**/node_modules": false
+        "**/node_modules": false,
+        "**/__pycache__": true,
     }
 }

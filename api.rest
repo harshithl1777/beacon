@@ -1,5 +1,0 @@
-POST http://localhost:5000/api/users/test
-
-{
-    "hello": "hello"
-}
