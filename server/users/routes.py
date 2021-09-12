@@ -1,10 +1,12 @@
-from flask import Blueprint, request
+from flask import Blueprint
 
-users_bp = Blueprint('users_bp', __name__)
+from utils.decorators import require_access_token
 
-@users_bp.route('/test', methods=['POST'])
+users = Blueprint('users', __name__)
+
+@users.route('/test', methods=['GET'])
+@require_access_token
 def getUsers():
-    print(request.headers.get('Authorization'))
     return {
         "hello": "hello"
     }

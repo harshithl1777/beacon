@@ -1,2 +1,11 @@
+POST http://localhost:5000/api/auth/session
+Content-Type: application/json
 
+{
+    "username": "hackthesouth",
+    "password": "123htn"
+}
 
+###
+GET http://localhost:5000/api/users/test
+Authorization: Hello
