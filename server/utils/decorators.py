@@ -1,7 +1,7 @@
 from functools import wraps
 from flask import request
 
-from utils.helpers import create_response, check_jwt
+from server.utils.helpers import create_response, check_jwt
 
 def require_access_token(method):
     @wraps(method)

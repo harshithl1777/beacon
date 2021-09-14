@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from utils.decorators import require_access_token
+from server.utils.decorators import require_access_token
 
 users = Blueprint('users', __name__)
 

@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 import os
 
-from utils.decorators import create_response
-from utils.helpers import create_jwt, check_jwt
+from server.utils.decorators import create_response
+from server.utils.helpers import create_jwt, check_jwt
 
 auth = Blueprint('auth', __name__)
 
