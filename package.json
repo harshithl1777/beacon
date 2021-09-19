@@ -9,7 +9,7 @@
     "client": "cd client && npm start",
     "production": "python -m server.wsgi",
     "build": "cd client && npm run build",
-    "test": "pytest --envfile ./server/config/.env.test.local",
+    "test": "pytest --envfile ./server/config/.env.development",
     "test-ci": "pytest --envfile ./server/config/.env.test",
     "test-client": "cd client && npm test"
   },
