@@ -9,6 +9,10 @@ on:
 jobs:
   pytest:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        mongodb-version: ['5.0']
+        python-version: ['3.9']
     steps:
     - name: Checkout code from repository
       uses: actions/checkout@v2
@@ -16,7 +20,7 @@ jobs:
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: ${{ matrix.python-version }}
         
     - name: Start MongoDB
       uses: supercharge/mongodb-github-action@1.6.0
@@ -37,6 +41,5 @@ jobs:
       env:
         ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
         REFRESH_TOKEN_SECRET: ${{ secrets.REFRESH_TOKEN_SECRET }}
-        DATABASE_URI: ${{ secrets.DATABASE_URI }}
       run: |
-        pytest --envfile ./server/config/.env.ci
+        pytest --envfile ./server/config/.env.test
