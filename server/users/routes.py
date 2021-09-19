@@ -1,23 +1,20 @@
 from flask import Blueprint
+from mongoengine import connect, Document, StringField
 import os
+import json
 
 from server.utils.decorators import require_access_token
 
 users = Blueprint('users', __name__)
-# connection = Connection(host=os.getenv('DATABASE_URI'))
+connect(host=os.getenv('DATABASE_URI'))
 
 
-# @connection.register
-# class User(Document):
-#     __collection__ = 'users'
-#     __database__ = os.getenv('DATABASE_NAME')
-#     structure = {
-#         'username': str,
-#         'password': str
-#     }
-#     required_fields = ['username', 'password']
+class User(Document):
+    username = StringField(max_length=200, required=True)
+    password = StringField(max_length=200, required=True)
+    meta = {'collection': 'users'}
 
 
 @users.route('/test', methods=['GET'])
 def get_users():
-    return 'goods'
+    return json.loads(User.objects[0].to_json())

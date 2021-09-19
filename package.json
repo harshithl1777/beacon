@@ -7,7 +7,7 @@
     "preinstall": "cd client && npm install",
     "server": "cd server && FLASK_ENV=development flask run",
     "client": "cd client && npm start",
-    "production": "cd server && gunicorn wsgi:app",
+    "production": "python -m server.wsgi",
     "build": "cd client && npm run build",
     "test": "pytest --envfile ./server/config/.env.test.local",
     "test-ci": "pytest --envfile ./server/config/.env.test.ci",

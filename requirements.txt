@@ -9,6 +9,7 @@ itsdangerous==2.0.1
 Jinja2==3.0.1
 MarkupSafe==2.0.1
 mccabe==0.6.1
+mongoengine==0.23.1
 packaging==21.0
 pluggy==1.0.0
 py==1.10.0
@@ -18,6 +19,7 @@ PyJWT==2.1.0
 pymongo==3.12.0
 pyparsing==2.4.7
 pytest==6.2.5
+pytest-dotenv==0.5.2
 python-dotenv==0.19.0
 toml==0.10.2
 Werkzeug==2.0.1

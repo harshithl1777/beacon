@@ -20,14 +20,9 @@ def get_health():
         "code": 200,
         'success': True,
         'date': datetime.utcnow(),
-        'env': os.getenv('PYTHON_ENV')
     }
 
 
 @app.errorhandler(404)
 def other_routes(error):
     return app.send_static_file('index.html')
-
-
-if __name__ == "__main__":
-    app.run()
