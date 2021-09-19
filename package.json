@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-server": "pytest",
-    "test-client": "cd client && npm test",
-    "build": "cd client && npm run build",
-    "server": "cd server && FLASK_ENV=development flask run",
     "preinstall": "cd client && npm install",
-    "client": "cd client && npm start"
+    "server": "cd server && FLASK_ENV=development flask run",
+    "client": "cd client && npm start",
+    "production": "cd server && gunicorn wsgi:app",
+    "build": "cd client && npm run build",
+    "test": "pytest --envfile ./server/config/.env.test.local",
+    "test-ci": "pytest --envfile ./server/config/.env.test.ci",
+    "test-client": "cd client && npm test"
   },
   "cacheDirectories": [
     "client/node_modules"

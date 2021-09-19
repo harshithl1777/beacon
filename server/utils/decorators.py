@@ -3,6 +3,7 @@ from flask import request
 
 from server.utils.helpers import create_response, check_jwt
 
+
 def require_access_token(method):
     @wraps(method)
     def check_access_token(*args, **kwargs):

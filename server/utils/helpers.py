@@ -1,16 +1,19 @@
 from datetime import datetime, timedelta
-from flask import make_response
+from flask import make_response, Response
+from typing import Union
 import jwt
 import os
 
-def create_response(payload='OK', success=True, code=200):
+
+def create_response(payload='OK', success: bool = True, code: int = 200) -> Response:
     body = {
         'payload': payload,
         'success': success,
     }
     return make_response(body, code)
 
-def create_jwt(user, type):
+
+def create_jwt(user: dict, type: str) -> str:
     payload = user.copy()
     if type == 'ACCESS':
         time_until_expiry = timedelta(seconds=10)
@@ -20,7 +23,8 @@ def create_jwt(user, type):
     token = jwt.encode(payload, os.getenv(f'{type}_TOKEN_SECRET'))
     return token
 
-def check_jwt(token, type):
+
+def check_jwt(token: str, type: str) -> Union[dict, bool]:
     try:
         secret = os.getenv(f'{type}_TOKEN_SECRET')
         return jwt.decode(token, secret, ['HS256'])

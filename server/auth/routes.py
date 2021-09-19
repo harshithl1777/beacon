@@ -14,32 +14,37 @@ database = {
 }
 REFRESH_MAX_AGE = 5184000
 
+
 @auth.route('/session', methods=['POST'])
 def new_session():
-    if request.method == 'POST':
-        body = request.get_json()
-        username, password = body.get('username'), body.get('password')
-        matchingUser = list(filter(
-            lambda user: user['username'] == username and user['password'] == password,
-            database['users']
-        ))
-        if len(matchingUser) == 0:
-            return create_response('Invalid username or password', False, 401)
-        else:
-            user = matchingUser[0].copy()
-            user.pop('password')
-            access_token, refresh_token = create_jwt(user, 'ACCESS'), create_jwt(user, 'REFRESH')
-            response = create_response({'access_token': access_token}, code=201)
-            response.set_cookie(
-                'refresh_token', 
-                refresh_token, 
-                max_age=REFRESH_MAX_AGE, 
-                samesite='strict', 
-                httponly=True, 
-                path='/api/auth/session',
-                secure=(True if os.getenv('PYTHON_ENV') == 'DEVELOPMENT' else False)
-            )
-            return response
+    body = request.get_json()
+    username, password = body.get('username'), body.get('password')
+    matchingUser = list(filter(
+        lambda user: user['username'] == username and user['password'] == password,
+        database['users']
+    ))
+    if username is None or password is None:
+        return create_response('Bad request', False, 400)
+    elif len(matchingUser) == 0:
+        return create_response('Invalid username or password', False, 401)
+    user = matchingUser[0].copy()
+    user.pop('password')
+    access_token, refresh_token = create_jwt(
+        user, 'ACCESS'), create_jwt(user, 'REFRESH')
+    response = create_response(
+        {'access_token': access_token}, code=201)
+    response.set_cookie(
+        'refresh_token',
+        refresh_token,
+        max_age=REFRESH_MAX_AGE,
+        samesite='strict',
+        httponly=True,
+        path='/api/auth/session',
+        secure=(True if os.getenv('FLASK_ENV')
+                == 'production' else False)
+    )
+    return response
+
 
 @auth.route('/session', methods=['PUT'])
 def refresh_session():
@@ -58,6 +63,10 @@ def refresh_session():
 
 @auth.route('/session', methods=['DELETE'])
 def delete_session():
-    response = create_response(code=200)
-    response.delete_cookie('refresh_token', path='/api/auth/session')
-    return response
+    refresh_token = request.cookies.get('refresh_token')
+    if not refresh_token:
+        return create_response('Bad request', False, 400)
+    else:
+        response = create_response(code=200)
+        response.delete_cookie('refresh_token', path='/api/auth/session')
+        return response
