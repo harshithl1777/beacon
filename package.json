@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-server": "pytest",
-    "test-client": "cd client && npm test",
-    "build": "cd client && npm run build",
-    "server": "cd server && FLASK_ENV=development flask run",
     "preinstall": "cd client && npm install",
+    "server": "cd server && FLASK_ENV=development flask run",
     "client": "cd client && npm start",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
+    "production": "python -m server.wsgi",
+    "build": "cd client && npm run build",
+    "test": "pytest --envfile ./server/config/.env.development",
+    "test-ci": "pytest --envfile ./server/config/.env.test",
+    "test-client": "cd client && npm test"
   },
   "cacheDirectories": [
     "client/node_modules"
@@ -26,8 +27,5 @@
     "url": "https://github.com/harshithl1777/beacon/issues"
   },
   "homepage": "https://github.com/harshithl1777/beacon#readme",
-  "_id": "beacon@1.0.0",
-  "devDependencies": {
-    "concurrently": "^6.2.0"
-  }
+  "_id": "beacon@1.0.0"
 }
