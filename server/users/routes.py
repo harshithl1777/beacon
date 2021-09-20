@@ -16,5 +16,6 @@ class User(Document):
 
 
 @users.route('/test', methods=['GET'])
+@require_access_token
 def get_users():
     return json.loads(User.objects[0].to_json())
