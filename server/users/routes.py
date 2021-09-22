@@ -14,7 +14,7 @@ class User(Document):
     password = StringField(max_length=200, required=True)
     meta = {'collection': 'users'}
 
-
+@require_access_token
 @users.route('/test', methods=['GET'])
 def get_users():
     return json.loads(User.objects[0].to_json())
