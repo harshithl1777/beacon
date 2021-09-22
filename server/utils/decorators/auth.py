@@ -14,7 +14,7 @@ def require_access_token(method):
             access_token = request.headers.get('Authorization').split(' ')[1]
             print(access_token)
             if not check_jwt(access_token, 'ACCESS'):
-                return create_response('Invalid or expired access token', False, 401)
+                return create_response('Invalid access token', False, 401)
             else:
                 return method(*args, **kwargs)
     return check_access_token
