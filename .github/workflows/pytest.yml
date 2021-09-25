@@ -35,7 +35,7 @@ jobs:
     
     - name: Import MongoDB test collections
       run: |
-        mongoimport -c=users -d=beacon_test --file=./server/config/mongo/users.json
+        mongoimport -c=users -d=beacon_test --file=./server/config/mongodb/users.json
   
     - name: Test with pytest
       env:
