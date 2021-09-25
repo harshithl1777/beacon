@@ -3,7 +3,8 @@ from mongoengine import connect, Document, StringField
 import os
 import json
 
-from server.utils.decorators import require_access_token
+from server.utils.decorators.auth import require_access_token
+from server.utils.helpers.routes import create_response
 
 users = Blueprint('users', __name__)
 connect(host=os.getenv('DATABASE_URI'))
@@ -16,5 +17,6 @@ class User(Document):
 
 
 @users.route('/test', methods=['GET'])
+@require_access_token
 def get_users():
-    return json.loads(User.objects[0].to_json())
+    return create_response(json.loads(User.objects[0].to_json()))

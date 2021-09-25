@@ -5,6 +5,7 @@
     "files.exclude": {
         "**/node_modules": false,
         "**/__pycache__": true,
+        "**/__init__.py": true,
     },
     "python.formatting.provider": "autopep8"
 }
