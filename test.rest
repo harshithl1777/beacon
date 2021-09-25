@@ -1,0 +1,17 @@
+
+POST http://localhost:5000/api/auth/session
+Content-Type: application/json
+
+{
+    "username": "hackthesouth",
+    "password": "123htn456"
+}
+
+###
+PUT http://localhost:5000/api/auth/session
+
+###
+DELETE  http://localhost:5000/api/auth/session
+
+###
+GET http://localhost:5000/api/users/test

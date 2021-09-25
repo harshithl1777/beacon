@@ -19,6 +19,8 @@ REFRESH_MAX_AGE = 5184000
 def new_session():
     body = request.get_json()
     username, password = body.get('username'), body.get('password')
+
+    # validate username and password
     matchingUser = list(filter(
         lambda user: user['username'] == username and user['password'] == password,
         database['users']
@@ -29,10 +31,11 @@ def new_session():
         return create_response('Invalid username or password', False, 401)
     user = matchingUser[0].copy()
     user.pop('password')
-    access_token, refresh_token = create_jwt(
-        user, 'ACCESS'), create_jwt(user, 'REFRESH')
-    response = create_response(
-        {'access_token': access_token}, code=201)
+    access_token = create_jwt(user, 'ACCESS')
+    refresh_token = create_jwt(user, 'REFRESH')
+
+    # create and return access and refresh tokens
+    response = create_response({'access_token': access_token}, code=201)
     response.set_cookie(
         'refresh_token',
         refresh_token,
@@ -52,6 +55,7 @@ def refresh_session():
     if not refresh_token:
         return create_response('Bad request', False, 400)
     else:
+        # if token exists, validate and return new access token
         decoded_token = check_jwt(refresh_token, 'REFRESH')
         if decoded_token:
             decoded_token.pop('exp')
@@ -65,8 +69,9 @@ def refresh_session():
 def delete_session():
     refresh_token = request.cookies.get('refresh_token')
     if not refresh_token:
-        return create_response('Bad request', False, 400)
+        return create_response(request.cookies, False, 400)
     else:
         response = create_response(code=200)
-        response.delete_cookie('refresh_token', path='/api/auth/session')
+        response.delete_cookie(
+            'refresh_token', path='/api/auth/session', httponly=True, samesite='strict', secure=False)
         return response
