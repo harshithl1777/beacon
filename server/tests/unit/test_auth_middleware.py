@@ -2,7 +2,7 @@ import os
 import jwt
 import codecs
 
-from server.tests.main import APITestClient
+from server.tests.client import APITestClient
 
 client = APITestClient(auto_login=False)
 

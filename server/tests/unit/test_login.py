@@ -1,4 +1,4 @@
-from server.tests.main import APITestClient
+from server.tests.client import APITestClient
 import os
 
 client = APITestClient(auto_login=False)

@@ -9,7 +9,7 @@ def require_access_token(method):
     @wraps(method)
     def check_access_token(*args, **kwargs):
         if not request.headers.get('Authorization'):
-            return create_response('Bad request', False, 400)
+            return create_response('Unauthorized', False, 400)
         else:
             access_token = request.headers.get('Authorization').split(' ')[1]
             if not check_jwt(access_token, 'ACCESS'):

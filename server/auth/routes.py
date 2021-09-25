@@ -2,7 +2,7 @@ from flask import Blueprint, request
 import os
 
 from server.utils.helpers.routes import create_response
-from server.utils.helpers.auth import create_jwt, check_jwt
+from server.utils.helpers.auth import create_jwt, check_jwt, find_matching_user
 
 auth = Blueprint('auth', __name__)
 
@@ -18,18 +18,15 @@ REFRESH_MAX_AGE = 5184000
 @auth.route('/session', methods=['POST'])
 def new_session():
     body = request.get_json()
-    username, password = body.get('username'), body.get('password')
+    email, password = body.get('email'), body.get('password')
 
     # validate username and password
-    matchingUser = list(filter(
-        lambda user: user['username'] == username and user['password'] == password,
-        database['users']
-    ))
-    if username is None or password is None:
+    matchingUser = find_matching_user(email, password)
+    if email is None or password is None:
         return create_response('Bad request', False, 400)
-    elif len(matchingUser) == 0:
+    elif matchingUser is None:
         return create_response('Invalid username or password', False, 401)
-    user = matchingUser[0].copy()
+    user = matchingUser.copy()
     user.pop('password')
     access_token = create_jwt(user, 'ACCESS')
     refresh_token = create_jwt(user, 'REFRESH')

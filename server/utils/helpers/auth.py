@@ -1,8 +1,12 @@
 from datetime import datetime, timedelta
 from typing import Union
 import jwt
-import codecs
 import os
+import json
+
+from mongoengine.errors import DoesNotExist
+
+from server.users.models import User
 
 
 def create_jwt(user: dict, type: str) -> str:
@@ -22,3 +26,10 @@ def check_jwt(token: str, type: str) -> Union[dict, bool]:
         return jwt.decode(token, secret, ['HS256'])
     except:
         return False
+
+
+def find_matching_user(email: str, password: str) -> list:
+    try:
+        return json.loads(User.objects.get(email=email, password=password).to_json())
+    except DoesNotExist:
+        return None

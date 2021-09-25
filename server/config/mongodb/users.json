@@ -1,1 +1,2 @@
-{"_id":{"$oid":"61469478cb264a45996e5ffb"},"username":"testuser1","password":"6a56634dee5aff46f3b2359868d1c511"}
+{"_id":{"$oid":"614f1f4a428b18bd5c34c0bf"},"email":"beacontestuser1@gmail.com","password":"6a56634dee5aff46f3b2359868d1c511"}
+{"_id":{"$oid":"614f36444ae25d6dd6852fa6"},"email":"beacontestuser2@gmail.com","password":"ce3570d0f6706c6a54b948d97e0a6caa"}
