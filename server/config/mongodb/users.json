@@ -1,2 +1,2 @@
-{"_id":{"$oid":"614f1f4a428b18bd5c34c0bf"},"email":"beacontestuser1@gmail.com","password":"6a56634dee5aff46f3b2359868d1c511"}
-{"_id":{"$oid":"614f36444ae25d6dd6852fa6"},"email":"beacontestuser2@gmail.com","password":"ce3570d0f6706c6a54b948d97e0a6caa"}
+{"_id":{"$oid":"615bb41e91c7399ffb4a727c"},"email":"beacontestuser1@gmail.com","password":"24326224313224502e43646e54564857384c33424e4f34736d3353454f59352f32645a307167622f6f5239787645725a634e4e3078576b684765494f","auth_method":"EMAIL_PW","join_date":{"$date":"2021-10-05T02:06:35.839Z"}}
+{"_id":{"$oid":"615bb42f91c7399ffb4a727d"},"email":"beacontestuser2@gmail.com","password":"24326224313224494e34355376436c4c795251377a546835657263344f41705135382f7442727768446e506b3139644a494f346b3452656f61567732","auth_method":"EMAIL_PW","join_date":{"$date":"2021-10-05T02:06:35.839Z"}}

@@ -1,10 +1,10 @@
 from datetime import datetime, timedelta
 from typing import Union
+from mongoengine.errors import DoesNotExist
 import jwt
 import os
 import json
-
-from mongoengine.errors import DoesNotExist
+import bcrypt
 
 from server.users.models import User
 
@@ -28,8 +28,11 @@ def check_jwt(token: str, type: str) -> Union[dict, bool]:
         return False
 
 
-def find_matching_user(email: str, password: str) -> list:
+def validate_user(email: str, password: str) -> tuple[dict, bool]:
     try:
-        return json.loads(User.objects.get(email=email, password=password).to_json())
+        matchingUser = json.loads(User.objects.get(email=email).to_json())
+        authorized = bcrypt.checkpw(
+            password.encode(), bytes.fromhex(matchingUser.get('password')))
+        return matchingUser, authorized
     except DoesNotExist:
-        return None
+        return {}, False

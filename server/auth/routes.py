@@ -2,16 +2,9 @@ from flask import Blueprint, request
 import os
 
 from server.utils.helpers.routes import create_response
-from server.utils.helpers.auth import create_jwt, check_jwt, find_matching_user
+from server.utils.helpers.auth import create_jwt, check_jwt, validate_user
 
 auth = Blueprint('auth', __name__)
-
-database = {
-    'users': [
-        {'userID': '143509', 'username': 'hackthesouth', 'password': '123htn456'},
-        {'userID': '345345', 'username': 'hackthenorth', 'password': '456htn123'}
-    ]
-}
 REFRESH_MAX_AGE = 5184000
 
 
@@ -20,30 +13,28 @@ def new_session():
     body = request.get_json()
     email, password = body.get('email'), body.get('password')
 
-    # validate username and password
-    matchingUser = find_matching_user(email, password)
-    if email is None or password is None:
-        return create_response('Bad request', False, 400)
-    elif matchingUser is None:
+    matchingUser, authorized = validate_user(email, password)
+    if not authorized:
         return create_response('Invalid username or password', False, 401)
-    user = matchingUser.copy()
-    user.pop('password')
-    access_token = create_jwt(user, 'ACCESS')
-    refresh_token = create_jwt(user, 'REFRESH')
+    else:
+        user = matchingUser.copy()
+        user.pop('password')
+        access_token = create_jwt(user, 'ACCESS')
+        refresh_token = create_jwt(user, 'REFRESH')
 
-    # create and return access and refresh tokens
-    response = create_response({'access_token': access_token}, code=201)
-    response.set_cookie(
-        'refresh_token',
-        refresh_token,
-        max_age=REFRESH_MAX_AGE,
-        samesite='strict',
-        httponly=True,
-        path='/api/auth/session',
-        secure=(True if os.getenv('FLASK_ENV')
-                == 'production' else False)
-    )
-    return response
+        # create and return access and refresh tokens
+        response = create_response({'access_token': access_token}, code=201)
+        response.set_cookie(
+            'refresh_token',
+            refresh_token,
+            max_age=REFRESH_MAX_AGE,
+            samesite='strict',
+            httponly=True,
+            path='/api/auth/session',
+            secure=(True if os.getenv('FLASK_ENV')
+                    == 'production' else False)
+        )
+        return response
 
 
 @auth.route('/session', methods=['PUT'])
