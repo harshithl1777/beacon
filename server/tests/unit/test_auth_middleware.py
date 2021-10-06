@@ -2,7 +2,7 @@ import os
 import jwt
 import codecs
 
-from server.tests.main import APITestClient
+from server.tests.client import APITestClient
 
 client = APITestClient(auto_login=False)
 
@@ -17,14 +17,13 @@ def test_middleware_invalid_token():
     random_token_key = codecs.encode(os.urandom(64), 'hex').decode()
     random_token = jwt.encode({}, random_token_key)
     client.headers['Authorization'] = f"Bearer {random_token}"
-    code, response = client.get('/api/users/test')
+    code, response = client.get('/api/users/615cf8a34f3f2cedf113057a')
     assert code == 401
     assert response.get('payload') == 'Invalid access token'
 
 
 def test_middleware_success():
     authorized_client = APITestClient()
-    code, response = authorized_client.get('/api/users/test')
-    print(response)
+    code, response = authorized_client.get('/api/users/615cf8a34f3f2cedf113057a')
     assert code == 200
     assert response.get('payload') is not None
