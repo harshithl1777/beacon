@@ -44,6 +44,6 @@ def delete_user_by_id(user_id: str):
         matchingUser.delete()
         return create_response()
     except ValidationError:
-        return create_response('Invalid user ID', False, 400)
+        return create_response(user_id, False, 400)
     except DoesNotExist:
         return create_response('User not found', False, 404)

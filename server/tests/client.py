@@ -4,17 +4,18 @@ from werkzeug.http import parse_cookie
 
 from server.main import create_app
 
+default_login_body = {
+    'email': 'beacontestuser1@gmail.com',
+    'password': 'a2aba0aaf5f9e4622a56bbccc2d73189'
+}
+
 
 class APITestClient():
 
-    def __init__(self, auto_login: bool = True):
+    def __init__(self, login_body: dict = default_login_body, auto_login: bool = True):
         self.vessel = create_app().test_client()
-        request_body = {
-            'username': 'hackthesouth',
-            'password': '123htn456'
-        }
         if auto_login:
-            response = self.vessel.post('/api/auth/session', json=request_body)
+            response = self.vessel.post('/api/auth/session', json=login_body)
             body = response.get_json()
             if (response.status_code == 201):
                 self.headers = {
