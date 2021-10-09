@@ -1,0 +1,39 @@
+$strokes: 16, 32, 48, 64;
+$sizePixels: 16px, 32px, 48px, 64px;
+
+@each $stroke in $strokes {
+	.stroke-#{$stroke} {
+		:global ion-icon {
+			--ionicon-stroke-width: #{$stroke}px;
+		}
+	}
+}
+
+@each $sizePixel in $sizePixels {
+	.size-#{$sizePixel} {
+		:global ion-icon {
+			font-size: #{$sizePixel}px;
+		}
+	}
+}
+
+ion-icon {
+	&.size-small {
+		font-size: 16px;
+	}
+	&.color-light {
+		color: var(--color-white);
+	}
+}
+
+.size-medium {
+	font-size: 32px;
+}
+
+.size-large {
+	font-size: 48px;
+}
+
+.size-massive {
+	font-size: 64px;
+}

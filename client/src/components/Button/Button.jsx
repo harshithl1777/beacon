@@ -4,11 +4,11 @@ import classnames from 'classnames';
 import styles from 'components/Button/Button.module.scss';
 
 const Button = (props) => {
-	const { text, type, disabled, ...rest } = props;
+	const { text, type, disabled, icon, children, ...rest } = props;
 
 	return (
-		<button {...rest} disabled={disabled}>
-			{text}
+		<button className={classnames(styles.button, styles[type])} {...rest} disabled={disabled}>
+			{children}
 		</button>
 	);
 };

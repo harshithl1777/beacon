@@ -27,5 +27,6 @@
     "url": "https://github.com/harshithl1777/beacon/issues"
   },
   "homepage": "https://github.com/harshithl1777/beacon#readme",
-  "_id": "beacon@1.0.0"
+  "_id": "beacon@1.0.0",
+  "devDependencies": {}
 }

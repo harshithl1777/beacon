@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @import 'scss/variables/_colors.scss';
 @import 'scss/mixins/_typography.scss';
 
@@ -33,4 +36,7 @@
 	--color-red-400: #{$color-red-400};
 	--color-red-600: #{$color-red-600};
 	--color-red-800: #{$color-red-800};
+
+	--color-white: #{$color-white};
+	--color-black: #{$color-black};
 }

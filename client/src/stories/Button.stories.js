@@ -1,36 +1,40 @@
 import React from 'react';
+import { Button } from 'components';
+import { Icon } from 'components';
 
-import { Button } from './Button';
+export const Primary = () => (
+	<div>
+		<h4>Default</h4>
+		<Button text='Default' type='primary'>
+			Default
+		</Button>
+		<h4>Disabled</h4>
+		<Icon name='heart-outline' color='light' stroke={64} />
+		<Button disabled type='primary'>
+			Disabled
+		</Button>
+	</div>
+);
+
+export const Secondary = () => (
+	<div>
+		<h4>Default</h4>
+		<Button text='Default' type='secondary' />
+		<h4>Disabled</h4>
+		<Button disabled text='Disabled' type='secondary' />
+	</div>
+);
+
+export const Danger = () => {
+	<div>
+		<h4>Default</h4>
+		<Button text='Default' type='secondary' />
+		<h4>Disabled</h4>
+		<Button disabled text='Disabled' type='secondary' />
+	</div>;
+};
 
 export default {
-  title: 'Example/Button',
-  component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-};
-
-const Template = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
+	title: 'Design System/Button',
+	component: Button,
 };
