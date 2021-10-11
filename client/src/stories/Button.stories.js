@@ -9,7 +9,7 @@ export const Primary = () => (
 			Default
 		</Button>
 		<h4>Disabled</h4>
-		<Icon name='heart-outline' color='light' stroke={64} />
+		<Icon name='feather-FiAirplay' color='light' stroke={64} />
 		<Button disabled type='primary'>
 			Disabled
 		</Button>
