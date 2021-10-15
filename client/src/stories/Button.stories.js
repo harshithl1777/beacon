@@ -1,17 +1,15 @@
 import React from 'react';
 import { Button } from 'components';
-import { Icon } from 'components';
 
 export const Primary = () => (
 	<div>
 		<h4>Default</h4>
-		<Button text='Default' type='primary'>
-			Default
+		<Button type='primary' icon='IoArrowUpCircle'>
+			Create your account
 		</Button>
 		<h4>Disabled</h4>
-		<Icon name='feather-FiAirplay' color='light' stroke={64} />
 		<Button disabled type='primary'>
-			Disabled
+			Create your account
 		</Button>
 	</div>
 );

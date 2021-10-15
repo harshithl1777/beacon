@@ -1,0 +1,32 @@
+$sizes: 20px, 28px, 38px, 50px;
+
+.circle {
+	box-sizing: border-box;
+	border-radius: 100%;
+	animation: spin 1s infinite linear;
+
+	&.color-dark {
+		border: 6px solid var(--color-navy-200);
+		border-top-color: var(--color-navy-800);
+	}
+
+	&.color-light {
+		border: 6px solid black;
+		border-top-color: var(--color-white);
+	}
+}
+
+@each $size in $sizes {
+	.size-#{$size} {
+		.circle {
+			width: $size;
+			height: $size;
+		}
+	}
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}

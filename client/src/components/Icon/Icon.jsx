@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import * as feather from 'react-icons/fi';
 import * as ionicons from 'react-icons/io5';
 
 const strokes = {
@@ -10,23 +9,21 @@ const strokes = {
 };
 
 const sizes = {
-	small: 16,
-	medium: 32,
-	large: 48,
-	massive: 64,
+	small: 20,
+	medium: 28,
+	large: 38,
+	massive: 50,
 };
 
 const colors = { light: '#ffffff', dark: '#001c36' };
-const providers = { feather, ionicons };
 
 const Icon = (props) => {
 	const { name, color, stroke, size, className } = props;
-	const providerProp = name.split('-')[0];
-	const IconComponent = providers[providerProp][name.split('-')[1]];
+	const IconComponent = ionicons[name];
 
 	return (
 		<IconComponent
-			stroke={strokes[stroke] || stroke}
+			strokeWidth={name.includes('outline') ? strokes[stroke] || stroke : ''} // use stroke if icon is outline
 			color={colors[color] || color}
 			size={sizes[size] || size}
 			className={className}
@@ -43,7 +40,7 @@ Icon.propTypes = {
 	]),
 	size: PropTypes.oneOfType([
 		PropTypes.number,
-		PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
+		PropTypes.oneOf(['small', 'medium', 'large', 'massive']),
 	]),
 	className: PropTypes.string,
 };
