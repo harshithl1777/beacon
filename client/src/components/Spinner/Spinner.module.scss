@@ -1,26 +1,28 @@
-$sizes: 20px, 28px, 38px, 50px;
+$sizes: (
+	20: 4px,
+	28: 5px,
+	38: 6px,
+	50: 8px,
+);
 
-.circle {
-	box-sizing: border-box;
-	border-radius: 100%;
-	animation: spin 1s infinite linear;
-
-	&.color-dark {
-		border: 6px solid var(--color-navy-200);
-		border-top-color: var(--color-navy-800);
-	}
-
-	&.color-light {
-		border: 6px solid black;
-		border-top-color: var(--color-white);
-	}
-}
-
-@each $size in $sizes {
+@each $size, $stroke in $sizes {
 	.size-#{$size} {
 		.circle {
-			width: $size;
-			height: $size;
+			box-sizing: border-box;
+			border-radius: 100%;
+			animation: spin 1s infinite linear;
+			height: #{$size}px;
+			width: #{$size}px;
+
+			&.dark {
+				border: $stroke solid var(--color-navy-100);
+				border-top-color: var(--color-navy-800);
+			}
+
+			&.light {
+				border: $stroke solid var(--color-white-faded);
+				border-top-color: var(--color-white);
+			}
 		}
 	}
 }

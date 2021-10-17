@@ -1,17 +1,9 @@
 // green variables
-$color-green-100: rgba(50, 211, 202, 0.1);
-$color-green-200: rgba(50, 211, 202, 0.5);
-$color-green-400: #32d3ca;
-$color-green-600: #2ebfb7;
+$color-green-100: rgba(50, 211, 202, 0.15);
+$color-green-200: rgba(50, 211, 202, 0.4);
+$color-green-400: rgba(50, 211, 202, 0.75);
+$color-green-600: #32d3ca;
 $color-green-800: #2ebfb7;
-
-// navy variables
-$color-navy-100: rgba(206, 214, 224, 0.25);
-$color-navy-200: rgba(206, 214, 224, 0.5);
-$color-navy-300: #ced6e0;
-$color-navy-400: #778391;
-$color-navy-600: rgba(0, 28, 54, 0.85);
-$color-navy-800: #001c36;
 
 // purple variables
 $color-purple-100: rgba(130, 107, 249, 0.25);
@@ -34,8 +26,26 @@ $color-red-400: rgba(255, 74, 74, 0.75);
 $color-red-600: #ff4a4a;
 $color-red-800: #e33e3e;
 
+// yellow variables
+$color-yellow-100: rgba(255, 206, 33, 0.25);
+$color-yellow-200: rgba(255, 206, 33, 0.5);
+$color-yellow-400: rgba(255, 206, 33, 0.75);
+$color-yellow-600: #ffce21;
+$color-yellow-800: #e9ad14;
+
 // gray variables
+$color-gray-100: rgba(196, 204, 215, 0.5);
+$color-gray-200: #ced6e0;
+$color-gray-400: #a8b7ca;
+$color-gray-600: #7d8ea4;
+
+// navy variables
+$color-navy-100: rgba(0, 28, 54, 0.3);
+$color-navy-200: rgba(0, 28, 54, 0.7);
+$color-navy-400: rgba(0, 28, 54, 0.85);
+$color-navy-600: #001c36;
 
 // white and black
 $color-white: #ffffff;
+$color-white-faded: rgba(255, 255, 255, 0.5);
 $color-black: #000000;
