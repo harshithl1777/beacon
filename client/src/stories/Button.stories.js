@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from 'components';
 
 export const Primary = () => (
@@ -34,9 +33,11 @@ export const Secondary = () => (
 );
 
 export const Danger = () => (
-	<div>
+	<>
 		<h4>Default</h4>
-		<Button type='danger'>Danger Button</Button>
+		<Button icon='IoArrowUpCircle' type='danger'>
+			Danger Button
+		</Button>
 		<h4>Disabled</h4>
 		<Button disabled text='Disabled' type='danger'>
 			Danger Disabled
@@ -45,13 +46,15 @@ export const Danger = () => (
 		<Button loading type='danger'>
 			Creating your account
 		</Button>
-	</div>
+	</>
 );
 
 export const Purple = () => (
-	<div>
+	<>
 		<h4>Default</h4>
-		<Button type='purple'>Purple Button</Button>
+		<Button icon='IoArrowUpCircle' type='purple'>
+			Purple Button
+		</Button>
 		<h4>Disabled</h4>
 		<Button disabled text='Disabled' type='purple'>
 			Purple Disabled
@@ -60,13 +63,15 @@ export const Purple = () => (
 		<Button loading type='purple'>
 			Creating your account
 		</Button>
-	</div>
+	</>
 );
 
 export const Blue = () => (
-	<div>
+	<>
 		<h4>Default</h4>
-		<Button type='blue'>Blue Button</Button>
+		<Button icon='IoArrowUpCircle' type='blue'>
+			Blue Button
+		</Button>
 		<h4>Disabled</h4>
 		<Button disabled text='Disabled' type='blue'>
 			Blue Disabled
@@ -75,13 +80,15 @@ export const Blue = () => (
 		<Button loading type='blue'>
 			Creating your account
 		</Button>
-	</div>
+	</>
 );
 
 export const Yellow = () => (
-	<div>
+	<>
 		<h4>Default</h4>
-		<Button type='yellow'>Yellow Button</Button>
+		<Button icon='IoArrowUpCircle' type='yellow'>
+			Yellow Button
+		</Button>
 		<h4>Disabled</h4>
 		<Button disabled text='Disabled' type='yellow'>
 			Yellow Disabled
@@ -90,7 +97,7 @@ export const Yellow = () => (
 		<Button loading type='yellow'>
 			Creating your account
 		</Button>
-	</div>
+	</>
 );
 
 export default {

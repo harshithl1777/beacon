@@ -5,7 +5,8 @@ import { Icon, Spinner } from 'components';
 import styles from 'components/Button/Button.module.scss';
 
 const Button = (props) => {
-	const { text, type, disabled, icon, children, customIcon, loading, onClick, ...rest } = props;
+	const { text, type, disabled, icon, children, customIcon, loading, onClick, className, ...rest } =
+		props;
 
 	// check if icon name or customIcon exists, otherwise return empty fragment
 	const getIconToRender = () => {
@@ -21,7 +22,8 @@ const Button = (props) => {
 				icon && styles.iconButton,
 				loading && styles.loading,
 				disabled && styles.disabled,
-				styles[type]
+				styles[type],
+				className
 			)}
 			{...rest}
 			disabled={disabled || loading}
@@ -38,13 +40,14 @@ const Button = (props) => {
 };
 
 Button.propTypes = {
-	children: PropTypes.string.isRequired,
+	children: PropTypes.node.isRequired,
 	type: PropTypes.oneOf(['primary', 'secondary', 'danger', 'blue', 'purple', 'yellow']),
 	disabled: PropTypes.bool,
 	icon: PropTypes.string,
 	customIcon: PropTypes.element,
 	loading: PropTypes.bool,
 	onClick: PropTypes.func,
+	className: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -53,7 +56,8 @@ Button.defaultProps = {
 	icon: null,
 	customIcon: null,
 	loading: false,
-	onClick: () => alert('hi'),
+	onClick: () => {},
+	className: '',
 };
 
 export default Button;
