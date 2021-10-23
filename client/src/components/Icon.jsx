@@ -8,7 +8,15 @@ const sizes = {
 	massive: 50,
 };
 
-const colors = { light: '#ffffff', dark: '#001c36' };
+const colors = {
+	light: 'var(--color-white)',
+	dark: 'var(--color-navy-600)',
+	green: 'var(--color-green-600)',
+	blue: 'var(--color-blue-600)',
+	red: 'var(--color-red-600)',
+	yellow: 'var(--color-yellow-600)',
+	purple: 'var(--color-purple-600)',
+};
 
 const Icon = (props) => {
 	const { name, color, size, className } = props;
@@ -25,7 +33,10 @@ const Icon = (props) => {
 
 Icon.propTypes = {
 	name: PropTypes.string.isRequired,
-	color: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf(['light', 'dark'])]),
+	color: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.oneOf(['light', 'dark', 'green', 'blue', 'red', 'yellow', 'purple']),
+	]),
 	size: PropTypes.oneOfType([
 		PropTypes.number,
 		PropTypes.oneOf(['small', 'medium', 'large', 'massive']),

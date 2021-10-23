@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import { Icon, Spinner } from 'components';
-import styles from 'components/Button/Button.module.scss';
+import { Icon, Spinner } from 'componentss';
+import styles from 'components/Button.module.scss';
 
 const Button = (props) => {
 	const { text, type, disabled, icon, children, customIcon, loading, onClick, className, ...rest } =
@@ -27,7 +27,6 @@ const Button = (props) => {
 			)}
 			{...rest}
 			disabled={disabled || loading}
-			clickable={false}
 			onClick={onClick}
 		>
 			{!loading && getIconToRender()}

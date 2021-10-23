@@ -1,6 +1,6 @@
-export { default as Button } from 'components/Button/Button';
-export { default as Icon } from 'components/Icon/Icon';
-export { default as Spinner } from 'components/Spinner/Spinner';
+export { default as Button } from 'components/Button';
+export { default as Icon } from 'components/Icon';
+export { default as Spinner } from 'components/Spinner';
 
 const defaultImportError = () => {
 	console.error(

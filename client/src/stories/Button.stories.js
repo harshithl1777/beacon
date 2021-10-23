@@ -1,9 +1,10 @@
 import { Button } from 'components';
+import { toast } from 'react-toastify';
 
 export const Primary = () => (
 	<div>
 		<h4>Default</h4>
-		<Button type='primary' icon='IoArrowUpCircle'>
+		<Button type='primary' icon='IoArrowUpCircle' onClick={() => toast('Default')}>
 			Primary Button
 		</Button>
 		<h4>Disabled</h4>

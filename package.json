@@ -28,5 +28,8 @@
   },
   "homepage": "https://github.com/harshithl1777/beacon#readme",
   "_id": "beacon@1.0.0",
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "react-toastify": "^8.0.3"
+  }
 }
