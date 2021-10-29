@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import { Icon, Spinner } from 'componentss';
+import { Icon, Spinner } from 'components';
 import styles from 'components/Button.module.scss';
 
 const Button = (props) => {

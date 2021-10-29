@@ -3,24 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.24.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.21.1",
     "classnames": "^2.3.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-icons": "^4.3.1",
-    "react-redux": "^7.2.6",
-    "react-router": "^5.2.1",
-    "react-scripts": "4.0.3",
+    "react-redux": "^7.2.3",
+    "react-router": "^5.2.0",
     "react-toastify": "^8.0.3",
-    "redux": "^4.1.2",
-    "redux-thunk": "^2.4.0",
-    "web-vitals": "^1.0.1"
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -30,10 +29,7 @@
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
+    "extends": "react-app",
     "overrides": [
       {
         "files": [
@@ -59,13 +55,13 @@
   },
   "devDependencies": {
     "@babel/eslint-plugin": "^7.14.5",
-    "@storybook/addon-actions": "^6.3.12",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/addon-links": "^6.3.12",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
     "@storybook/addons": "^6.3.9",
-    "@storybook/node-logger": "^6.3.12",
+    "@storybook/node-logger": "^6.3.7",
     "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.12",
+    "@storybook/react": "^6.3.7",
     "@storybook/theming": "^6.3.9",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-airbnb": "*",

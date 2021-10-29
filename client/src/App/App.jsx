@@ -1,20 +1,17 @@
-import { toast, ToastContainer } from 'react-toastify';
-import 'App/global.scss';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button } from 'components';
-import Random from 'App/Random';
+import { showToast } from 'services/helpers';
+import 'app/global.scss';
 
 const App = () => {
-	function notify() {
-		toast.dark('Hey 👋, see how easy!');
-	}
-
 	return (
 		<>
 			<div>
-				{/* Hello world
-				<Button onClick={notify}>Click me</Button> */}
-				<Random />
+				Hello world
+				<Button onClick={() => showToast.success('It worked', 'This is a success toast')}>
+					Click me
+				</Button>
 			</div>
 			<ToastContainer />
 		</>

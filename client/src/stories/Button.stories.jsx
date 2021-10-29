@@ -101,7 +101,9 @@ export const Yellow = () => (
 	</>
 );
 
-export default {
+const ButtonStory = {
 	title: 'Design System/Button',
 	component: Button,
 };
+
+export default ButtonStory;

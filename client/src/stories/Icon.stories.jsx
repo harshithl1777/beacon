@@ -28,7 +28,9 @@ export const Outline = () => (
 	</>
 );
 
-export default {
+const IconStory = {
 	title: 'Design System/Icon',
 	component: Icon,
 };
+
+export default IconStory;

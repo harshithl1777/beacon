@@ -42,7 +42,9 @@ export const Dark = () => (
 	</>
 );
 
-export default {
+const SpinnerStory = {
 	title: 'Design System/Spinner',
 	component: Spinner,
 };
+
+export default SpinnerStory;

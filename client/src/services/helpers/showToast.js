@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 import { Icon, Spinner } from 'components';
-import styles from 'services/utils/showToast.module.scss';
+import styles from 'services/helpers/showToast.module.scss';
 
 const toastBody = (title, message) => (
 	<>
@@ -9,7 +9,7 @@ const toastBody = (title, message) => (
 	</>
 );
 
-const success = (title, message, options) => {
+const success = (title, message, options = {}) => {
 	const { ...rest } = options;
 	const successIcon = <Icon name='IoCheckmarkCircle' size='medium' color='green' />;
 	toast.success(toastBody(title, message), {
@@ -19,7 +19,7 @@ const success = (title, message, options) => {
 	});
 };
 
-const loading = (title, message, options) => {
+const loading = (title, message, options = {}) => {
 	const { ...rest } = options;
 	const loadingIcon = <Spinner size='small' />;
 	toast.info(toastBody(title, message), {
@@ -29,7 +29,7 @@ const loading = (title, message, options) => {
 	});
 };
 
-const info = (title, message, options) => {
+const info = (title, message, options = {}) => {
 	const { ...rest } = options;
 	const infoIcon = <Icon name='IoInformationCircle' size='medium' color='blue' />;
 	toast.info(toastBody(title, message), {

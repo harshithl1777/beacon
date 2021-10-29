@@ -1,4 +1,4 @@
-@import 'scss/mixins/_typography.scss';
+@import 'scss/_typography.scss';
 
 .button {
 	@include title-4-bold;
@@ -28,6 +28,9 @@
 		align-items: center;
 		justify-content: center;
 		height: 49px;
+		p {
+			visibility: hidden;
+		}
 		&:hover {
 			cursor: progress;
 		}
@@ -35,7 +38,7 @@
 }
 
 .buttonSpinner {
-	padding-right: 13px;
+	position: absolute;
 }
 
 .iconButton {
