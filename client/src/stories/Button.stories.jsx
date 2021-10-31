@@ -13,6 +13,8 @@ export const Primary = () => (
 		</Button>
 		<h4>Loading</h4>
 		<Button loading>Creating your account</Button>
+		<h4>With Tooltip</h4>
+		<Button tooltip='This is a tooltip'>Hover here!</Button>
 	</div>
 );
 

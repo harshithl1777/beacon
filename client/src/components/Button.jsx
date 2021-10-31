@@ -1,12 +1,24 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import { Icon, Spinner } from 'components';
+import { Icon, Spinner, Tooltip } from 'components';
 import styles from 'components/Button.module.scss';
 
 const Button = (props) => {
-	const { text, type, disabled, icon, children, customIcon, loading, onClick, className, ...rest } =
-		props;
+	const {
+		text,
+		type,
+		disabled,
+		icon,
+		children,
+		customIcon,
+		loading,
+		tooltip,
+		tooltipOptions,
+		onClick,
+		className,
+		...rest
+	} = props;
 
 	// check if icon name or customIcon exists, otherwise return empty fragment
 	const getIconToRender = () => {
@@ -15,7 +27,7 @@ const Button = (props) => {
 		return <></>;
 	};
 
-	return (
+	const buttonContent = (
 		<button
 			className={classnames(
 				styles.button,
@@ -36,6 +48,14 @@ const Button = (props) => {
 			<p>{children}</p>
 		</button>
 	);
+
+	return tooltip ? (
+		<Tooltip message={tooltip} {...tooltipOptions}>
+			{buttonContent}
+		</Tooltip>
+	) : (
+		buttonContent
+	);
 };
 
 Button.propTypes = {
@@ -47,6 +67,8 @@ Button.propTypes = {
 	loading: PropTypes.bool,
 	onClick: PropTypes.func,
 	className: PropTypes.string,
+	tooltip: PropTypes.string,
+	tooltipOptions: PropTypes.object,
 };
 
 Button.defaultProps = {
@@ -57,6 +79,8 @@ Button.defaultProps = {
 	loading: false,
 	onClick: () => {},
 	className: '',
+	tooltip: '',
+	tooltipOptions: {},
 };
 
 export default Button;
