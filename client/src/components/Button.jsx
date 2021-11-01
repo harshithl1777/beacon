@@ -16,6 +16,7 @@ const Button = (props) => {
 		tooltip,
 		tooltipOptions,
 		onClick,
+		positionClass,
 		className,
 		...rest
 	} = props;
@@ -27,34 +28,33 @@ const Button = (props) => {
 		return <></>;
 	};
 
-	const buttonContent = (
-		<button
-			className={classnames(
-				styles.button,
-				icon && styles.iconButton,
-				loading && styles.loading,
-				disabled && styles.disabled,
-				styles[type],
-				className
-			)}
-			{...rest}
-			disabled={disabled || loading}
-			onClick={onClick}
-		>
-			{!loading && getIconToRender()}
-			{loading && (
-				<Spinner className={styles.buttonSpinner} color={type === 'secondary' ? 'light' : 'dark'} />
-			)}
-			<p>{children}</p>
-		</button>
-	);
-
-	return tooltip ? (
-		<Tooltip message={tooltip} {...tooltipOptions}>
-			{buttonContent}
-		</Tooltip>
-	) : (
-		buttonContent
+	return (
+		<div className={positionClass}>
+			<Tooltip message={tooltip} {...tooltipOptions}>
+				<button
+					className={classnames(
+						styles.button,
+						icon && styles.iconButton,
+						loading && styles.loading,
+						disabled && styles.disabled,
+						styles[type],
+						className
+					)}
+					{...rest}
+					disabled={disabled || loading}
+					onClick={onClick}
+				>
+					{!loading && getIconToRender()}
+					{loading && (
+						<Spinner
+							className={styles.buttonSpinner}
+							color={type === 'secondary' ? 'light' : 'dark'}
+						/>
+					)}
+					<p>{children}</p>
+				</button>
+			</Tooltip>
+		</div>
 	);
 };
 

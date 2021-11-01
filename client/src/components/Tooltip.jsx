@@ -19,10 +19,10 @@ const Tooltip = (props) => {
 	const hideTip = () => {
 		clearInterval(timeout);
 		setTransition('tooltipHide');
-		setTimeout(() => setActive(false), 200);
+		setTimeout(() => setActive(false), 100);
 	};
 
-	return (
+	return message ? (
 		<div className={styles.tooltipWrapper} onMouseEnter={showTip} onMouseLeave={hideTip}>
 			{children}
 			{active && (
@@ -38,6 +38,8 @@ const Tooltip = (props) => {
 				</div>
 			)}
 		</div>
+	) : (
+		children
 	);
 };
 

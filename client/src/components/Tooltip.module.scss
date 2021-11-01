@@ -14,7 +14,6 @@
 }
 
 .tooltipContent {
-	$parent: &;
 	@include body-2-regular;
 	position: absolute;
 	border-radius: 6px;
