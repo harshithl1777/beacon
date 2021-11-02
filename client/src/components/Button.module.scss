@@ -1,0 +1,163 @@
+@import 'scss/_typography.scss';
+
+.button {
+	@include title-4-bold;
+	padding: 12px 25px;
+	border-radius: 12px;
+	border: none;
+
+	svg {
+		padding-right: 10px;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	.circle {
+		visibility: hidden;
+	}
+
+	&.loading {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		height: 49px;
+		p {
+			visibility: hidden;
+		}
+		&:hover {
+			cursor: progress;
+		}
+	}
+}
+
+.buttonSpinner {
+	position: absolute;
+}
+
+.iconButton {
+	padding: 12px 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	max-height: 49px;
+}
+
+.primary {
+	background-color: var(--color-green-600);
+	color: var(--color-navy-800);
+
+	&.disabled {
+		color: var(--color-navy-200);
+		background-color: var(--color-green-400);
+		&:hover {
+			cursor: not-allowed;
+			background-color: var(--color-green-400);
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: var(--color-green-400);
+	}
+}
+
+.secondary {
+	background-color: var(--color-navy-600);
+	color: var(--color-white);
+
+	&.disabled {
+		background-color: var(--color-navy-200);
+		&:hover {
+			cursor: not-allowed;
+			background-color: var(--color-navy-200);
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: var(--color-navy-400);
+	}
+}
+
+.danger {
+	background-color: var(--color-red-600);
+	color: var(--color-navy-600);
+
+	&.disabled {
+		color: var(--color-navy-200);
+		background-color: var(--color-red-400);
+		&:hover {
+			cursor: not-allowed;
+			background-color: var(--color-red-400);
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: var(--color-red-400);
+	}
+}
+
+.purple {
+	background-color: var(--color-purple-600);
+	color: var(--color-navy-600);
+
+	&.disabled {
+		color: var(--color-navy-200);
+		background-color: var(--color-purple-400);
+		&:hover {
+			cursor: not-allowed;
+			background-color: var(--color-purple-400);
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: var(--color-purple-400);
+	}
+}
+
+.blue {
+	background-color: var(--color-blue-600);
+	color: var(--color-navy-600);
+
+	&.disabled {
+		color: var(--color-navy-200);
+		background-color: var(--color-blue-400);
+		&:hover {
+			cursor: not-allowed;
+			background-color: var(--color-blue-400);
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: var(--color-blue-400);
+	}
+}
+
+.yellow {
+	background-color: var(--color-yellow-600);
+	color: var(--color-navy-600);
+
+	&.disabled {
+		color: var(--color-navy-200);
+		background-color: var(--color-yellow-400);
+		&:hover {
+			cursor: not-allowed;
+			background-color: var(--color-yellow-400);
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: var(--color-yellow-400);
+	}
+}

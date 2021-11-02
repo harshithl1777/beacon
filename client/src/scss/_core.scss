@@ -1,20 +1,16 @@
-@import 'scss/variables/_colors.scss';
-@import 'scss/mixins/_typography.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import 'scss/_colors.scss';
+@import 'scss/_typography.scss';
+@import 'scss/toastify.scss';
 
 :root {
 	--color-green-100: #{$color-green-100};
 	--color-green-200: #{$color-green-200};
-	--color-green-300: #{$color-green-300};
 	--color-green-400: #{$color-green-400};
 	--color-green-600: #{$color-green-600};
 	--color-green-800: #{$color-green-800};
-
-	--color-navy-100: #{$color-navy-100};
-	--color-navy-200: #{$color-navy-200};
-	--color-navy-300: #{$color-navy-300};
-	--color-navy-400: #{$color-navy-400};
-	--color-navy-600: #{$color-navy-600};
-	--color-navy-800: #{$color-navy-800};
 
 	--color-purple-100: #{$color-purple-100};
 	--color-purple-200: #{$color-purple-200};
@@ -33,4 +29,25 @@
 	--color-red-400: #{$color-red-400};
 	--color-red-600: #{$color-red-600};
 	--color-red-800: #{$color-red-800};
+
+	--color-yellow-100: #{$color-yellow-100};
+	--color-yellow-200: #{$color-yellow-200};
+	--color-yellow-400: #{$color-yellow-400};
+	--color-yellow-600: #{$color-yellow-600};
+	--color-yellow-800: #{$color-yellow-800};
+
+	--color-gray-0: #{$color-gray-0};
+	--color-gray-100: #{$color-gray-100};
+	--color-gray-200: #{$color-gray-200};
+	--color-gray-400: #{$color-gray-400};
+	--color-gray-600: #{$color-gray-600};
+
+	--color-navy-100: #{$color-navy-100};
+	--color-navy-200: #{$color-navy-200};
+	--color-navy-400: #{$color-navy-400};
+	--color-navy-600: #{$color-navy-600};
+
+	--color-white: #{$color-white};
+	--color-white-faded: #{$color-white-faded};
+	--color-black: #{$color-black};
 }
