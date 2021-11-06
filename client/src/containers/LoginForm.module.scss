@@ -1,0 +1,46 @@
+@import 'scss/_typography.scss';
+
+.formWrapper {
+	width: 423px;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: -30px;
+}
+
+.formLogo {
+	margin-bottom: 30px;
+}
+
+.formTitle {
+	@include title-1-bold;
+}
+
+.formDescription {
+	@include body-1-regular;
+	text-align: center;
+	margin-top: 12px;
+	margin-bottom: 30px;
+}
+
+.formInput {
+	margin-bottom: 20px;
+}
+
+.formSubmit {
+	width: 100% !important;
+	margin-top: 16px;
+}
+
+.formSignupOption {
+	@include body-2-regular;
+	margin-top: 22px;
+	text-decoration: none;
+}
+
+.formSignupLink {
+	font-weight: 700;
+	text-decoration: none;
+	color: var(--color-navy-600);
+}

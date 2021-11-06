@@ -1,7 +1,7 @@
 import { Input } from 'components';
 
 export const Default = () => (
-	<>
+	<div style={{ width: '300px' }}>
 		<h4>With Placeholder</h4>
 		<Input>Username</Input>
 		<h4>Label without Placeholder</h4>
@@ -18,11 +18,11 @@ export const Default = () => (
 		<Input disabled forcedValue='iamforced'>
 			Username
 		</Input>
-	</>
+	</div>
 );
 
 export const Danger = () => (
-	<>
+	<div style={{ width: '300px' }}>
 		<h4>With Placeholder</h4>
 		<Input state='error'>Username</Input>
 		<h4>Label without Placeholder</h4>
@@ -31,11 +31,11 @@ export const Danger = () => (
 		<Input state='error' forcedValue='iamausername'>
 			Username
 		</Input>
-	</>
+	</div>
 );
 
 export const Warning = () => (
-	<>
+	<div style={{ width: '300px' }}>
 		<h4>With Placeholder</h4>
 		<Input state='warning'>Username</Input>
 		<h4>Label without Placeholder</h4>
@@ -44,7 +44,7 @@ export const Warning = () => (
 		<Input state='warning' forcedValue='iamausername'>
 			Username
 		</Input>
-	</>
+	</div>
 );
 
 const InputStory = {

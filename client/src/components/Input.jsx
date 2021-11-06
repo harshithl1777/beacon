@@ -15,9 +15,9 @@ const Input = (props) => {
 		positionClass,
 		className,
 		forcedValue,
-		options,
 		tooltip,
 		tooltipOptions,
+		...rest
 	} = props;
 	const [value, setValue] = useState(forcedValue);
 
@@ -54,7 +54,7 @@ const Input = (props) => {
 							onChange(e.target.value);
 						}}
 						disabled={disabled}
-						{...options}
+						{...rest}
 					/>
 				</Tooltip>
 				{children && (
@@ -76,9 +76,10 @@ Input.propTypes = {
 	state: PropTypes.oneOf(['default', 'success', 'warning', 'error']),
 	disabled: PropTypes.bool,
 	onChange: PropTypes.func,
-	options: PropTypes.object,
 	tooltip: PropTypes.string,
 	tooltipOptions: PropTypes.object,
+	className: PropTypes.string,
+	positionClass: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -88,9 +89,10 @@ Input.defaultProps = {
 	forcedValue: '',
 	disabled: false,
 	onChange: () => {},
-	options: {},
 	tooltip: null,
 	tooltipOptions: {},
+	className: '',
+	positionClass: '',
 };
 
 export default Input;
