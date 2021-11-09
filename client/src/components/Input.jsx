@@ -12,7 +12,7 @@ const Input = (props) => {
 		state,
 		disabled,
 		onChange,
-		positionClass,
+		wrapperClass,
 		className,
 		forcedValue,
 		tooltip,
@@ -33,13 +33,13 @@ const Input = (props) => {
 	};
 
 	return (
-		<div className={classnames(styles.inputWrapper, positionClass)}>
+		<div className={classnames(styles.inputWrapper, wrapperClass)}>
 			{!children && label && <label className={styles.floatingLabel}>{label}</label>}
 			<div className={styles.inputContentWrapper}>
 				{getIcon()}
 				<Tooltip message={tooltip} {...tooltipOptions}>
 					<input
-						id='input'
+						id={`${children}`}
 						className={classnames(
 							styles.floatingInput,
 							styles[state],
@@ -59,7 +59,6 @@ const Input = (props) => {
 				</Tooltip>
 				{children && (
 					<label
-						for='input'
 						className={classnames(styles.floatingPlaceholder, styles[`${state}Label`])}
 						data-content={children}
 					></label>
@@ -79,7 +78,7 @@ Input.propTypes = {
 	tooltip: PropTypes.string,
 	tooltipOptions: PropTypes.object,
 	className: PropTypes.string,
-	positionClass: PropTypes.string,
+	wrapperClass: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -89,10 +88,10 @@ Input.defaultProps = {
 	forcedValue: '',
 	disabled: false,
 	onChange: () => {},
-	tooltip: null,
+	tooltip: '',
 	tooltipOptions: {},
 	className: '',
-	positionClass: '',
+	wrapperClass: '',
 };
 
 export default Input;

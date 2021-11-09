@@ -1,8 +1,10 @@
 from flask import Flask
+from flask_cors import CORS
 from dotenv import load_dotenv
 from datetime import datetime
 from mongoengine import connect
 import os
+import firebase_admin
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv('./config/.env.development')
 
@@ -12,13 +14,17 @@ from server.auth.routes import auth
 
 def create_app() -> Flask:
     app = Flask(__name__, static_folder='../client/build', static_url_path='/')
+    app.url_map.strict_slashes = False
     app.register_blueprint(users, url_prefix='/api/users')
     app.register_blueprint(auth, url_prefix='/api/auth')
     return app
 
 
 app = create_app()
+if os.getenv('FLASK_ENV') == 'development':
+    CORS(app)
 connect(host=os.getenv('DATABASE_URI'))
+firebase_admin.initialize_app()
 
 
 @app.route('/api/health', methods=['GET'])
@@ -33,7 +39,4 @@ def get_health():
 
 @app.errorhandler(404)
 def other_routes(error):
-    if (os.getenv('FLASK_ENV') == 'development'):
-        return 'URL Not Found', 404
-    else:
-        return app.send_static_file('index.html')
+    return app.send_static_file('index.html')

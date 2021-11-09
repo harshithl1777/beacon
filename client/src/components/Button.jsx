@@ -16,7 +16,7 @@ const Button = (props) => {
 		tooltip,
 		tooltipOptions,
 		onClick,
-		positionClass,
+		wrapperClass,
 		className,
 		...rest
 	} = props;
@@ -29,7 +29,7 @@ const Button = (props) => {
 	};
 
 	return (
-		<div className={positionClass}>
+		<div className={wrapperClass}>
 			<Tooltip message={tooltip} {...tooltipOptions}>
 				<button
 					className={classnames(
@@ -67,6 +67,7 @@ Button.propTypes = {
 	loading: PropTypes.bool,
 	onClick: PropTypes.func,
 	className: PropTypes.string,
+	wrapperClass: PropTypes.string,
 	tooltip: PropTypes.string,
 	tooltipOptions: PropTypes.object,
 };
@@ -79,6 +80,7 @@ Button.defaultProps = {
 	loading: false,
 	onClick: () => {},
 	className: '',
+	wrapperClass: '',
 	tooltip: '',
 	tooltipOptions: {},
 };

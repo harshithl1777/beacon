@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from typing import Union
 from mongoengine.errors import DoesNotExist
+from firebase_admin import auth
 import jwt
 import os
 import json
@@ -30,9 +31,18 @@ def check_jwt(token: str, type: str) -> Union[dict, bool]:
 
 def validate_user(email: str, password: str) -> tuple[dict, bool]:
     try:
-        matchingUser = json.loads(User.objects.get(email=email).to_json())
+        matching_user = json.loads(User.objects.get(email=email).to_json())
         authorized = bcrypt.checkpw(
-            password.encode(), bytes.fromhex(matchingUser.get('password')))
-        return matchingUser, authorized
+            password.encode(), bytes.fromhex(matching_user.get('password')))
+        return matching_user, authorized
     except DoesNotExist:
+        return {}, False
+
+
+def validate_social_login(email: str, token: str) -> tuple[dict, bool]:
+    try:
+        result = auth.verify_id_token(token, check_revoked=True)
+        matching_user = json.loads(User.objects.get(email=email).to_json())
+        return matching_user, True
+    except:
         return {}, False

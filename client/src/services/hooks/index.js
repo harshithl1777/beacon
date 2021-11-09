@@ -1,5 +1,5 @@
-export { default as showToast } from 'services/helpers/showToast';
-export { default as signInWithProvider } from 'services/helpers/signInWithProvider';
+export { default as useAuth } from 'services/hooks/useAuth';
+export { default as useQuery } from 'services/hooks/useQuery';
 
 const defaultImportError = () => {
 	console.error(
