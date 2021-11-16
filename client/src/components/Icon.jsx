@@ -21,13 +21,13 @@ const colors = {
 };
 
 const Icon = (props) => {
-	const { name, color, size, className } = props;
+	const { name, color, size, className, ...rest } = props;
 	const custom = name.slice(0, 2) === 'CM';
 
 	const IconComponent = ionicons[name];
 
 	return custom ? (
-		<img className={className} alt={name} src={customIcons[`${name}-${size}-${color}`]} />
+		<img {...rest} className={className} alt={name} src={customIcons[`${name}-${size}-${color}`]} />
 	) : (
 		<IconComponent
 			color={colors[color] || color}

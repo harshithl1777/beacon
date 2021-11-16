@@ -1,10 +1,10 @@
 from flask import Flask
-from flask_cors import CORS
 from dotenv import load_dotenv
 from datetime import datetime
 from mongoengine import connect
 import os
 import firebase_admin
+import flask_cors
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv('./config/.env.development')
 
@@ -22,7 +22,7 @@ def create_app() -> Flask:
 
 app = create_app()
 if os.getenv('FLASK_ENV') == 'development':
-    CORS(app)
+    flask_cors.CORS(app, supports_credentials=True)
 connect(host=os.getenv('DATABASE_URI'))
 firebase_admin.initialize_app()
 

@@ -39,21 +39,22 @@ def new_session():
         refresh_token = create_jwt(user, 'REFRESH')
 
         # create and return access and refresh tokens
-        response = create_response({'access_token': access_token}, code=201)
+        payload = user.copy()
+        payload['access_token'] = access_token
+        response = create_response(payload, code=201)
         response.set_cookie(
             'refresh_token',
             refresh_token,
             max_age=REFRESH_MAX_AGE,
-            samesite='strict',
+            samesite=('None' if os.getenv('FLASK_ENV') == 'development' else 'Strict'),
             httponly=True,
             path='/api/auth/session',
-            secure=(True if os.getenv('FLASK_ENV')
-                    == 'production' else False)
+            secure=True,
         )
         return response
 
 
-@auth.route('/session', methods=['PUT'])
+@ auth.route('/session', methods=['PUT'])
 def refresh_session():
     refresh_token = request.cookies.get('refresh_token')
     if not refresh_token:
@@ -69,13 +70,13 @@ def refresh_session():
             return create_response('Invalid refresh token', False, 401)
 
 
-@auth.route('/session', methods=['DELETE'])
+@ auth.route('/session', methods=['DELETE'])
 def delete_session():
     refresh_token = request.cookies.get('refresh_token')
     if not refresh_token:
         return create_response(request.cookies, False, 400)
     else:
         response = create_response(code=200)
-        response.delete_cookie(
-            'refresh_token', path='/api/auth/session', httponly=True, samesite='strict', secure=False)
+        response.delete_cookie('refresh_token', path='/api/auth/session', httponly=True,
+                               samesite=('None' if os.getenv('FLASK_ENV') == 'development' else 'Strict'), secure=True)
         return response

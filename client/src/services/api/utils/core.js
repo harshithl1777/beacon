@@ -2,6 +2,7 @@ import axios from 'axios';
 import { handleResponse, handleError } from 'services/api/utils/response';
 
 const BASE_URL = 'http://localhost:5000/api' || process.env.REACT_APP_BASE_API_URL;
+axios.defaults.withCredentials = true;
 
 class APICore {
 	constructor(options) {
@@ -52,7 +53,7 @@ class APICore {
 		if (options.remove) {
 			this.remove = async (id = '', headers = {}) => {
 				try {
-					const response = await axios.get(`${BASE_URL}/${options.url}/${id}`, { headers });
+					const response = await axios.delete(`${BASE_URL}/${options.url}/${id}`, { headers });
 					return handleResponse(response);
 				} catch (error) {
 					return handleError(error);

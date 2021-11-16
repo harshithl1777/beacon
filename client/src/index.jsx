@@ -1,6 +1,10 @@
 import ReactDOM from 'react-dom';
-import App from 'app/App';
 import { initializeApp } from 'firebase/app';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import App from 'app/App';
+import rootReducer from 'redux/reducers';
 
 // Firebase Auth initialization
 const firebaseConfig = {
@@ -12,5 +16,10 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
-// App rendering to HTML Document
-ReactDOM.render(<App />, document.querySelector('#root'));
+// Redux store initialization and app rendering
+ReactDOM.render(
+	<Provider store={createStore(rootReducer, applyMiddleware(thunk))}>
+		<App />
+	</Provider>,
+	document.querySelector('#root')
+);

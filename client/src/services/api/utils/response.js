@@ -1,9 +1,17 @@
 export const handleResponse = (response) => {
-	if (response.data) return response.data;
-	return response;
+	const successResponse = {
+		success: response.data.success,
+		payload: response.data.payload,
+		code: response.status,
+	};
+	return successResponse;
 };
 
-export const handleError = (error) => {
-	if (error.response) return error.response.data;
-	return error;
+export const handleError = ({ response }) => {
+	const errorResponse = {
+		success: response.data.success,
+		payload: response.data.payload,
+		code: response.status,
+	};
+	return errorResponse;
 };

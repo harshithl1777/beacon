@@ -19,7 +19,7 @@ const Spinner = ({ color, size, className }) => {
 };
 
 Spinner.propTypes = {
-	color: PropTypes.oneOf(['light', 'dark']),
+	color: PropTypes.oneOf(['light', 'dark', 'green']),
 	size: PropTypes.oneOf(['small', 'medium', 'large', 'massive']),
 	className: PropTypes.string,
 };

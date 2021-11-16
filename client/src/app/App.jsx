@@ -1,8 +1,8 @@
 import { ToastContainer } from 'react-toastify';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { ProtectedRoute, GatewayRoute } from 'components';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import LoginPage from 'pages/LoginPage';
+import { Protected, Gateway } from 'components';
+import { LoginPage, HomePage } from 'pages';
 import 'react-toastify/dist/ReactToastify.css';
 import 'app/global.scss';
 
@@ -10,16 +10,26 @@ const App = () => {
 	return (
 		<>
 			<Router>
-				<Switch>
-					<GatewayRoute exact path='/auth/login' component={LoginPage} />
-					<GatewayRoute exact path='/auth/signup'>
-						Signup
-					</GatewayRoute>
-					<ProtectedRoute exact path='/app/home'>
-						Home
-					</ProtectedRoute>
-					<Route path='*'>404</Route>
-				</Switch>
+				<Routes>
+					<Route path='/auth/signup' />
+					<Route
+						path='/auth/login'
+						element={
+							<Gateway>
+								<LoginPage />
+							</Gateway>
+						}
+					/>
+					<Route
+						path='/app/home'
+						element={
+							<Protected>
+								<HomePage />
+							</Protected>
+						}
+					/>
+					<Route path='*' element={<div>404</div>} />
+				</Routes>
 			</Router>
 			<ToastContainer />
 		</>

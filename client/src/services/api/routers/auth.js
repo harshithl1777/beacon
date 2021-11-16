@@ -6,7 +6,7 @@ const authAPI = new APICore({
 	get: true,
 	post: true,
 	put: true,
-	delete: true,
+	remove: true,
 	url: url,
 });
 
