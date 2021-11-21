@@ -1,15 +1,12 @@
-import { useNavigate } from 'react-router-dom';
-import { authAPI } from 'services/api';
+import { connect } from 'react-redux';
+import { logOut } from 'redux/actions/authActions';
 
-const Home = () => {
-	const navigate = useNavigate();
-
-	const logout = async () => {
-		await authAPI.remove();
-		navigate('/', { replace: true });
-	};
+const HomePage = ({ logOut }) => {
+	const logout = async () => await logOut();
 
 	return <button onClick={logout}>Logout</button>;
 };
 
-export default Home;
+const mapStateToProps = ({ errors }) => ({ errors });
+
+export default connect(mapStateToProps, { logOut })(HomePage);

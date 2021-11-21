@@ -1,12 +1,15 @@
-import { Icon, Spinner } from 'components';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { Icon, Spinner } from 'components';
 import { authAPI } from 'services/api';
+import { authRedirect } from 'redux/actions/authActions';
 import styles from 'containers/AuthRedirect.module.scss';
 
-const AuthRedirect = ({ origin }) => {
+const AuthRedirect = ({ origin, auth, authRedirect }) => {
+	console.log(auth);
 	const [icon, setIcon] = useState('spinner');
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		const attemptSessionRefresh = async () => {
@@ -14,22 +17,17 @@ const AuthRedirect = ({ origin }) => {
 				const { success } = await authAPI.get();
 				if (success) {
 					setIcon('logo');
-					setTimeout(() => {
-						navigate(origin || '/app/home', { state: { passedRedirect: true } });
-					}, 1200);
+					setTimeout(() => authRedirect('protected'), 1200);
 				} else {
-					setTimeout(() => {
-						navigate(`/auth/login?redirect=${origin || '/app/home'}`, {
-							state: { passedRedirect: true },
-						});
-					}, 1200);
+					setTimeout(() => authRedirect('login'), 1200);
 				}
 			}, 1000);
 		};
 
 		attemptSessionRefresh();
 	});
-	return (
+
+	return auth.redirectLocation === null ? (
 		<div className={styles.loadingContainer}>
 			{icon === 'spinner' ? (
 				<Spinner size='massive' color='green' />
@@ -42,7 +40,17 @@ const AuthRedirect = ({ origin }) => {
 				/>
 			)}
 		</div>
+	) : (
+		<Navigate
+			to={
+				auth.redirectLocation === 'protected'
+					? origin || '/app/home'
+					: `/auth/login?redirect=${origin || '/app/home'}`
+			}
+		/>
 	);
 };
 
-export default AuthRedirect;
+const mapStateToProps = ({ auth }) => ({ auth });
+
+export default connect(mapStateToProps, { authRedirect })(AuthRedirect);

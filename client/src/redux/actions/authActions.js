@@ -7,6 +7,7 @@ import {
 	getAdditionalUserInfo,
 } from 'firebase/auth';
 import {
+	AUTH_REDIRECT,
 	LOG_IN_WITH_CREDENTIALS,
 	LOG_IN_WITH_SOCIALS,
 	LOG_OUT,
@@ -55,11 +56,13 @@ export const logInWithSocials = (service) => async (dispatch) => {
 	}
 };
 
-export const logout = () => {
-	return { type: LOG_OUT };
+export const refreshSession = () => async (dispatch) => {
+	const { success, payload } = await authAPI.put();
+	dispatch({ type: REFRESH_SESSION, success, payload });
 };
 
-export const refreshSession = (newAccessToken) => {
-	const payload = { newAccessToken };
-	return { type: REFRESH_SESSION, payload };
+export const logOut = () => async (dispatch) => {
+	const response = await authAPI.remove();
+	window.location.href = process.env.REACT_APP_CLIENT_URL + '/auth/login';
+	dispatch({ type: LOG_OUT, ...response });
 };

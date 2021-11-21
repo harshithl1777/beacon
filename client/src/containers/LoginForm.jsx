@@ -12,9 +12,9 @@ const LoginForm = (props) => {
 	const [password, setPassword] = useState('');
 	const redirectURL = useQuery('redirect') || '/app/home';
 
-	const socialLogin = (service) => logInWithSocials(service);
+	const socialLogin = async (service) => logInWithSocials(service);
 
-	const credentialsLogin = (event) => {
+	const credentialsLogin = async (event) => {
 		event.preventDefault();
 		logInWithCredentials(email, password);
 	};
@@ -52,6 +52,7 @@ const LoginForm = (props) => {
 				<div className={styles.formSocialWrapper}>
 					<Button
 						className={styles.formGoogleLogin}
+						type='button'
 						variant='secondary'
 						customIcon={<Icon name='IoLogoGoogle' size={20} color='light' />}
 						onClick={() => socialLogin('Google')}
@@ -60,6 +61,7 @@ const LoginForm = (props) => {
 					</Button>
 					<Button
 						className={styles.formFacebookLogin}
+						type='button'
 						variant='secondary'
 						customIcon={<Icon name='IoLogoFacebook' size={20} color='light' />}
 						onClick={() => socialLogin('Facebook')}
@@ -68,6 +70,7 @@ const LoginForm = (props) => {
 					</Button>
 					<Button
 						className={styles.formGithubLogin}
+						type='button'
 						variant='secondary'
 						customIcon={<Icon name='IoLogoGithub' size={20} color='light' />}
 						onClick={() => socialLogin('Github')}
@@ -78,7 +81,7 @@ const LoginForm = (props) => {
 			</form>
 			<h4 className={styles.formSignupOption}>
 				Don't have an account yet?
-				<Link to='/app/home'>
+				<Link to='/auth/signup'>
 					<span className={styles.formSignupLink}> Sign up instead.</span>
 				</Link>
 			</h4>
