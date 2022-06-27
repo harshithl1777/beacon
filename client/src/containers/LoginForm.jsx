@@ -7,7 +7,7 @@ import { logInWithSocials, logInWithCredentials } from 'redux/actions/authAction
 import styles from 'containers/LoginForm.module.scss';
 
 const LoginForm = (props) => {
-	const { auth, errors, logInWithSocials, logInWithCredentials } = props;
+	const { auth, logInWithSocials, logInWithCredentials } = props;
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const redirectURL = useQuery('redirect') || '/app/home';

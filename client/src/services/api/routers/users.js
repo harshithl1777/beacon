@@ -1,6 +1,6 @@
 import APICore from 'services/api/utils/core';
 
-const url = '/users';
+const url = 'users';
 
 const usersAPI = new APICore({
 	get: true,

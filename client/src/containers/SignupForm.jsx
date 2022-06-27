@@ -4,24 +4,26 @@ import { connect } from 'react-redux';
 import { Input, Icon, Button } from 'components';
 import { useQuery } from 'services/hooks';
 import { showToast } from 'services/helpers';
-import styles from 'containers/SignUpForm.module.scss';
+import { signUpWithSocials, signUpWithCredentials } from 'redux/actions/authActions';
+import styles from 'containers/SignupForm.module.scss';
 
 const SignUpForm = (props) => {
-	const { auth } = props;
+	const { auth, signUpWithCredentials, signUpWithSocials } = props;
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmedPassword, setConfirmedPassword] = useState('');
 	const redirectURL = useQuery('redirect') || '/app/home';
 
-	const credentialsSignUp = () => {
+	const credentialsSignUp = async (event) => {
+		event.preventDefault();
 		if (password !== confirmedPassword) {
-			showToast.error(
-				'Passwords do not match',
-				'Please make sure that the Password and Confirm Password values are the same.'
-			);
+			showToast.error('Passwords do not match');
+		} else {
+			signUpWithCredentials(email, password);
 		}
 	};
-	const socialSignUp = (service) => console.log(`Signed up with ${service}`);
+
+	const socialSignUp = (service) => signUpWithSocials(service);
 
 	return auth.isLoggedIn ? (
 		<Navigate to={redirectURL} />
@@ -53,7 +55,11 @@ const SignUpForm = (props) => {
 				>
 					Confirm password
 				</Input>
-				<Button type='submit' wrapperClass={styles.formSubmit}>
+				<Button
+					onClick={(e) => credentialsSignUp(e)}
+					type='submit'
+					wrapperClass={styles.formSubmit}
+				>
 					Sign up for Beacon
 				</Button>
 				<div className={styles.formSeperatorWrapper}>
@@ -103,4 +109,4 @@ const SignUpForm = (props) => {
 
 const mapStateToProps = ({ auth, errors }) => ({ auth, errors });
 
-export default connect(mapStateToProps, {})(SignUpForm);
+export default connect(mapStateToProps, { signUpWithCredentials, signUpWithSocials })(SignUpForm);

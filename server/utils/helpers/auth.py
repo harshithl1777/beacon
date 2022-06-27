@@ -46,3 +46,11 @@ def validate_social_login(email: str, token: str) -> tuple[dict, bool]:
         return matching_user, True
     except:
         return {}, False
+
+
+def validate_social_signup(email: str, token: str) -> bool:
+    try:
+        result = auth.verify_id_token(token, check_revoked=True)
+        return True
+    except:
+        return False
