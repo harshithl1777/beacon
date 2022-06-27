@@ -4,6 +4,7 @@ import {
 	GithubAuthProvider,
 	signInWithPopup,
 	getAuth,
+	deleteUser,
 	getAdditionalUserInfo,
 } from 'firebase/auth';
 import {
@@ -13,7 +14,8 @@ import {
 	LOG_OUT,
 	REFRESH_SESSION,
 } from 'redux/actions/types';
-import { authAPI } from 'services/api';
+import { authAPI, usersAPI } from 'services/api';
+import { showToast } from 'services/helpers';
 
 export const logInWithCredentials = (email, password) => async (dispatch) => {
 	const response = await authAPI.post({ email, password });
@@ -41,19 +43,37 @@ export const logInWithSocials = (service) => async (dispatch) => {
 		// Initiate social login popup
 		const auth = getAuth();
 		const result = await signInWithPopup(auth, provider);
+		const currentUser = auth.currentUser;
 
 		// Check if user account is new, if so throw error
 		const { isNewUser } = getAdditionalUserInfo(result);
-		if (isNewUser) throw new Error('No matching account found');
+		if (isNewUser) {
+			await deleteUser(currentUser);
+			throw new Error('Account does not exist');
+		}
 
-		// Otherwise authenticate with server and store response
+		// Otherwise authenticate with server using email, social token and store response
 		const user = result.user;
-		const response = await authAPI.post({ email: user.email, token: user.accessToken });
+		const response = await authAPI.post({ email: user.email, socialToken: user.accessToken });
 		dispatch({ type: LOG_IN_WITH_SOCIALS, ...response });
 	} catch (error) {
 		console.error(error);
-		dispatch({ type: LOG_IN_WITH_SOCIALS, message: error.toString(), error: true });
+
+		const errorMessage = error.toString();
+		if (errorMessage === 'Error: Account does not exist') {
+			showToast.error(
+				'Account does not exist',
+				"It seems like you haven't yet signed up with this social account."
+			);
+		}
+
+		dispatch({ type: LOG_IN_WITH_SOCIALS, message: errorMessage, success: false });
 	}
+};
+
+export const signUpWithCredentials = (email, password) => async (dispatch) => {
+	const { success, payload } = await usersAPI.post({ email, password, method: 'Credentials' });
+	dispatch({});
 };
 
 export const refreshSession = () => async (dispatch) => {

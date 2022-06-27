@@ -8,10 +8,10 @@ import rootReducer from 'redux/reducers';
 
 // Firebase Auth initialization
 const firebaseConfig = {
-	apiKey: 'AIzaSyCibwssaCnkku0ww8YiOU6TqcR6CaY39KE',
+	apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
 	authDomain: 'beacon-web1.firebaseapp.com',
 	projectId: 'beacon-web1',
-	appId: '1:843923290407:web:115b651f5579b0b0619102',
+	appId: process.env.REACT_APP_FIREBASE_APPID,
 };
 
 initializeApp(firebaseConfig);

@@ -25,7 +25,7 @@ def get_session_status():
 @auth.route('/session', methods=['POST'])
 def new_session():
     body = request.get_json()
-    email, password, social_token = body.get('email'), body.get('password'), body.get('token')
+    email, password, social_token = body.get('email'), body.get('password'), body.get('socialToken')
 
     matching_user, authorized = validate_social_login(
         email, social_token) if not password else validate_user(

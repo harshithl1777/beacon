@@ -1,4 +1,5 @@
 export { default as authAPI } from 'services/api/routers/auth';
+export { default as usersAPI } from 'services/api/routers/users';
 
 const defaultImportError = () => {
 	console.error(

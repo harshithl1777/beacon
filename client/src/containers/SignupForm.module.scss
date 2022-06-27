@@ -6,7 +6,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: -30px;
+	margin-top: -20px;
 }
 
 .form {
@@ -73,7 +73,7 @@
 	justify-content: space-between;
 }
 
-.formGoogleLogin {
+.formGoogleSignUp {
 	@include header-2-medium;
 	display: flex;
 	flex-direction: row;
@@ -89,7 +89,7 @@
 	}
 }
 
-.formFacebookLogin {
+.formFacebookSignUp {
 	@include header-2-medium;
 	display: flex;
 	flex-direction: row;
@@ -104,7 +104,7 @@
 	}
 }
 
-.formGithubLogin {
+.formGithubSignUp {
 	@include header-2-medium;
 	display: flex;
 	flex-direction: row;
@@ -120,14 +120,14 @@
 	}
 }
 
-.formSignupOption {
+.formSignUpOption {
 	@include body-2-regular;
 	margin-top: 22px;
 	text-decoration: none;
 	color: var(--color-navy-600);
 }
 
-.formSignupLink {
+.formSignUpLink {
 	font-weight: 700;
 	text-decoration: none;
 	color: var(--color-navy-600);

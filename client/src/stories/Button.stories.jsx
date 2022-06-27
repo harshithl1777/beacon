@@ -4,11 +4,11 @@ import { toast } from 'react-toastify';
 export const Primary = () => (
 	<div>
 		<h4>Default</h4>
-		<Button type='primary' icon='IoArrowUpCircle' onClick={() => toast('Default')}>
+		<Button variant='primary' icon='IoArrowUpCircle' onClick={() => toast('Default')}>
 			Primary Button
 		</Button>
 		<h4>Disabled</h4>
-		<Button disabled type='primary'>
+		<Button disabled variant='primary'>
 			Primary Disabled
 		</Button>
 		<h4>Loading</h4>
@@ -21,15 +21,15 @@ export const Primary = () => (
 export const Secondary = () => (
 	<div>
 		<h4>Default</h4>
-		<Button icon='IoArrowUpCircle' type='secondary'>
+		<Button icon='IoArrowUpCircle' variant='secondary'>
 			Secondary Button
 		</Button>
 		<h4>Disabled</h4>
-		<Button disabled type='secondary'>
+		<Button disabled variant='secondary'>
 			Primary Disabled
 		</Button>
 		<h4>Loading</h4>
-		<Button loading type='secondary'>
+		<Button loading variant='secondary'>
 			Creating your account
 		</Button>
 	</div>
@@ -38,15 +38,15 @@ export const Secondary = () => (
 export const Danger = () => (
 	<>
 		<h4>Default</h4>
-		<Button icon='IoArrowUpCircle' type='danger'>
+		<Button icon='IoArrowUpCircle' variant='danger'>
 			Danger Button
 		</Button>
 		<h4>Disabled</h4>
-		<Button disabled text='Disabled' type='danger'>
+		<Button disabled text='Disabled' variant='danger'>
 			Danger Disabled
 		</Button>
 		<h4>Loading</h4>
-		<Button loading type='danger'>
+		<Button loading variant='danger'>
 			Creating your account
 		</Button>
 	</>
@@ -55,15 +55,15 @@ export const Danger = () => (
 export const Purple = () => (
 	<>
 		<h4>Default</h4>
-		<Button icon='IoArrowUpCircle' type='purple'>
+		<Button icon='IoArrowUpCircle' variant='purple'>
 			Purple Button
 		</Button>
 		<h4>Disabled</h4>
-		<Button disabled text='Disabled' type='purple'>
+		<Button disabled text='Disabled' variant='purple'>
 			Purple Disabled
 		</Button>
 		<h4>Loading</h4>
-		<Button loading type='purple'>
+		<Button loading variant='purple'>
 			Creating your account
 		</Button>
 	</>
@@ -72,15 +72,15 @@ export const Purple = () => (
 export const Blue = () => (
 	<>
 		<h4>Default</h4>
-		<Button icon='IoArrowUpCircle' type='blue'>
+		<Button icon='IoArrowUpCircle' variant='blue'>
 			Blue Button
 		</Button>
 		<h4>Disabled</h4>
-		<Button disabled text='Disabled' type='blue'>
+		<Button disabled text='Disabled' variant='blue'>
 			Blue Disabled
 		</Button>
 		<h4>Loading</h4>
-		<Button loading type='blue'>
+		<Button loading variant='blue'>
 			Creating your account
 		</Button>
 	</>
@@ -89,15 +89,15 @@ export const Blue = () => (
 export const Yellow = () => (
 	<>
 		<h4>Default</h4>
-		<Button icon='IoArrowUpCircle' type='yellow'>
+		<Button icon='IoArrowUpCircle' variant='yellow'>
 			Yellow Button
 		</Button>
 		<h4>Disabled</h4>
-		<Button disabled text='Disabled' type='yellow'>
+		<Button disabled text='Disabled' variant='yellow'>
 			Yellow Disabled
 		</Button>
 		<h4>Loading</h4>
-		<Button loading type='yellow'>
+		<Button loading variant='yellow'>
 			Creating your account
 		</Button>
 	</>

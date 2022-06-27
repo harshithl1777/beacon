@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Input, Icon, Button } from 'components';
 import { useQuery } from 'services/hooks';
@@ -81,9 +81,9 @@ const LoginForm = (props) => {
 			</form>
 			<h4 className={styles.formSignupOption}>
 				Don't have an account yet?
-				<Link to='/auth/signup'>
+				<a href={`/auth/signup?redirect=${redirectURL}`}>
 					<span className={styles.formSignupLink}> Sign up instead.</span>
-				</Link>
+				</a>
 			</h4>
 		</div>
 	);

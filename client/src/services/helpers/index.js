@@ -1,5 +1,4 @@
 export { default as showToast } from 'services/helpers/showToast';
-export { default as logInWithProvider } from 'services/helpers/logInWithProvider';
 
 const defaultImportError = () => {
 	console.error(
