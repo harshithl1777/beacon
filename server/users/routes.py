@@ -21,6 +21,8 @@ def create_user():
         newUser = User(id=secrets.token_hex(12), email=email,
                        password=hashed_password, auth_method=auth_method)
         newUser.save()
+        # return refresh and access token here
+
         return create_response(payload=json.loads(newUser.to_json()), code=201)
     else:
         return create_response('Resource already exists', False, 409)
