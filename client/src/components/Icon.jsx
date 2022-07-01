@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import * as ionicons from 'react-icons/io5';
 
+import customIcons from 'assets/icons';
+
 const sizes = {
 	small: 20,
 	medium: 28,
@@ -19,10 +21,14 @@ const colors = {
 };
 
 const Icon = (props) => {
-	const { name, color, size, className } = props;
+	const { name, color, size, className, ...rest } = props;
+	const custom = name.slice(0, 2) === 'CM';
+
 	const IconComponent = ionicons[name];
 
-	return (
+	return custom ? (
+		<img {...rest} className={className} alt={name} src={customIcons[`${name}-${size}-${color}`]} />
+	) : (
 		<IconComponent
 			color={colors[color] || color}
 			size={sizes[size] || size}

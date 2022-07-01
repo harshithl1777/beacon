@@ -1,7 +1,7 @@
 @import 'scss/_typography.scss';
 
 .inputWrapper {
-	width: fit-content;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: left;
@@ -12,19 +12,20 @@
 }
 
 .floatingInput {
-	@include header-1-regular;
+	@include header-2-regular;
 	color: var(--color-navy-600);
-	height: 45px;
-	width: 300px;
+	height: 47px;
+	width: 100%;
 	border: 1px solid var(--color-gray-200);
 	box-sizing: border-box;
 	padding-left: 17px;
-	border-radius: 8px;
+	padding-right: 8px;
+	border-radius: 10px;
 
 	&.withPlaceholder {
-		padding-top: 17px;
+		padding-top: 18px;
 		padding-left: 19px;
-		height: 50px !important;
+		height: 56px !important;
 	}
 
 	&.success {
@@ -81,7 +82,7 @@
 }
 
 .floatingLabel {
-	@include body-1-bold;
+	@include body-2-bold;
 	color: var(--color-navy-600);
 	margin-left: 2px;
 	margin-bottom: 7px;
@@ -139,12 +140,12 @@
 }
 
 .floatingInput:placeholder-shown + .floatingPlaceholder::before {
-	transform: translate3d(0, -34px, 0) scale3d(1, 1, 1);
+	transform: translate3d(0, -36px, 0) scale3d(1, 1, 1);
 }
 
 .floatingPlaceholder::before,
 .floatingInput:focus + .floatingPlaceholder::before {
-	transform: translate3d(0, -43px, 0) scale3d(0.82, 0.82, 1);
+	transform: translate3d(0, -44px, 0) scale3d(0.82, 0.82, 1);
 }
 
 .hidden {

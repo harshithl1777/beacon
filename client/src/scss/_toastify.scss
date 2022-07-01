@@ -9,7 +9,15 @@
 	--toastify-text-color-info: var(--color-blue-600) !important;
 	--toastify-text-color-success: var(--color-navy-600) !important;
 	--toastify-text-color-warning: var(--color-yellow-600) !important;
-	--toastify-text-color-error: var(--color-red-600) !important;
+	--toastify-color-error: var(--color-red-600) !important;
+	--toastify-color-info: var(--color-blue-600) !important;
+	--toastify-color-success: var(--color-navy-600) !important;
+	--toastify-color-warning: var(--color-yellow-600) !important;
+	--toastify-color-error: var(--color-red-600) !important;
+	--toastify-color-progress-info: var(--toastify-color-info);
+	--toastify-color-progress-success: var(--toastify-color-success);
+	--toastify-color-progress-warning: var(--toastify-color-warning);
+	--toastify-color-progress-error: var(--toastify-color-error);
 }
 
 // toast configuration

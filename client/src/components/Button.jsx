@@ -7,7 +7,7 @@ import styles from 'components/Button.module.scss';
 const Button = (props) => {
 	const {
 		text,
-		type,
+		variant,
 		disabled,
 		icon,
 		children,
@@ -16,20 +16,20 @@ const Button = (props) => {
 		tooltip,
 		tooltipOptions,
 		onClick,
-		positionClass,
+		wrapperClass,
 		className,
 		...rest
 	} = props;
 
 	// check if icon name or customIcon exists, otherwise return empty fragment
 	const getIconToRender = () => {
-		if (icon) return <Icon name={icon} color={type === 'secondary' ? 'light' : 'dark'} />;
+		if (icon) return <Icon name={icon} color={variant === 'secondary' ? 'light' : 'dark'} />;
 		else if (customIcon) return customIcon;
 		return <></>;
 	};
 
 	return (
-		<div className={positionClass}>
+		<div className={wrapperClass}>
 			<Tooltip message={tooltip} {...tooltipOptions}>
 				<button
 					className={classnames(
@@ -37,7 +37,7 @@ const Button = (props) => {
 						icon && styles.iconButton,
 						loading && styles.loading,
 						disabled && styles.disabled,
-						styles[type],
+						styles[variant],
 						className
 					)}
 					{...rest}
@@ -48,7 +48,7 @@ const Button = (props) => {
 					{loading && (
 						<Spinner
 							className={styles.buttonSpinner}
-							color={type === 'secondary' ? 'light' : 'dark'}
+							color={variant === 'secondary' ? 'light' : 'dark'}
 						/>
 					)}
 					<p>{children}</p>
@@ -60,25 +60,27 @@ const Button = (props) => {
 
 Button.propTypes = {
 	children: PropTypes.node.isRequired,
-	type: PropTypes.oneOf(['primary', 'secondary', 'danger', 'blue', 'purple', 'yellow']),
+	variant: PropTypes.oneOf(['primary', 'secondary', 'danger', 'blue', 'purple', 'yellow']),
 	disabled: PropTypes.bool,
 	icon: PropTypes.string,
 	customIcon: PropTypes.element,
 	loading: PropTypes.bool,
 	onClick: PropTypes.func,
 	className: PropTypes.string,
+	wrapperClass: PropTypes.string,
 	tooltip: PropTypes.string,
 	tooltipOptions: PropTypes.object,
 };
 
 Button.defaultProps = {
-	type: 'primary',
+	variant: 'primary',
 	disabled: false,
 	icon: null,
 	customIcon: null,
 	loading: false,
 	onClick: () => {},
 	className: '',
+	wrapperClass: '',
 	tooltip: '',
 	tooltipOptions: {},
 };

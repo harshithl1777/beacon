@@ -9,40 +9,39 @@ const Input = (props) => {
 	const {
 		children,
 		label,
-		state,
+		variant,
 		disabled,
 		onChange,
-		positionClass,
+		wrapperClass,
 		className,
-		forcedValue,
-		options,
+		value,
 		tooltip,
 		tooltipOptions,
+		...rest
 	} = props;
-	const [value, setValue] = useState(forcedValue);
 
 	const getIcon = () => {
 		const iconClassName = children ? styles.inputIcon : styles.inputIconNoPlaceholder;
-		if (state === 'warning')
+		if (variant === 'warning')
 			return <Icon className={iconClassName} name='IoAlertCircle' color='yellow' />;
-		else if (state === 'error')
+		else if (variant === 'error')
 			return <Icon className={iconClassName} name='IoCloseCircle' color='red' />;
-		else if (state === 'success')
+		else if (variant === 'success')
 			return <Icon className={iconClassName} name='IoCheckmarkCircle' color='green' />;
 		return null;
 	};
 
 	return (
-		<div className={classnames(styles.inputWrapper, positionClass)}>
+		<div className={classnames(styles.inputWrapper, wrapperClass)}>
 			{!children && label && <label className={styles.floatingLabel}>{label}</label>}
 			<div className={styles.inputContentWrapper}>
 				{getIcon()}
 				<Tooltip message={tooltip} {...tooltipOptions}>
 					<input
-						id='input'
+						id={`${children}`}
 						className={classnames(
 							styles.floatingInput,
-							styles[state],
+							styles[variant],
 							children && styles.withPlaceholder,
 							className
 						)}
@@ -50,17 +49,15 @@ const Input = (props) => {
 						placeholder={children}
 						value={value}
 						onChange={(e) => {
-							setValue(e.target.value);
 							onChange(e.target.value);
 						}}
 						disabled={disabled}
-						{...options}
+						{...rest}
 					/>
 				</Tooltip>
 				{children && (
 					<label
-						for='input'
-						className={classnames(styles.floatingPlaceholder, styles[`${state}Label`])}
+						className={classnames(styles.floatingPlaceholder, styles[`${variant}Label`])}
 						data-content={children}
 					></label>
 				)}
@@ -72,25 +69,27 @@ const Input = (props) => {
 Input.propTypes = {
 	children: PropTypes.string,
 	label: PropTypes.string,
-	forcedValue: PropTypes.string,
-	state: PropTypes.oneOf(['default', 'success', 'warning', 'error']),
+	value: PropTypes.string,
+	variant: PropTypes.oneOf(['default', 'success', 'warning', 'error']),
 	disabled: PropTypes.bool,
 	onChange: PropTypes.func,
-	options: PropTypes.object,
 	tooltip: PropTypes.string,
 	tooltipOptions: PropTypes.object,
+	className: PropTypes.string,
+	wrapperClass: PropTypes.string,
 };
 
 Input.defaultProps = {
 	children: '',
 	label: '',
 	type: 'default',
-	forcedValue: '',
+	value: '',
 	disabled: false,
 	onChange: () => {},
-	options: {},
-	tooltip: null,
+	tooltip: '',
 	tooltipOptions: {},
+	className: '',
+	wrapperClass: '',
 };
 
 export default Input;

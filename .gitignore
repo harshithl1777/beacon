@@ -7,7 +7,7 @@
 /coverage
 
 # production
-/build
+**/build
 **/.eslintrc
 **/.eslintcache
 
@@ -26,3 +26,8 @@ yarn-error.log*
 /env
 /server/config/.env.development
 /server/config/.env.test.local
+/client/build
+/client/ssl
+/server/config/server.crt
+/server/config/server.key
+/server/config/firebase_config.json

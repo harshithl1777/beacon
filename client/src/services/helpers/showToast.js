@@ -39,20 +39,20 @@ const info = (title, message, options = {}) => {
 	});
 };
 
-const warning = (title, message, options) => {
+const warning = (title, message, options = {}) => {
 	const { ...rest } = options;
 	const warningIcon = <Icon name='IoWarning' size='medium' color='yellow' />;
-	toast.info(toastBody(title, message), {
+	toast.warn(toastBody(title, message), {
 		position: toast.POSITION.TOP_RIGHT,
 		icon: warningIcon,
 		...rest,
 	});
 };
 
-const error = (title, message, options) => {
+const error = (title, message, options = {}) => {
 	const { ...rest } = options;
 	const errorIcon = <Icon name='IoAlertCircle' size='medium' color='red' />;
-	toast.info(toastBody(title, message), {
+	toast.error(toastBody(title, message), {
 		position: toast.POSITION.TOP_RIGHT,
 		icon: errorIcon,
 		...rest,

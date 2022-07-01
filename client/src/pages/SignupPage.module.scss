@@ -1,0 +1,21 @@
+.pageWrapper {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+}
+
+.visualWrapper {
+	width: 700px;
+	height: 100vh;
+	margin-right: 0;
+	background: var(--color-green-600);
+}
+
+.signupWrapper {
+	width: 580px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}

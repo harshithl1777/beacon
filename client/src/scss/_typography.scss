@@ -1,101 +1,150 @@
+$black: 800;
 $bold: 700;
-$medium: 500;
+$medium: 600;
 $regular: 400;
 $poppins: 'Poppins', sans-serif;
 $inter: 'Inter';
 
 @mixin title-1-bold {
 	font-family: $poppins;
-	font-weight: $bold;
+	font-weight: $black;
 	font-size: 30px;
 }
 
 @mixin title-2-bold {
 	font-family: $poppins;
-	font-weight: $bold;
-	font-size: 22px;
+	font-weight: $black;
+	font-size: 24px;
 }
 
 @mixin title-3-bold {
 	font-family: $poppins;
-	font-weight: $bold;
-	font-size: 18px;
+	font-weight: $black;
+	font-size: 20px;
 }
 
 @mixin title-4-bold {
 	font-family: $poppins;
-	font-weight: $bold;
-	font-size: 16px;
+	font-weight: $black;
+	font-size: 18px;
 }
 
 @mixin header-1-regular {
 	font-family: $poppins;
 	font-weight: $regular;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 @mixin header-1-medium {
 	font-family: $poppins;
 	font-weight: $medium;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 @mixin header-1-bold {
 	font-family: $poppins;
 	font-weight: $bold;
-	font-size: 14px;
+	font-size: 16px;
+}
+
+@mixin header-1-black {
+	font-family: $poppins;
+	font-weight: $black;
+	font-size: 16px;
 }
 
 @mixin header-2-regular {
 	font-family: $poppins;
 	font-weight: $regular;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 @mixin header-2-medium {
 	font-family: $poppins;
 	font-weight: $medium;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 @mixin header-2-bold {
 	font-family: $poppins;
 	font-weight: $bold;
-	font-size: 12px;
+	font-size: 14px;
+}
+
+@mixin header-2-black {
+	font-family: $poppins;
+	font-weight: $black;
+	font-size: 14px;
 }
 
 @mixin body-1-regular {
 	font-family: $inter;
 	font-weight: $regular;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 @mixin body-1-medium {
 	font-family: $inter;
 	font-weight: $medium;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 @mixin body-1-bold {
 	font-family: $inter;
 	font-weight: $bold;
-	font-size: 14px;
+	font-size: 16px;
+}
+
+@mixin body-1-black {
+	font-family: $inter;
+	font-weight: $black;
+	font-size: 16px;
 }
 
 @mixin body-2-regular {
 	font-family: $inter;
 	font-weight: $regular;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 @mixin body-2-medium {
 	font-family: $inter;
 	font-weight: $medium;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 @mixin body-2-bold {
 	font-family: $inter;
 	font-weight: $bold;
+	font-size: 14px;
+}
+
+@mixin body-2-black {
+	font-family: $inter;
+	font-weight: $black;
+	font-size: 14px;
+}
+
+@mixin body-3-regular {
+	font-family: $inter;
+	font-weight: $regular;
+	font-size: 12px;
+}
+
+@mixin body-3-medium {
+	font-family: $inter;
+	font-weight: $medium;
+	font-size: 12px;
+}
+
+@mixin body-3-bold {
+	font-family: $inter;
+	font-weight: $bold;
+	font-size: 12px;
+}
+
+@mixin body-3-black {
+	font-family: $inter;
+	font-weight: $black;
 	font-size: 12px;
 }
