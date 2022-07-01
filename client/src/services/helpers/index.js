@@ -1,4 +1,5 @@
 export { default as showToast } from 'services/helpers/showToast';
+export { default as checkTokenExpiry } from 'services/helpers/checkTokenExpiry';
 
 const defaultImportError = () => {
 	console.error(

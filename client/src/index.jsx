@@ -16,10 +16,14 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
 // Redux store initialization and app rendering
 ReactDOM.render(
-	<Provider store={createStore(rootReducer, applyMiddleware(thunk))}>
+	<Provider store={store}>
 		<App />
 	</Provider>,
 	document.querySelector('#root')
 );
+
+export default store;

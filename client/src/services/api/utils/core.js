@@ -1,8 +1,25 @@
 import axios from 'axios';
+import store from 'index';
 import { handleResponse, handleError } from 'services/api/utils/response';
+import { refreshSession } from 'redux/actions/authActions';
+import { checkTokenExpiry } from 'services/helpers';
 
 const BASE_URL = 'http://localhost:5000/api' || process.env.REACT_APP_BASE_API_URL;
 axios.defaults.withCredentials = true;
+
+axios.interceptors.request.use((config) => {
+	const url = config.url;
+	if (!url.includes('/auth/session')) {
+		const currentState = store.getState();
+		const isLoggedIn = currentState.auth.isLoggedIn;
+		if (isLoggedIn) {
+			const accessToken = currentState.auth.accessToken;
+			const tokenExpiry = checkTokenExpiry(accessToken);
+			if (!tokenExpiry) refreshSession();
+		}
+	}
+	return config;
+});
 
 class APICore {
 	constructor(options) {
