@@ -1,0 +1,61 @@
+@import 'scss/_typography.scss';
+
+.navigationBar {
+	width: 100%;
+	height: 68px;
+	background: var(--color-navy-600);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.navigationBarLogo {
+	margin-left: 15px;
+	margin-right: 50px;
+}
+
+.navigationOptionsContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 62px;
+}
+
+.navigationOption {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 6px;
+	&:hover {
+		cursor: pointer;
+		color: var(--color-white);
+	}
+}
+
+.navigationOptionText {
+	@include header-1-medium;
+	color: var(--color-white-faded);
+	&:hover {
+		color: var(--color-white);
+	}
+}
+
+.navigationOptionTextActive {
+	@include header-1-medium;
+	color: var(--color-white);
+}
+
+.sliderIndicator {
+	left: 0;
+	position: relative;
+	height: 5.5px;
+	width: 0;
+	background: var(--color-green-600);
+	top: 45px;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	transition: 0.3s;
+}
+
+.mainButtons {
+}

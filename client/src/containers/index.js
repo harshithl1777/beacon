@@ -1,6 +1,6 @@
 export { default as LoginForm } from 'containers/LoginForm';
 export { default as SignupForm } from 'containers/SignupForm';
-export { default as AuthRedirect } from 'containers/AuthRedirect';
+export { default as NavigationBar } from 'containers/NavigationBar';
 
 const defaultImportError = () => {
 	console.error(

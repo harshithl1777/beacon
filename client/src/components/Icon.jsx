@@ -12,6 +12,7 @@ const sizes = {
 
 const colors = {
 	light: 'var(--color-white)',
+	faded: 'var(--color-white-faded)',
 	dark: 'var(--color-navy-600)',
 	green: 'var(--color-green-600)',
 	blue: 'var(--color-blue-600)',
