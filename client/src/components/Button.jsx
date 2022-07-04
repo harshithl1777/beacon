@@ -34,7 +34,7 @@ const Button = (props) => {
 				<button
 					className={classnames(
 						styles.button,
-						icon && styles.iconButton,
+						(icon || customIcon) && styles.iconButton,
 						loading && styles.loading,
 						disabled && styles.disabled,
 						styles[variant],

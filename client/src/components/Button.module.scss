@@ -47,12 +47,13 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	gap: 12px;
 	max-height: 49px;
 }
 
 .primary {
 	background-color: var(--color-green-600);
-	color: var(--color-navy-800);
+	color: var(--color-navy-600);
 
 	&.disabled {
 		color: var(--color-navy-200);

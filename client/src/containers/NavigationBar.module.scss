@@ -26,6 +26,7 @@
 	flex-direction: row;
 	align-items: center;
 	gap: 6px;
+	margin-top: -5px;
 	&:hover {
 		cursor: pointer;
 		color: var(--color-white);
@@ -48,14 +49,46 @@
 .sliderIndicator {
 	left: 0;
 	position: relative;
-	height: 5.5px;
+	height: 5px;
 	width: 0;
 	background: var(--color-green-600);
-	top: 45px;
+	top: 43px;
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
 	transition: 0.3s;
 }
 
-.mainButtons {
+.navigationBarButtonsContainer {
+	margin-left: 140px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 14px;
+}
+
+.creditsCounterButton {
+	height: 42px;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.contributeButton {
+	height: 42px;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.navigationBarIconsContainer {
+	margin-left: 25px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 25px;
+}
+
+.navigationBarIcon {
+	&:hover {
+		cursor: pointer;
+		filter: opacity(0.75);
+	}
 }

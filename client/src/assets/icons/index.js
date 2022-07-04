@@ -11,6 +11,9 @@ import contributionsMediumDark from 'assets/icons/CMContributions-medium-dark.sv
 import contributionsMediumFaded from 'assets/icons/CMContributions-medium-faded.svg';
 import databaseMediumLight from 'assets/icons/CMDatabase-medium-light.svg';
 import databaseMediumFaded from 'assets/icons/CMDatabase-medium-faded.svg';
+import compassMediumDark from 'assets/icons/CMCompass-medium-dark.svg';
+import feedbackMediumLight from 'assets/icons/CMFeedback-medium-light.svg';
+import profileLargeDark from 'assets/icons/CMProfile-large-dark.svg';
 
 const icons = {
 	'CMLogo-small-light': logoSmallLight,
@@ -26,6 +29,9 @@ const icons = {
 	'CMContributions-medium-faded': contributionsMediumFaded,
 	'CMDatabase-medium-light': databaseMediumLight,
 	'CMDatabase-medium-faded': databaseMediumFaded,
+	'CMCompass-medium-dark': compassMediumDark,
+	'CMFeedback-medium-light': feedbackMediumLight,
+	'CMProfile-large-dark': profileLargeDark,
 };
 
 export default icons;

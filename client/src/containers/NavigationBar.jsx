@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Icon } from 'components';
+import { Icon, Button } from 'components';
 import sliderMeasurements from 'assets/json/sliderMeasurements.json';
 import styles from 'containers/NavigationBar.module.scss';
 
@@ -123,7 +123,36 @@ const NavigationBar = () => {
 					</div>
 				</div>
 			</div>
-			<div></div>
+			<div className={styles.navigationBarButtonsContainer}>
+				<Button
+					variant='yellow'
+					className={styles.creditsCounterButton}
+					customIcon={<Icon name='CMCompass' color='dark' />}
+				>
+					20 Credits
+				</Button>
+				<Button
+					className={styles.contributeButton}
+					customIcon={<Icon name='CMContributions' color='dark' />}
+				>
+					Contribute
+				</Button>
+			</div>
+			<div className={styles.navigationBarIconsContainer}>
+				<Icon
+					name='CMFeedback'
+					color='light'
+					className={styles.navigationBarIcon}
+					draggable='false'
+				/>
+				<Icon
+					name='CMProfile'
+					color='dark'
+					size='large'
+					className={styles.navigationBarIcon}
+					draggable='false'
+				/>
+			</div>
 		</div>
 	);
 };
