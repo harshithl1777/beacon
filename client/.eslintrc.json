@@ -1,0 +1,36 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"jest": true
+	},
+	"extends": [
+		"plugin:react/recommended",
+		"plugin:prettier/recommended",
+		"plugin:react/jsx-runtime",
+		"airbnb"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": ["react"],
+	"rules": {
+		"react/react-in-jsx-scope": "off",
+		"react/jsx-indent": [2, "tab"],
+		"no-tabs": "off",
+		"import/no-unresolved": "off",
+		"indent": ["error", "tab"],
+		"prefer-destructuring": "off"
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": ["./src"]
+			}
+		}
+	}
+}

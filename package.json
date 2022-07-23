@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "cd client && npm install",
-    "server": "cd server && FLASK_ENV=development flask run",
+    "server": "cd server && FLASK_ENV=development flask run -h localhost -p 5002",
     "client": "cd client && npm start",
     "production": "python -m server.wsgi",
     "build": "cd client && npm run build",

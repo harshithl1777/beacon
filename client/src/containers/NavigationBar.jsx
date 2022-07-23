@@ -9,7 +9,7 @@ const NavigationBar = () => {
 	const [offsetLeft, setOffsetLeft] = useState(-13);
 	const [offsetWidth, setOffsetWidth] = useState(91);
 
-	const navigationOptionClicked = (event, optionClicked) => {
+	const navigationOptionClicked = (optionClicked) => {
 		setOffsetLeft(sliderMeasurements.offsetLeft[optionClicked] - 2);
 		setOffsetWidth(sliderMeasurements.offsetWidth[optionClicked] + 4);
 		setActiveOption(optionClicked);
@@ -34,7 +34,7 @@ const NavigationBar = () => {
 						className={styles.navigationOption}
 						onMouseEnter={() => setHoverOption(0)}
 						onMouseLeave={() => setHoverOption(null)}
-						onClick={(e) => navigationOptionClicked(e, 0)}
+						onClick={(e) => navigationOptionClicked(0)}
 					>
 						<Icon
 							name='CMDatabase'
@@ -55,7 +55,7 @@ const NavigationBar = () => {
 						className={styles.navigationOption}
 						onMouseEnter={() => setHoverOption(1)}
 						onMouseLeave={() => setHoverOption(null)}
-						onClick={(e) => navigationOptionClicked(e, 1)}
+						onClick={(e) => navigationOptionClicked(1)}
 					>
 						<Icon
 							name='IoChatboxEllipses'
@@ -81,7 +81,7 @@ const NavigationBar = () => {
 						className={styles.navigationOption}
 						onMouseEnter={() => setHoverOption(2)}
 						onMouseLeave={() => setHoverOption(null)}
-						onClick={(e) => navigationOptionClicked(e, 2)}
+						onClick={(e) => navigationOptionClicked(2)}
 					>
 						<Icon
 							name='CMContributions'
@@ -103,7 +103,7 @@ const NavigationBar = () => {
 						className={styles.navigationOption}
 						onMouseEnter={() => setHoverOption(3)}
 						onMouseLeave={() => setHoverOption(null)}
-						onClick={(e) => navigationOptionClicked(e, 3)}
+						onClick={(e) => navigationOptionClicked(3)}
 					>
 						<Icon
 							name='IoRadioOutline'

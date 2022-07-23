@@ -26,4 +26,8 @@ ReactDOM.render(
 	document.querySelector('#root')
 );
 
+const obj = {
+	hi: 'hi',
+};
+
 export default store;
