@@ -23,7 +23,7 @@ yarn-error.log*
 **/.pytest_cache
 **/__pycache__
 
-/env
+/venv
 /server/config/.env.development
 /server/config/.env.test.local
 /client/build

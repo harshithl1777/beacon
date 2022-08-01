@@ -1,4 +1,4 @@
-import SignupForm from 'containers/SignupForm';
+import { SignupForm } from 'containers';
 import styles from 'pages/SignupPage.module.scss';
 
 const SignupPage = () => {

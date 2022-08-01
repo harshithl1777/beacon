@@ -1,12 +1,21 @@
-import { connect } from 'react-redux';
-import { logOut } from 'redux/actions/authActions';
+import classnames from 'classnames';
+import styles from 'pages/HomePage.module.scss';
 
-const HomePage = ({ logOut }) => {
-	const logout = async () => await logOut();
-
-	return <button onClick={logout}>Logout</button>;
+const HomePage = () => {
+	return (
+		<div className={styles.homePageContainer}>
+			<div className={styles.headerTextContainer}>
+				<h3 className={styles.headerText}>
+					Find <span className={styles.headerColorText}>all the data</span> you need to make <br /> decisions on{' '}
+					<span className={styles.headerColorText}>where to shop</span>
+				</h3>
+				<p className={styles.headerDescriptionText}>
+					To start, just start typing your address or hit the location button to give us a starting search point. Then, select any products
+					you’re looking for and hit search!
+				</p>
+			</div>
+		</div>
+	);
 };
 
-const mapStateToProps = ({ errors }) => ({ errors });
-
-export default connect(mapStateToProps, { logOut })(HomePage);
+export default HomePage;

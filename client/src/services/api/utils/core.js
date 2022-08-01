@@ -26,7 +26,9 @@ class APICore {
 		if (options.get) {
 			this.get = async (id = '', headers = {}) => {
 				try {
-					const response = await axios.get(`${BASE_URL}/${options.url}/${id}`, { headers });
+					const response = await axios.get(`${BASE_URL}/${options.url}/${id}`, {
+						headers,
+					});
 					return handleResponse(response);
 				} catch (error) {
 					return handleError(error);

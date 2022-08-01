@@ -109,4 +109,7 @@ const SignUpForm = (props) => {
 
 const mapStateToProps = ({ auth, errors }) => ({ auth, errors });
 
-export default connect(mapStateToProps, { signUpWithCredentials, signUpWithSocials })(SignUpForm);
+export default connect(mapStateToProps, {
+	signUpWithCredentials,
+	signUpWithSocials,
+})(SignUpForm);

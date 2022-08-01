@@ -1,8 +1,8 @@
-import jwt from 'jsonwebtoken';
+import jwt_decode from 'jwt-decode';
 
 const checkTokenExpiry = (token) => {
-	const { payload } = jwt.decode(token, { complete: true });
-	const expiryTime = payload.exp * 1000;
+	const { exp } = jwt_decode.decode(token);
+	const expiryTime = exp * 1000;
 	const utcTimestamp = new Date().getTime();
 	if (utcTimestamp > expiryTime) return false;
 	return true;

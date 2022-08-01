@@ -20,9 +20,19 @@ const authReducer = (state = INITIAL_STATE, { type, success, payload }) => {
 		case SIGN_UP_WITH_SOCIALS:
 		case LOG_IN_WITH_CREDENTIALS:
 		case LOG_IN_WITH_SOCIALS:
-			return { ...state, isLoggedIn: true, userID: payload._id, accessToken: payload.access_token };
+			return {
+				...state,
+				isLoggedIn: true,
+				userID: payload._id,
+				accessToken: payload.access_token,
+			};
 		case REFRESH_SESSION:
-			return { ...state, isLoggedIn: true, userID: payload._id, accessToken: payload.access_token };
+			return {
+				...state,
+				isLoggedIn: true,
+				userID: payload._id,
+				accessToken: payload.access_token,
+			};
 		case LOG_OUT:
 			return INITIAL_STATE;
 		default:

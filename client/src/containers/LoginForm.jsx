@@ -24,7 +24,7 @@ const LoginForm = (props) => {
 	) : (
 		<div className={styles.formWrapper} onSubmit={(e) => credentialsLogin(e)}>
 			<form className={styles.form}>
-				<Icon className={styles.formLogo} name='CMLogo' color='light' size='large' />
+				<Icon className={styles.formLogo} name='CMLogo' color='light' size='massive' />
 				<h4 className={styles.formTitle}>Sign in to Beacon</h4>
 				<p className={styles.formDescription}>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -91,4 +91,7 @@ const LoginForm = (props) => {
 
 const mapStateToProps = ({ auth, errors }) => ({ auth, errors });
 
-export default connect(mapStateToProps, { logInWithSocials, logInWithCredentials })(LoginForm);
+export default connect(mapStateToProps, {
+	logInWithSocials,
+	logInWithCredentials,
+})(LoginForm);

@@ -1,1 +1,2 @@
-{"_id":{"$oid":"62d9f623045c03c02d134b6e"},"email":"harshithl1777@gmail.com","password":"3257dfd6341425cf247aa7f6314447b7"}
+{"_id":"0522fc19e1d9477c8e056723","email":"harshithl1777@gmail.com","password":"243262243132247038785078754f6573744b6156706b61644a355635756968316e6c4939356d753741614d714f69666c394772627051575551373132","auth_method":"Credentials","join_date":{"$date":"2022-07-31T14:32:12.979Z"}}
+{"_id":"4daf0039c89a9c14a0e5c8ca","email":"harshith.peel.backup@gmail.com","auth_method":"Google","join_date":{"$date":"2022-07-31T14:32:12.979Z"}}

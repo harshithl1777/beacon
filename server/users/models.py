@@ -1,5 +1,4 @@
 from datetime import datetime
-from email.policy import default
 from mongoengine.document import Document
 from mongoengine.fields import DateTimeField, EmailField, StringField
 

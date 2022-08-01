@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { initializeApp } from 'firebase/app';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -19,15 +19,12 @@ initializeApp(firebaseConfig);
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 // Redux store initialization and app rendering
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(
 	<Provider store={store}>
 		<App />
-	</Provider>,
-	document.querySelector('#root')
+	</Provider>
 );
-
-const obj = {
-	hi: 'hi',
-};
 
 export default store;
