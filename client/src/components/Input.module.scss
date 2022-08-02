@@ -95,6 +95,16 @@
 	pointer-events: none;
 }
 
+.placeholder {
+	@include header-1-regular;
+	color: var(--color-navy-400);
+	content: attr(data-content);
+	display: inline-block;
+	margin-top: -40px;
+	margin-left: 20px;
+	position: relative;
+}
+
 .floatingPlaceholder::before {
 	@include header-1-regular;
 	color: var(--color-navy-400);
@@ -124,8 +134,7 @@
 	content: '';
 	height: 0.1rem;
 	position: absolute;
-	transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
-		opacity 180ms cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+	transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1), opacity 180ms cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
 	opacity: 0;
 	left: 0;
 	top: 100%;
