@@ -5,7 +5,7 @@ from server.utils.helpers.auth import check_jwt
 from server.utils.helpers.routes import create_response
 
 
-def require_access_token(method):
+def require_access_token(method)
     @wraps(method)
     def check_access_token(*args, **kwargs):
         if not request.headers.get('Authorization'):

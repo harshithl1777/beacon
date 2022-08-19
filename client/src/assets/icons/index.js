@@ -13,25 +13,31 @@ import databaseMediumLight from 'assets/icons/CMDatabase-medium-light.svg';
 import databaseMediumFaded from 'assets/icons/CMDatabase-medium-faded.svg';
 import compassMediumDark from 'assets/icons/CMCompass-medium-dark.svg';
 import feedbackMediumLight from 'assets/icons/CMFeedback-medium-light.svg';
+import reviewsMediumFaded from 'assets/icons/CMReviews-medium-faded.svg';
+import reviewsMediumLight from 'assets/icons/CMReviews-medium-light.svg';
 import profileLargeDark from 'assets/icons/CMProfile-large-dark.svg';
+import checkboxMediumLight from 'assets/icons/CMCheckbox-medium-light.svg';
 
 const icons = {
-	'CMLogo-small-light': logoSmallLight,
-	'CMLogo-medium-light': logoMediumLight,
-	'CMLogo-large-light': logoLargeLight,
-	'CMLogo-massive-light': logoMassiveLight,
-	'CMLogo-small-dark': logoSmallDark,
-	'CMLogo-medium-dark': logoMediumDark,
-	'CMLogo-large-dark': logoLargeDark,
-	'CMLogo-massive-dark': logoMassiveDark,
-	'CMContributions-medium-light': contributionsMediumLight,
-	'CMContributions-medium-dark': contributionsMediumDark,
-	'CMContributions-medium-faded': contributionsMediumFaded,
-	'CMDatabase-medium-light': databaseMediumLight,
-	'CMDatabase-medium-faded': databaseMediumFaded,
-	'CMCompass-medium-dark': compassMediumDark,
-	'CMFeedback-medium-light': feedbackMediumLight,
-	'CMProfile-large-dark': profileLargeDark,
+    'CMLogo-small-light': logoSmallLight,
+    'CMLogo-medium-light': logoMediumLight,
+    'CMLogo-large-light': logoLargeLight,
+    'CMLogo-massive-light': logoMassiveLight,
+    'CMLogo-small-dark': logoSmallDark,
+    'CMLogo-medium-dark': logoMediumDark,
+    'CMLogo-large-dark': logoLargeDark,
+    'CMLogo-massive-dark': logoMassiveDark,
+    'CMContributions-medium-light': contributionsMediumLight,
+    'CMContributions-medium-dark': contributionsMediumDark,
+    'CMContributions-medium-faded': contributionsMediumFaded,
+    'CMDatabase-medium-light': databaseMediumLight,
+    'CMDatabase-medium-faded': databaseMediumFaded,
+    'CMCompass-medium-dark': compassMediumDark,
+    'CMFeedback-medium-light': feedbackMediumLight,
+    'CMReviews-medium-faded': reviewsMediumFaded,
+    'CMReviews-medium-light': reviewsMediumLight,
+    'CMProfile-large-dark': profileLargeDark,
+    'CMCheckbox-medium-light': checkboxMediumLight,
 };
 
 export default icons;

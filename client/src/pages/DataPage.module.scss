@@ -1,6 +1,6 @@
 @import 'src/scss/typography';
 
-.homePageContainer {
+.dataPageContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,4 +75,7 @@
     height: fit-content;
     margin-left: -22px;
     margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 26px;
 }

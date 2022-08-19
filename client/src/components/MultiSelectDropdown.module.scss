@@ -68,14 +68,13 @@
         }
     }
 
-    &.selected,
-    &:hover {
-        background: rgba(50, 211, 202, 0.15);
+    &.selected {
         cursor: pointer;
+    }
 
-        .dropdownOptionText {
-            color: var(--color-green-600);
-        }
+    &:hover {
+        cursor: pointer;
+        background: rgba(50, 211, 202, 0.15);
     }
 }
 

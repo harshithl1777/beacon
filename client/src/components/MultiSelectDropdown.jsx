@@ -1,17 +1,23 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useState } from 'react';
-import { Icon } from 'components';
-import styles from 'components/Dropdown.module.scss';
+import { Icon, Checkbox } from 'components';
+import styles from 'components/MultiSelectDropdown.module.scss';
 
 const Dropdown = (props) => {
-    const { placeholder, options, width, className, onOptionSelect } = props;
+    const { placeholder, options, width, className } = props;
     const [dropdownActive, setDropdownActive] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOptions, setSelectedOptions] = useState([]);
 
-    const handleOptionSelect = (option) => {
-        setSelectedOption(option);
-        onOptionSelect(option);
+    console.log(selectedOptions);
+
+    const handleSelect = (option) => {
+        if (!selectedOptions.includes(option)) {
+            setSelectedOptions([...selectedOptions, option]);
+        } else {
+            const newSelectedOptions = selectedOptions.filter((selectedOption) => selectedOption !== option);
+            setSelectedOptions(newSelectedOptions);
+        }
     };
 
     const getOptionsList = () => {
@@ -19,14 +25,12 @@ const Dropdown = (props) => {
             <div className={styles.dropdownOptionsContainer} tabIndex='0'>
                 {options.map((option) => (
                     <div
-                        className={classnames(styles.dropdownOption, selectedOption === option && styles.selected)}
-                        onClick={() => handleOptionSelect(option)}
+                        className={classnames(styles.dropdownOption, selectedOptions.includes(option) && styles.selected)}
+                        onClick={() => handleSelect(option)}
                         key={option}
                     >
+                        <Checkbox key={selectedOptions.includes(option)} forcedStatus={selectedOptions.includes(option)} />
                         <h3 className={styles.dropdownOptionText}>{option}</h3>
-                        {selectedOption === option && (
-                            <Icon name='IoCheckmark' size={20} color='var(--color-green-600)' className={styles.dropdownSelectedIcon} />
-                        )}
                     </div>
                 ))}
             </div>
@@ -39,10 +43,19 @@ const Dropdown = (props) => {
         }
     };
 
+    const getDropdownLabel = () => {
+        const length = selectedOptions.length;
+        if (length) {
+            if (length > 1) return length + ' items selected';
+            return length + ' item selected';
+        }
+        return null;
+    };
+
     return (
         <div className={classnames(styles.dropdownContainer, className)} style={{ width }} onBlur={handleBlur}>
             <button className={classnames(styles.dropdownButtonContainer, className)} onClick={() => setDropdownActive(true)}>
-                <h3 className={styles.dropdownTextPlaceholder}>{selectedOption || placeholder}</h3>
+                <h3 className={styles.dropdownTextPlaceholder}>{getDropdownLabel() || placeholder}</h3>
                 <Icon name='IoChevronDown' color='var(--color-gray-600)' size={22} className={styles.dropdownChevronIcon} />
             </button>
             {dropdownActive && getOptionsList()}
