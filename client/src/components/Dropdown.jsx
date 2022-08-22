@@ -54,12 +54,14 @@ Dropdown.propTypes = {
     placeholder: PropTypes.string,
     options: PropTypes.array,
     width: PropTypes.number,
+    onOptionSelect: PropTypes.func,
 };
 
 Dropdown.defaultProps = {
     placeholder: '',
     options: [],
     width: 155,
+    onOptionSelect: () => {},
 };
 
 export default Dropdown;

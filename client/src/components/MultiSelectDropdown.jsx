@@ -4,12 +4,10 @@ import { useState } from 'react';
 import { Icon, Checkbox } from 'components';
 import styles from 'components/MultiSelectDropdown.module.scss';
 
-const Dropdown = (props) => {
-    const { placeholder, options, width, className } = props;
+const MultiSelectDropdown = (props) => {
+    const { placeholder, options, width, className, onOptionsChange } = props;
     const [dropdownActive, setDropdownActive] = useState(false);
     const [selectedOptions, setSelectedOptions] = useState([]);
-
-    console.log(selectedOptions);
 
     const handleSelect = (option) => {
         if (!selectedOptions.includes(option)) {
@@ -18,6 +16,7 @@ const Dropdown = (props) => {
             const newSelectedOptions = selectedOptions.filter((selectedOption) => selectedOption !== option);
             setSelectedOptions(newSelectedOptions);
         }
+        onOptionsChange(selectedOptions);
     };
 
     const getOptionsList = () => {
@@ -63,16 +62,18 @@ const Dropdown = (props) => {
     );
 };
 
-Dropdown.propTypes = {
+MultiSelectDropdown.propTypes = {
     placeholder: PropTypes.string,
     options: PropTypes.array,
     width: PropTypes.number,
+    onOptionsChange: PropTypes.func,
 };
 
-Dropdown.defaultProps = {
+MultiSelectDropdown.defaultProps = {
     placeholder: '',
     options: [],
     width: 155,
+    onOptionsChange: () => {},
 };
 
-export default Dropdown;
+export default MultiSelectDropdown;
