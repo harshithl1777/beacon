@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import * as ionicons from 'react-icons/io5';
 
+import Tooltip from 'components';
 import customIcons from 'assets/icons';
 
 const sizes = {

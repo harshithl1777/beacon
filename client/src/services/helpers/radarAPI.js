@@ -1,34 +1,45 @@
-import Radar from 'radar-sdk-js';
-import showToast from 'services/helpers';
+import axios from 'axios';
+import { showToast } from 'services/helpers';
 
-const reverseGeocode = (coordinates) => {
-    return Radar.reverseGeocode(coordinates, (error, results) => {
-        if (error) {
-            showToast.error('Unable to geocode location');
-            return `${coordinates.latitude}, ${coordinates.latitude}`;
-        }
-        return results.addresses[0].formattedAddress;
-    });
+const radarInstance = axios.create({
+    baseURL: 'https://api.radar.io/v1',
+    headers: { Authorization: process.env.REACT_APP_RADAR_API_KEY },
+});
+
+const reverseGeocode = async (coordinates) => {
+    try {
+        const params = { coordinates: `${coordinates.latitude}, ${coordinates.longitude}` };
+        const { data } = await radarInstance.get('/geocode/reverse', { params });
+        return { result: data.addresses[0], success: true };
+    } catch (error) {
+        showToast.error('Unable to geocode your location');
+        console.error(error);
+        return { error, success: false };
+    }
 };
 
-const autocomplete = (query) => {
-    return Radar.autocomplete({ query, limit: 5 }, (error, results) => {
-        if (error) {
-            showToast.error('Unable to load autocomplete results');
-            return { error, success: false };
-        }
-        return { results, success: true };
-    });
+const autocomplete = async (query) => {
+    try {
+        const params = { query, limit: 5 };
+        const { data } = await radarInstance.get('/search/autocomplete', { params });
+        console.log(data);
+        return { results: data.addresses, success: true };
+    } catch (error) {
+        showToast.error('Unable to load autocomplete results');
+        return { error, success: false };
+    }
 };
 
-const autocompletePlaces = (coordinates) => {
-    return Radar.searchPlaces({ near: coordinates, categories: 'food-grocery, food-wholesaler', limit: 5 }, (error, results) => {
-        if (error) {
-            showToast.error('Unable to load autocomplete results');
-            return { error, success: false };
-        }
-        return { results: results.places, success: true };
-    });
+const autocompletePlaces = async (coordinates) => {
+    try {
+        const params = { coordinates, categories: 'food-grocery, food-wholesaler', limit: 5 };
+        const { data } = await radarInstance.get('/search/places', { params });
+        return { results: data.places, success: true };
+    } catch (error) {
+        showToast.error('Unable to load autocomplete results');
+        console.error(error);
+        return { error, success: false };
+    }
 };
 
 const radarAPI = {

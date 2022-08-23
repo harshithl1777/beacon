@@ -1,5 +1,4 @@
 import { initializeApp } from 'firebase/app';
-import Radar from 'radar-sdk-js';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -16,7 +15,6 @@ const firebaseConfig = {
 };
 
 initializeApp(firebaseConfig);
-Radar.initialize(process.env.REACT_APP_RADAR_API_KEY);
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
