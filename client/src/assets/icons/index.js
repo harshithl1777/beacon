@@ -17,6 +17,7 @@ import reviewsMediumFaded from 'assets/icons/CMReviews-medium-faded.svg';
 import reviewsMediumLight from 'assets/icons/CMReviews-medium-light.svg';
 import profileLargeDark from 'assets/icons/CMProfile-large-dark.svg';
 import checkboxMediumLight from 'assets/icons/CMCheckbox-medium-light.svg';
+import mapPinMediumDark from 'assets/icons/CMMapPin-medium-dark.svg';
 
 const icons = {
     'CMLogo-small-light': logoSmallLight,
@@ -38,6 +39,7 @@ const icons = {
     'CMReviews-medium-light': reviewsMediumLight,
     'CMProfile-large-dark': profileLargeDark,
     'CMCheckbox-medium-light': checkboxMediumLight,
+    'CMMapPin-medium-dark': mapPinMediumDark,
 };
 
 export default icons;

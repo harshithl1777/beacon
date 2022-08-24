@@ -22,7 +22,6 @@ const autocomplete = async (query) => {
     try {
         const params = { query, limit: 5 };
         const { data } = await radarInstance.get('/search/autocomplete', { params });
-        console.log(data);
         return { results: data.addresses, success: true };
     } catch (error) {
         showToast.error('Unable to load autocomplete results');
