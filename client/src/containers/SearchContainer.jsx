@@ -132,8 +132,8 @@ const SearchContainer = () => {
                         'No wait time',
                         '5 to 10 mins',
                         '10 to 20 mins',
-                        '20 to 30 mins',
-                        '30 mins to 1 hour',
+                        '20 to 40 mins',
+                        '40 mins to 1 hour',
                         'Over 1 hour',
                     ]}
                     placeholder='Wait times'

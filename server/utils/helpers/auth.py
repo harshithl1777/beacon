@@ -7,7 +7,7 @@ import os
 import json
 import bcrypt
 
-from server.users.models import User
+from server.models.users import User
 
 
 def create_jwt(user: dict, type: str) -> str:

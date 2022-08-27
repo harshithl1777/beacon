@@ -1,12 +1,12 @@
 {
-    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Enabled": false,
     "python.linting.enabled": true,
-    "editor.codeActionsOnSave": null,
+    "editor.codeActionsOnSave": {},
     "files.exclude": {
         "**/node_modules": false,
         "**/__pycache__": true,
-        "**/__init__.py": true,
+        "**/__init__.py": true
     },
-    "python.formatting.provider": "autopep8",
+    "python.formatting.provider": "black",
     "python.formatting.autopep8Args": ["--max-line-length", "120", "--experimental"]
 }

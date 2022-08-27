@@ -97,7 +97,7 @@ export const signUpWithCredentials = (email, password) => async (dispatch) => {
 		const response = await usersAPI.post({
 			email,
 			password,
-			method: 'Credentials',
+			method: 'CREDENTIALS',
 		});
 		if (!response.success) throw new Error('Account already exists');
 

@@ -8,8 +8,8 @@ import flask_cors
 if os.getenv('FLASK_ENV') == 'development':
     load_dotenv('./config/.env.development')
 
-from server.users.routes import users
-from server.auth.routes import auth
+from server.routes.users import users
+from server.routes.auth import auth
 
 
 def create_app() -> Flask:
@@ -18,7 +18,6 @@ def create_app() -> Flask:
     app.register_blueprint(users, url_prefix='/api/users')
     app.register_blueprint(auth, url_prefix='/api/auth')
     return app
-
 
 app = create_app()
 if os.getenv('FLASK_ENV') == 'development':
