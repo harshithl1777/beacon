@@ -4,7 +4,7 @@ import { handleResponse, handleError } from 'services/api/utils/response';
 import { refreshSession } from 'redux/actions/authActions';
 import { checkTokenExpiry } from 'services/helpers';
 
-const BASE_URL = 'http://localhost:5000/api' || process.env.REACT_APP_BASE_API_URL;
+const BASE_URL = 'http://localhost:5002/api' || process.env.REACT_APP_BASE_API_URL;
 axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use((config) => {
@@ -26,7 +26,9 @@ class APICore {
 		if (options.get) {
 			this.get = async (id = '', headers = {}) => {
 				try {
-					const response = await axios.get(`${BASE_URL}/${options.url}/${id}`, { headers });
+					const response = await axios.get(`${BASE_URL}/${options.url}/${id}`, {
+						headers,
+					});
 					return handleResponse(response);
 				} catch (error) {
 					return handleError(error);

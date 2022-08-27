@@ -8,7 +8,6 @@ import {
 	getAdditionalUserInfo,
 } from 'firebase/auth';
 import {
-	AUTH_REDIRECT,
 	LOG_IN_WITH_CREDENTIALS,
 	LOG_IN_WITH_SOCIALS,
 	SIGN_UP_WITH_CREDENTIALS,
@@ -29,13 +28,14 @@ export const logInWithCredentials = (email, password) => async (dispatch) => {
 
 		const errorMessage = error.toString();
 		if (errorMessage === 'Error: Invalid email or password') {
-			showToast.error(
-				'Invalid email or password',
-				'Hmm, it seems that either your email or password is wrong.'
-			);
+			showToast.error('Invalid email or password', 'Hmm, it seems that either your email or password is wrong.');
 		}
 
-		dispatch({ type: LOG_IN_WITH_CREDENTIALS, message: errorMessage, success: false });
+		dispatch({
+			type: LOG_IN_WITH_CREDENTIALS,
+			message: errorMessage,
+			success: false,
+		});
 	}
 };
 
@@ -71,26 +71,34 @@ export const logInWithSocials = (service) => async (dispatch) => {
 
 		// Otherwise authenticate with server using email, social token and store response
 		const user = result.user;
-		const response = await authAPI.post({ email: user.email, socialToken: user.accessToken });
+		const response = await authAPI.post({
+			email: user.email,
+			socialToken: user.accessToken,
+		});
 		dispatch({ type: LOG_IN_WITH_SOCIALS, ...response });
 	} catch (error) {
 		console.error(error);
 
 		const errorMessage = error.toString();
 		if (errorMessage === 'Error: Account does not exist') {
-			showToast.error(
-				'Account does not exist',
-				"It seems like you haven't yet signed up with this social account."
-			);
+			showToast.error('Account does not exist', "It seems like you haven't yet signed up with this social account.");
 		}
 
-		dispatch({ type: LOG_IN_WITH_SOCIALS, message: errorMessage, success: false });
+		dispatch({
+			type: LOG_IN_WITH_SOCIALS,
+			message: errorMessage,
+			success: false,
+		});
 	}
 };
 
 export const signUpWithCredentials = (email, password) => async (dispatch) => {
 	try {
-		const response = await usersAPI.post({ email, password, method: 'Credentials' });
+		const response = await usersAPI.post({
+			email,
+			password,
+			method: 'CREDENTIALS',
+		});
 		if (!response.success) throw new Error('Account already exists');
 
 		dispatch({ type: SIGN_UP_WITH_CREDENTIALS, ...response });
@@ -99,13 +107,14 @@ export const signUpWithCredentials = (email, password) => async (dispatch) => {
 
 		const errorMessage = error.toString();
 		if (errorMessage === 'Error: Account already exists') {
-			showToast.error(
-				'Account already exists',
-				'You already have an account with this email. Log in instead.'
-			);
+			showToast.error('Account already exists', 'You already have an account with this email. Log in instead.');
 		}
 
-		dispatch({ type: SIGN_UP_WITH_CREDENTIALS, message: errorMessage, success: false });
+		dispatch({
+			type: SIGN_UP_WITH_CREDENTIALS,
+			message: errorMessage,
+			success: false,
+		});
 	}
 };
 
@@ -149,20 +158,18 @@ export const signUpWithSocials = (service) => async (dispatch) => {
 
 		const errorMessage = error.toString();
 		if (errorMessage === 'Error: Account already exists') {
-			showToast.error(
-				'Account already exists',
-				'You already have an account with this email. Log in instead.'
-			);
+			showToast.error('Account already exists', 'You already have an account with this email. Log in instead.');
 		} else if (errorMessage === 'Error: Duplicate accounts conflict') {
 			const currentUser = getAuth().currentUser;
 			await deleteUser(currentUser);
-			showToast.error(
-				'Account already exists',
-				'You already have an account with this email. Log in instead.'
-			);
+			showToast.error('Account already exists', 'You already have an account with this email. Log in instead.');
 		}
 
-		dispatch({ type: SIGN_UP_WITH_SOCIALS, message: errorMessage, success: false });
+		dispatch({
+			type: SIGN_UP_WITH_SOCIALS,
+			message: errorMessage,
+			success: false,
+		});
 	}
 };
 

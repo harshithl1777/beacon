@@ -7,7 +7,7 @@ import { refreshSession } from 'redux/actions/authActions';
 import styles from 'components/Gateway.module.scss';
 
 const Gateway = ({ children, auth, refreshSession }) => {
-	const redirectURL = useQuery('redirect') || '/app/home';
+	const redirectURL = useQuery('redirect') || '/app/data';
 	const [checkStatus, setCheckStatus] = useState(null);
 
 	useEffect(() => {

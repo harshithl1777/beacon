@@ -4,25 +4,45 @@ export const Light = () => (
 	<>
 		<h4>Small</h4>
 		<div
-			style={{ background: 'black', width: 'fit-content', borderRadius: '4px', padding: '10px' }}
+			style={{
+				background: 'black',
+				width: 'fit-content',
+				borderRadius: '4px',
+				padding: '10px',
+			}}
 		>
 			<Spinner color='light' size='small' />
 		</div>
 		<h4>Medium</h4>
 		<div
-			style={{ background: 'black', width: 'fit-content', borderRadius: '4px', padding: '10px' }}
+			style={{
+				background: 'black',
+				width: 'fit-content',
+				borderRadius: '4px',
+				padding: '10px',
+			}}
 		>
 			<Spinner color='light' />
 		</div>
 		<h4>Large</h4>
 		<div
-			style={{ background: 'black', width: 'fit-content', borderRadius: '4px', padding: '10px' }}
+			style={{
+				background: 'black',
+				width: 'fit-content',
+				borderRadius: '4px',
+				padding: '10px',
+			}}
 		>
 			<Spinner color='light' size='large' />
 		</div>
 		<h4>Massive</h4>
 		<div
-			style={{ background: 'black', width: 'fit-content', borderRadius: '4px', padding: '10px' }}
+			style={{
+				background: 'black',
+				width: 'fit-content',
+				borderRadius: '4px',
+				padding: '10px',
+			}}
 		>
 			<Spinner color='light' size='massive' />
 		</div>

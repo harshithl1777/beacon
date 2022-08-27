@@ -1,0 +1,32 @@
+@import 'src/scss/typography';
+
+.dataPageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headerTextContainer {
+    margin-top: 95px;
+    width: 770px;
+}
+
+.headerText {
+    @include title-1-bold;
+    font-size: 34px;
+    line-height: 40px;
+    text-align: center;
+    color: var(--color-navy-600);
+}
+
+.headerColorText {
+    color: var(--color-green-600);
+}
+
+.headerDescriptionText {
+    @include body-1-regular;
+    color: var(--color-navy-600);
+    font-size: 18px;
+    text-align: center;
+    margin-top: 19px;
+}

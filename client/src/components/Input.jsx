@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -6,28 +5,13 @@ import { Icon, Tooltip } from 'components';
 import styles from 'components/Input.module.scss';
 
 const Input = (props) => {
-	const {
-		children,
-		label,
-		variant,
-		disabled,
-		onChange,
-		wrapperClass,
-		className,
-		value,
-		tooltip,
-		tooltipOptions,
-		...rest
-	} = props;
+	const { children, label, variant, disabled, onChange, wrapperClass, className, value, tooltip, tooltipOptions, ...rest } = props;
 
 	const getIcon = () => {
 		const iconClassName = children ? styles.inputIcon : styles.inputIconNoPlaceholder;
-		if (variant === 'warning')
-			return <Icon className={iconClassName} name='IoAlertCircle' color='yellow' />;
-		else if (variant === 'error')
-			return <Icon className={iconClassName} name='IoCloseCircle' color='red' />;
-		else if (variant === 'success')
-			return <Icon className={iconClassName} name='IoCheckmarkCircle' color='green' />;
+		if (variant === 'warning') return <Icon className={iconClassName} name='IoAlertCircle' color='yellow' />;
+		else if (variant === 'error') return <Icon className={iconClassName} name='IoCloseCircle' color='red' />;
+		else if (variant === 'success') return <Icon className={iconClassName} name='IoCheckmarkCircle' color='green' />;
 		return null;
 	};
 
@@ -39,28 +23,16 @@ const Input = (props) => {
 				<Tooltip message={tooltip} {...tooltipOptions}>
 					<input
 						id={`${children}`}
-						className={classnames(
-							styles.floatingInput,
-							styles[variant],
-							children && styles.withPlaceholder,
-							className
-						)}
+						className={classnames(styles.floatingInput, styles[variant], children && styles.withPlaceholder, className)}
 						name='input'
-						placeholder={children}
 						value={value}
-						onChange={(e) => {
-							onChange(e.target.value);
-						}}
+						placeholder={children}
+						onChange={(e) => onChange(e.target.value)}
 						disabled={disabled}
 						{...rest}
 					/>
 				</Tooltip>
-				{children && (
-					<label
-						className={classnames(styles.floatingPlaceholder, styles[`${variant}Label`])}
-						data-content={children}
-					></label>
-				)}
+				{children && <label className={classnames(styles.floatingPlaceholder, styles[`${variant}Label`])} data-content={children}></label>}
 			</div>
 		</div>
 	);

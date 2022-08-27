@@ -5,8 +5,8 @@ import bcrypt
 import secrets
 import os
 
-from server.users.models import User
-from server.auth.decorators import require_access_token
+from server.models.users import User
+from server.utils.decorators import require_access_token
 from server.utils.helpers.auth import create_jwt, validate_social_signup
 from server.utils.helpers.routes import create_response
 
@@ -23,7 +23,7 @@ def create_user():
     elif not auth_method:
         return create_response('Bad request', False, 400)
     else:
-        if auth_method == 'Credentials':
+        if auth_method == 'CREDENTIALS':
             password = body.get('password')
             salt = bcrypt.gensalt()
             hashed_password = bcrypt.hashpw(password.encode(), salt).hex()

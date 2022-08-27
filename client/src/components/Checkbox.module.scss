@@ -1,0 +1,92 @@
+@import 'src/scss/typography';
+
+.checkboxButtonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.checkboxIcon {
+    visibility: hidden;
+}
+
+.checkboxIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 7px;
+    background-color: transparent;
+
+    &.selected {
+        border: none;
+
+        .checkboxIcon {
+            visibility: visible;
+        }
+
+        &.primary {
+            background-color: var(--color-green-600);
+        }
+
+        &.secondary {
+            background-color: var(--color-navy-600);
+        }
+
+        &.danger {
+            background-color: var(--color-red-600);
+        }
+
+        &.blue {
+            background-color: var(--color-blue-600);
+        }
+
+        &.purple {
+            background-color: var(--color-purple-600);
+        }
+
+        &.yellow {
+            background-color: var(--color-yellow-600);
+        }
+    }
+
+    &.primary {
+        border: 1.5px solid var(--color-green-600);
+    }
+
+    &.secondary {
+        border: 1.5px solid var(--color-navy-600);
+    }
+
+    &.danger {
+        border: 1.5px solid var(--color-red-600);
+    }
+
+    &.blue {
+        border: 1.5px solid var(--color-blue-600);
+    }
+
+    &.purple {
+        border: 1.5px solid var(--color-purple-600);
+    }
+
+    &.yellow {
+        border: 1.5px solid var(--color-yellow-600);
+    }
+}
+
+.checkboxLabel {
+    @include header-1-medium;
+    font-weight: 400;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

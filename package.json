@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "cd client && npm install",
-    "server": "cd server && FLASK_ENV=development flask run",
+    "server": "cd server && FLASK_ENV=development flask run -h localhost -p 5002",
     "client": "cd client && npm start",
     "production": "python -m server.wsgi",
     "build": "cd client && npm run build",
@@ -26,5 +26,9 @@
     "url": "https://github.com/harshithl1777/beacon/issues"
   },
   "homepage": "https://github.com/harshithl1777/beacon#readme",
-  "_id": "beacon@1.0.0"
+  "_id": "beacon@1.0.0",
+  "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
+    "react-mapbox-gl-geocoder": "^1.1.0"
+  }
 }

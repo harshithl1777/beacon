@@ -1,0 +1,85 @@
+@import 'src/scss/typography';
+
+.dropdownContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropdownButtonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    min-width: 155px;
+    width: inherit;
+    background-color: transparent;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 12px;
+    text-align: left;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus {
+        border: 1px solid var(--color-green-600);
+        box-shadow: 0px 0px 0px 4px rgba(50, 211, 202, 0.15);
+    }
+}
+
+.dropdownTextPlaceholder {
+    @include header-1-regular;
+    color: var(--color-gray-600);
+    margin-left: 17px;
+}
+
+.dropdownChevronIcon {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.dropdownOptionsContainer {
+    width: 100%;
+    box-shadow: 0px 2px 10px rgba(206, 214, 224, 0.75);
+    border-radius: 8px;
+    margin-top: 9px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.dropdownOption {
+    width: 100%;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 1000;
+
+    .dropdownOptionText {
+        @include header-2-regular;
+        color: var(--color-navy-600);
+        margin-left: 12px;
+
+        &.dropdownOption:has(.selected) {
+            color: var(--color-green-600);
+        }
+    }
+
+    &.selected,
+    &:hover {
+        background: rgba(50, 211, 202, 0.15);
+        cursor: pointer;
+
+        .dropdownOptionText {
+            color: var(--color-green-600);
+        }
+    }
+}
+
+.dropdownSelectedIcon {
+    margin-left: auto;
+    margin-right: 10px;
+}

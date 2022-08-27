@@ -23,7 +23,7 @@ yarn-error.log*
 **/.pytest_cache
 **/__pycache__
 
-/env
+/venv
 /server/config/.env.development
 /server/config/.env.test.local
 /client/build
@@ -31,3 +31,4 @@ yarn-error.log*
 /server/config/server.crt
 /server/config/server.key
 /server/config/firebase_config.json
+/client/.env

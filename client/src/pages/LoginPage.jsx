@@ -1,4 +1,4 @@
-import LoginForm from 'containers/LoginForm';
+import { LoginForm } from 'containers';
 import styles from 'pages/LoginPage.module.scss';
 
 const LoginPage = () => {

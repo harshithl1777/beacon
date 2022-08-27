@@ -34,7 +34,7 @@ def new_session():
         return create_response('Invalid username or password', False, 401)
     else:
         user = matching_user.copy()
-        user.pop('password')
+        if password: user.pop('password')
         access_token = create_jwt(user, 'ACCESS')
         refresh_token = create_jwt(user, 'REFRESH')
 
