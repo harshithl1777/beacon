@@ -1,5 +1,5 @@
 from mongoengine.document import Document
-from mongoengine.fields import EmailField, StringField
+from mongoengine.fields import EmailField, StringField, IntField
 
 
 class User(Document):
@@ -10,3 +10,4 @@ class User(Document):
     auth_method = StringField(
         choices=("CREDENTIALS", "GOOGLE", "FACEBOOK", "GITHUB"), default="CREDENTIALS"
     )
+    credits = IntField(min_value=0, max_value=100, default=20)
