@@ -3,6 +3,7 @@ import os
 
 from server.utils.helpers.routes import create_response
 from server.utils.helpers.auth import create_jwt, check_jwt, validate_user, validate_social_login
+from server.utils.types import Token
 
 auth = Blueprint('auth', __name__)
 REFRESH_MAX_AGE = 5184000
@@ -15,7 +16,7 @@ def get_session_status():
         return create_response('Unauthorized', False, 401)
     else:
         # if token exists, validate and return success
-        decoded_token = check_jwt(refresh_token, 'REFRESH')
+        decoded_token = check_jwt(refresh_token, Token.REFRESH.value)
         if decoded_token:
             return create_response()
         else:
@@ -25,7 +26,7 @@ def get_session_status():
 @auth.route('/session', methods=['POST'])
 def new_session():
     body = request.get_json()
-    email, password, social_token = body.get('email'), body.get('password'), body.get('socialToken')
+    email, password, social_token = body.get('email'), body.get('password'), body.get('social_token')
 
     matching_user, authorized = validate_social_login(
         email, social_token) if not password else validate_user(
@@ -35,8 +36,8 @@ def new_session():
     else:
         user = matching_user.copy()
         if password: user.pop('password')
-        access_token = create_jwt(user, 'ACCESS')
-        refresh_token = create_jwt(user, 'REFRESH')
+        access_token = create_jwt(user, Token.ACCESS.value)
+        refresh_token = create_jwt(user, Token.REFRESH.value)
 
         # create and return access and refresh tokens
         payload = user.copy()
@@ -61,10 +62,10 @@ def refresh_session():
         return create_response('Bad request', False, 400)
     else:
         # if token exists, validate and return new access token
-        decoded_token = check_jwt(refresh_token, 'REFRESH')
+        decoded_token = check_jwt(refresh_token, Token.REFRESH.value)
         if decoded_token:
             decoded_token.pop('exp')
-            new_access_token = create_jwt(decoded_token, 'ACCESS')
+            new_access_token = create_jwt(decoded_token, Token.ACCESS.value)
             return create_response({'access_token': new_access_token})
         else:
             return create_response('Invalid refresh token', False, 401)

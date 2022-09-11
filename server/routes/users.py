@@ -9,6 +9,7 @@ from server.models.users import User
 from server.utils.decorators import require_access_token
 from server.utils.helpers.auth import create_jwt, validate_social_signup
 from server.utils.helpers.routes import create_response
+from server.utils.types import Token, AuthMethod
 
 users = Blueprint('users', __name__)
 REFRESH_MAX_AGE = 5184000
@@ -23,14 +24,14 @@ def create_user():
     elif not auth_method:
         return create_response('Bad request', False, 400)
     else:
-        if auth_method == 'CREDENTIALS':
+        if auth_method == AuthMethod.CREDENTIALS.value:
             password = body.get('password')
             salt = bcrypt.gensalt()
             hashed_password = bcrypt.hashpw(password.encode(), salt).hex()
             newUser = User(id=secrets.token_hex(12), email=email,
                            password=hashed_password, auth_method=auth_method)
         else:
-            social_token = body.get('socialToken')
+            social_token = body.get('social_token')
             authorized = validate_social_signup(email, social_token)
 
             if not authorized:
@@ -42,8 +43,8 @@ def create_user():
         user = json.loads(newUser.to_json())
         if 'password' in user:
             user.pop('password')
-        access_token = create_jwt(user, 'ACCESS')
-        refresh_token = create_jwt(user, 'REFRESH')
+        access_token = create_jwt(user, Token.ACCESS.value)
+        refresh_token = create_jwt(user, Token.REFRESH.value)
 
         payload = user.copy()
         payload['access_token'] = access_token
