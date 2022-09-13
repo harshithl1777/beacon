@@ -1,0 +1,176 @@
+@import 'src/scss/typography';
+
+.contributionPageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contributionPageLogo {
+    width: 70px;
+    height: 70px;
+    margin-top: 60px;
+}
+
+.headerTextContainer {
+    margin-top: 40px;
+    width: 800px;
+}
+
+.headerText {
+    @include title-1-bold;
+    font-size: 34px;
+    line-height: 40px;
+    text-align: center;
+    color: var(--color-navy-600);
+}
+
+.headerDescriptionText {
+    @include body-1-regular;
+    color: var(--color-navy-600);
+    font-size: 18px;
+    text-align: center;
+    margin-top: 19px;
+    line-height: 24px;
+}
+
+.searchContainer {
+    width: 61%;
+    margin-top: 50px;
+}
+
+.searchBarWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.searchBarLabel {
+    @include body-1-bold;
+    font-size: 20px;
+    margin: auto;
+    margin-left: 0;
+}
+
+.searchBar {
+    width: 100%;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 15px;
+    padding-top: 16px;
+    padding-left: 28px;
+    padding-bottom: 16px;
+    margin-top: 20px;
+    @include title-3-bold;
+    font-weight: 400;
+    color: var(--color-gray-600);
+
+    &:focus {
+        outline: none;
+        border: 1px solid var(--color-green-600);
+        box-shadow: 0px 0px 0px 4px rgba(50, 211, 202, 0.15);
+    }
+
+    &::placeholder {
+        font-weight: 400;
+        color: var(--color-gray-600);
+    }
+}
+
+.dropdownsContainer {
+    width: 100%;
+    height: fit-content;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 26px;
+}
+
+.autocompleteDropdownContainer {
+    width: 100%;
+    box-shadow: 0px 2px 10px rgba(206, 214, 224, 0.75);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1000;
+    background-color: var(--color-white);
+}
+
+.autocompleteOptionButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    background: transparent;
+    border: none;
+    height: 40px;
+    border-radius: 8px;
+    padding-left: 15px;
+    width: 100%;
+
+    &:hover {
+        background-color: rgba(50, 211, 202, 0.15);
+        cursor: pointer;
+
+        .autocompleteOptionText {
+            color: var(--color-green-600);
+        }
+    }
+}
+
+.autocompleteOptionText {
+    @include header-1-regular;
+    color: var(--color-navy-600);
+}
+
+.contributionTypeContainer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 61%;
+    position: relative;
+    z-index: 100;
+}
+
+.contributionTypeLabel {
+    @include body-1-bold;
+    font-size: 20px;
+    margin: auto;
+    margin-left: 0;
+}
+
+.contributionTypeDropdown {
+    margin: auto;
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100% !important;
+}
+
+.contributionCheckboxContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 61%;
+    margin-top: 40px;
+}
+
+.contributionCheckboxLabel {
+    @include body-1-regular;
+    color: var(--color-navy-600);
+}
+
+.contributionStartButtonWrapper {
+    margin-top: 30px;
+    width: 61%;
+    position: relative;
+    z-index: 10;
+}
+
+.contributionStartButton {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

@@ -2,6 +2,7 @@
 
 .searchContainer {
     width: 81%;
+    position: relative;
 }
 
 .searchBarWrapper {
@@ -44,10 +45,12 @@
 .dropdownsContainer {
     width: 100%;
     height: fit-content;
-    margin-top: 20px;
     display: flex;
     flex-direction: row;
     gap: 26px;
+    position: absolute;
+    top: 140px;
+    z-index: 0;
 }
 
 .locationIcon {
@@ -69,8 +72,11 @@
     box-shadow: 0px 2px 10px rgba(206, 214, 224, 0.75);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    background-color: var(--color-white);
     padding: 10px;
     box-sizing: border-box;
+    position: absolute;
+    z-index: 100;
 }
 
 .autocompleteOptionButton {

@@ -3,13 +3,20 @@ import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-
 
 import { Protected, Gateway } from 'components';
 import { NavigationBar } from 'containers';
-import { SignupPage, LoginPage, DataPage } from 'pages';
+import { SignupPage, LoginPage, DataPage, BeginContributionPage } from 'pages';
 import 'react-toastify/dist/ReactToastify.css';
 import 'app/global.scss';
 
 const InteriorLayout = () => (
     <>
         <NavigationBar />
+        <Outlet />
+    </>
+);
+
+const ContributionLayout = () => (
+    <>
+        <div className='topLine' />
         <Outlet />
     </>
 );
@@ -29,6 +36,9 @@ const App = () => (
                             <DataPage />
                         }
                     />
+                </Route>
+                <Route path='/' element={<ContributionLayout />}>
+                    <Route path='/app/contribute' element={<BeginContributionPage />} />
                 </Route>
                 <Route
                     path='/auth/signup'

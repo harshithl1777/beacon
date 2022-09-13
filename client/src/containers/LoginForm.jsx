@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Input, Icon, Button } from 'components';
 import { useQuery } from 'services/hooks';
@@ -27,7 +27,8 @@ const LoginForm = (props) => {
                 <Icon className={styles.formLogo} name='CMLogo' color='light' size='massive' />
                 <h4 className={styles.formTitle}>Sign in to Beacon</h4>
                 <p className={styles.formDescription}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore.
                 </p>
                 <Input wrapperClass={styles.formInput} value={email} onChange={setEmail}>
                     Email address
