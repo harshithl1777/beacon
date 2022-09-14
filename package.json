@@ -29,6 +29,7 @@
   "_id": "beacon@1.0.0",
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
+    "md5": "^2.3.0",
     "react-mapbox-gl-geocoder": "^1.1.0"
   }
 }

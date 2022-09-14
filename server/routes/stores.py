@@ -36,7 +36,7 @@ def create_store():
             product_map[product.get("name")] = new_product
         new_store.products = product_map
     elif target == Target.LINE.value:
-        line_param = body.get("line")
+        line_param = body.get("")
         line = Line(
             length=line_param.get("length"), speed=line_param.get("speed"), wait_time=line_param.get("wait_time")
         )

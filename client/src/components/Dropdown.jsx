@@ -86,6 +86,7 @@ const Dropdown = (props) => {
 Dropdown.propTypes = {
     placeholder: PropTypes.string,
     options: PropTypes.array,
+    optionDescriptions: PropTypes.array,
     width: PropTypes.number,
     onOptionSelect: PropTypes.func,
 };
@@ -93,6 +94,8 @@ Dropdown.propTypes = {
 Dropdown.defaultProps = {
     placeholder: '',
     options: [],
+    forcedOption: '',
+    forcedDescription: '',
     width: 155,
     onOptionSelect: () => {},
 };

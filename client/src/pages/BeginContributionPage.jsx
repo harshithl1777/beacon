@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Button, Checkbox, Dropdown, Icon } from 'components';
 import { radarAPI } from 'services/helpers';
+import { startContributionForm } from 'redux/actions/contributionsActions';
 import styles from 'pages/BeginContributionPage.module.scss';
 
-const BeginContributionPage = () => {
+const BeginContributionPage = ({ contributions, startContributionForm }) => {
     const [addressState, setAddressState] = useState({ address: '', coordinates: null, changedBy: null });
     const [autocompleteOptions, setAutocompleteOptions] = useState([]);
     const [autocompleteDropdownOpen, setAutocompleteDropdownOpen] = useState(false);
+    const [checkboxChecked, setCheckboxChecked] = useState(false);
+    const [contributionType, setContributionType] = useState(null);
 
     useEffect(() => {
         if (addressState.address === '' && autocompleteDropdownOpen) setAutocompleteDropdownOpen(false);
@@ -53,6 +57,20 @@ const BeginContributionPage = () => {
                 ))}
             </div>
         );
+    };
+
+    const contributionTypeSelected = (option) => {
+        switch (option) {
+            case 'Product Stock':
+                setContributionType('PRODUCTS');
+                break;
+            case 'Lines':
+                setContributionType('LINE');
+                break;
+            default:
+                setContributionType('REVIEWS');
+                break;
+        }
     };
 
     return (
@@ -103,20 +121,32 @@ const BeginContributionPage = () => {
                         'Provide data about any lines or wait times',
                         'Give your own ratings and a review of the store',
                     ]}
+                    onOptionSelect={contributionTypeSelected}
                     className={styles.contributionTypeDropdown}
                 />
             </div>
             <div className={styles.contributionCheckboxContainer}>
-                <Checkbox className={styles.contributionCheckbox} />
+                <Checkbox
+                    className={styles.contributionCheckbox}
+                    onSelect={() => setCheckboxChecked(true)}
+                    onDeselect={() => setCheckboxChecked(false)}
+                />
                 <label className={styles.contributionCheckboxLabel}>
                     By filling this form, I allow Beacon to provide this data to other shoppers.
                 </label>
             </div>
-            <Button className={styles.contributionStartButton} wrapperClass={styles.contributionStartButtonWrapper}>
+            <Button
+                disabled={!(addressState.coordinates && checkboxChecked && contributionType)}
+                className={styles.contributionStartButton}
+                wrapperClass={styles.contributionStartButtonWrapper}
+                onClick={() => startContributionForm(contributionType, addressState.address, addressState.coordinates)}
+            >
                 Start your contribution
             </Button>
         </div>
     );
 };
 
-export default BeginContributionPage;
+const mapStateToProps = ({ contributions }) => ({ contributions });
+
+export default connect(mapStateToProps, { startContributionForm })(BeginContributionPage);

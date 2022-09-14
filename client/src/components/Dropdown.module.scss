@@ -33,6 +33,7 @@
 
     .dropdownTextPlaceholder {
         @include header-1-medium;
+        color: var(--color-navy-600);
     }
 }
 
