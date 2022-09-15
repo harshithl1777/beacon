@@ -2,7 +2,7 @@ import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 
 import { Protected, Gateway } from 'components';
-import { NavigationBar, LineForm } from 'containers';
+import { NavigationBar, LineForm, ProductsForm } from 'containers';
 import { SignupPage, LoginPage, DataPage, BeginContributionPage } from 'pages';
 import 'react-toastify/dist/ReactToastify.css';
 import 'app/global.scss';
@@ -40,6 +40,7 @@ const App = () => (
                 <Route path='/' element={<ContributionLayout />}>
                     <Route path='/app/contribute' element={<BeginContributionPage />} />
                     <Route path='/app/contribute/lines' element={<LineForm />} />
+                    <Route path='/app/contribute/products' element={<ProductsForm />} />
                 </Route>
                 <Route
                     path='/auth/signup'

@@ -3,6 +3,7 @@ export { default as SignupForm } from 'containers/SignupForm';
 export { default as NavigationBar } from 'containers/NavigationBar';
 export { default as SearchContainer } from 'containers/SearchContainer';
 export { default as LineForm } from 'containers/LineForm';
+export { default as ProductsForm } from 'containers/ProductsForm';
 
 const defaultImportError = () => {
     console.error(

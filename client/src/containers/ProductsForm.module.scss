@@ -1,0 +1,107 @@
+@import 'src/scss/typography';
+
+.productsFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productsFormLogo {
+    width: 70px;
+    height: 70px;
+    margin-top: 60px;
+}
+
+.headerTextContainer {
+    margin-top: 40px;
+    width: 800px;
+}
+
+.headerText {
+    @include title-1-bold;
+    font-size: 34px;
+    line-height: 40px;
+    text-align: center;
+    color: var(--color-navy-600);
+}
+
+.headerDescriptionText {
+    @include body-1-regular;
+    color: var(--color-navy-600);
+    font-size: 18px;
+    text-align: center;
+    margin-top: 19px;
+    line-height: 24px;
+}
+
+.dropdownsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 61%;
+    margin-top: 40px;
+}
+
+.dropdownsHeaderContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.dropdownsHeaderTextContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.addDropdownRowButtonWrapper {
+    margin: auto;
+    margin-right: 0;
+}
+
+.addDropdownRowButton {
+    font-size: 16px;
+}
+
+.dropdownsHeaderLabel {
+    @include body-1-bold;
+    font-size: 18px;
+    margin: auto;
+    margin-left: 0;
+}
+
+.dropdownsDescription {
+    @include body-1-regular;
+    margin-top: 4px;
+    color: var(--color-gray-600);
+}
+
+.dropdownRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.productDropdown {
+    width: 30% !important;
+}
+
+.productDropdownButton {
+    width: 100%;
+}
+
+.productsFormSubmitButtonWrapper {
+    margin-top: 40px;
+    width: 61%;
+    position: relative;
+    z-index: 10;
+}
+
+.productsFormSubmitButton {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.dropdownRow {
+    width: 100%;
+}

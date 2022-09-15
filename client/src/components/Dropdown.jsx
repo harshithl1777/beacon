@@ -5,7 +5,7 @@ import { Icon } from 'components';
 import styles from 'components/Dropdown.module.scss';
 
 const Dropdown = (props) => {
-    const { placeholder, options, optionDescriptions, width, className, onOptionSelect } = props;
+    const { placeholder, options, optionDescriptions, width, className, buttonClassName, onOptionSelect } = props;
     const [dropdownActive, setDropdownActive] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
     const [selectedDescription, setSelectedDescription] = useState(null);
@@ -61,7 +61,7 @@ const Dropdown = (props) => {
                 className={classnames(
                     styles.dropdownButtonContainer,
                     optionDescriptions && selectedDescription && styles.dropdownExpandedButtonContainer,
-                    className
+                    buttonClassName || className
                 )}
                 onClick={() => setDropdownActive(true)}
             >
