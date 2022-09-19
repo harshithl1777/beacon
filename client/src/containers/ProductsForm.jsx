@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
 import { Dropdown, Icon, Button } from 'components';
+import { submitProductsData } from 'redux/actions/contributionsActions';
 import styles from 'containers/ProductsForm.module.scss';
 
-const ProductsForm = () => {
+const ProductsForm = ({ submitProductsData }) => {
     const [productData, setProductData] = useState(Array(3).fill({ name: '', stock: '', demand: '' }));
 
     const productOptions = [
@@ -48,6 +50,13 @@ const ProductsForm = () => {
         setProductData(stateCopy);
     };
 
+    const checkAllProductsData = () => {
+        const incompleteProducts = productData.filter(
+            (product) => product.name === '' || product.demand === '' || product.stock === ''
+        );
+        return incompleteProducts.length > 0;
+    };
+
     const renderDropdownRows = () => {
         return productData.map((row, index) => (
             <div className={styles.dropdownRow} key={index}>
@@ -84,7 +93,7 @@ const ProductsForm = () => {
 
     return (
         <div className={styles.productsFormContainer}>
-            <Icon name='CMLogo' size='large' color='light' className={styles.productsFormLogo} draggable='false' />
+            <Icon name='CMLogo' size='large' color='dark' className={styles.productsFormLogo} draggable='false' />
             <div className={styles.headerTextContainer}>
                 <h3 className={styles.headerText}>Products Data</h3>
                 <p className={styles.headerDescriptionText}>
@@ -115,9 +124,10 @@ const ProductsForm = () => {
                 {renderDropdownRows()}
             </div>
             <Button
-                // disabled={!(lineLength && lineSpeed && lineWaitTime)}
+                disabled={checkAllProductsData()}
                 className={styles.productsFormSubmitButton}
                 wrapperClass={styles.productsFormSubmitButtonWrapper}
+                onClick={() => submitProductsData(productData)}
             >
                 Finish your contribution
             </Button>
@@ -125,4 +135,6 @@ const ProductsForm = () => {
     );
 };
 
-export default ProductsForm;
+const mapStateToProps = ({ contributions }) => ({ contributions });
+
+export default connect(mapStateToProps, { submitProductsData })(ProductsForm);

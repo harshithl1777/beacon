@@ -1,0 +1,126 @@
+@import 'src/scss/typography';
+
+.reviewFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviewFormLogo {
+    width: 70px;
+    height: 70px;
+    margin-top: 60px;
+}
+
+.headerTextContainer {
+    margin-top: 40px;
+    width: 800px;
+}
+
+.headerText {
+    @include title-1-bold;
+    font-size: 34px;
+    line-height: 40px;
+    text-align: center;
+    color: var(--color-navy-600);
+}
+
+.headerDescriptionText {
+    @include body-1-regular;
+    color: var(--color-navy-600);
+    font-size: 18px;
+    text-align: center;
+    margin-top: 19px;
+    line-height: 24px;
+}
+
+.dropdownsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 61%;
+    margin-top: 40px;
+}
+
+.dropdownRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.rowDropdown {
+    width: 30% !important;
+}
+
+.rowDropdownButton {
+    width: 100%;
+}
+
+.reviewRatingsDropdownLabel {
+    @include body-1-bold;
+    font-size: 18px;
+    margin: auto;
+    margin-left: 0;
+}
+
+.lineLengthDropdown {
+    margin-top: 10px;
+    width: 100% !important;
+}
+
+.reviewFormSubmitButton {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.commentsContainer {
+    width: 61%;
+    margin-top: 30px;
+}
+
+.commentsLabel {
+    @include body-1-bold;
+    font-size: 18px;
+    margin: auto;
+    margin-left: 0;
+}
+
+.commentsInput {
+    width: 100%;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 15px;
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-bottom: 16px;
+    box-sizing: border-box;
+    @include body-1-regular;
+    font-weight: 400;
+    color: var(--color-navy-600);
+    height: 150px;
+    margin-top: 24px;
+    margin-right: -16px;
+    resize: none;
+
+    &:focus {
+        outline: none;
+        border: 1px solid var(--color-green-600);
+        box-shadow: 0px 0px 0px 4px rgba(50, 211, 202, 0.15);
+    }
+
+    &::placeholder {
+        font-weight: 400;
+        color: var(--color-gray-600);
+    }
+}
+
+.reviewFormSubmitButtonWrapper {
+    margin-top: 40px;
+    width: 61%;
+    position: relative;
+    z-index: 10;
+}
+
+.reviewFormSubmitButton {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

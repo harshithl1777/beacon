@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
 import { Dropdown, Icon, Button } from 'components';
+import { submitLineData } from 'redux/actions/contributionsActions';
 import styles from 'containers/LineForm.module.scss';
 
-const LineForm = () => {
+const LineForm = ({ submitLineData }) => {
     const [lineLength, setLineLength] = useState(null);
     const [lineSpeed, setLineSpeed] = useState(null);
     const [lineWaitTime, setLineWaitTime] = useState(null);
@@ -26,7 +28,7 @@ const LineForm = () => {
 
     return (
         <div className={styles.lineFormContainer}>
-            <Icon name='CMLogo' size='large' color='light' className={styles.lineFormLogo} draggable='false' />
+            <Icon name='CMLogo' size='large' color='dark' className={styles.lineFormLogo} draggable='false' />
             <div className={styles.headerTextContainer}>
                 <h3 className={styles.headerText}>Lines Data</h3>
                 <p className={styles.headerDescriptionText}>
@@ -82,6 +84,7 @@ const LineForm = () => {
                 disabled={!(lineLength && lineSpeed && lineWaitTime)}
                 className={styles.lineFormSubmitButton}
                 wrapperClass={styles.lineFormSubmitButtonWrapper}
+                onClick={() => submitLineData({ lineLength, lineSpeed, lineWaitTime })}
             >
                 Finish your contribution
             </Button>
@@ -89,4 +92,6 @@ const LineForm = () => {
     );
 };
 
-export default LineForm;
+const mapStateToProps = ({ contributions }) => ({ contributions });
+
+export default connect(mapStateToProps, { submitLineData })(LineForm);

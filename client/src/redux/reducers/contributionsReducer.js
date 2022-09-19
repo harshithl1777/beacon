@@ -1,4 +1,4 @@
-import { START_CONTRIBUTION } from 'redux/actions/types';
+import { START_CONTRIBUTION, SUBMIT_PRODUCTS_DATA, SUBMIT_LINE_DATA, SUBMIT_REVIEW_DATA } from 'redux/actions/types';
 
 const INITIAL_STATE = {
     target: null,
@@ -19,6 +19,31 @@ const contributionsReducer = (state = INITIAL_STATE, { type, payload }) => {
                 storeID: payload.storeID,
                 ...contributionTypeState,
             };
+        case SUBMIT_PRODUCTS_DATA:
+            return {
+                ...state,
+                products: payload.productData,
+            };
+        case SUBMIT_LINE_DATA:
+            return {
+                ...state,
+                line: {
+                    length: payload.lineLength,
+                    speed: payload.lineSpeed,
+                    waitTime: payload.lineWaitTime,
+                },
+            };
+        case SUBMIT_REVIEW_DATA:
+            console.log(payload);
+            return {
+                ...state,
+                reviews: {
+                    overall: payload.ratings.overall,
+                    cleanliness: payload.ratings.cleanliness,
+                    customer_service: payload.ratings.customerService,
+                    comments: payload.comments,
+                },
+            };
         default:
             return state;
     }
@@ -27,11 +52,7 @@ const contributionsReducer = (state = INITIAL_STATE, { type, payload }) => {
 const scaffoldContributionStateByType = (target) => {
     if (target === 'PRODUCTS') {
         return {
-            products: {
-                name: null,
-                stock: null,
-                demand: null,
-            },
+            products: [],
         };
     } else if (target === 'LINE') {
         return {

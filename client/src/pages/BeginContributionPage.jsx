@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import { Button, Checkbox, Dropdown, Icon } from 'components';
 import { radarAPI } from 'services/helpers';
 import { startContributionForm } from 'redux/actions/contributionsActions';
@@ -11,6 +12,12 @@ const BeginContributionPage = ({ contributions, startContributionForm }) => {
     const [autocompleteDropdownOpen, setAutocompleteDropdownOpen] = useState(false);
     const [checkboxChecked, setCheckboxChecked] = useState(false);
     const [contributionType, setContributionType] = useState(null);
+
+    const contributionURLMappings = {
+        PRODUCTS: '/app/contribute/products',
+        LINE: '/app/contribute/lines',
+        REVIEWS: '/app/contribute/reviews',
+    };
 
     useEffect(() => {
         if (addressState.address === '' && autocompleteDropdownOpen) setAutocompleteDropdownOpen(false);
@@ -73,7 +80,9 @@ const BeginContributionPage = ({ contributions, startContributionForm }) => {
         }
     };
 
-    return (
+    return contributions.storeID ? (
+        <Navigate to={contributionURLMappings[contributions.target]} />
+    ) : (
         <div className={styles.contributionPageContainer}>
             <Icon name='CMLogo' size='large' color='light' className={styles.contributionPageLogo} draggable='false' />
             <div className={styles.headerTextContainer}>
