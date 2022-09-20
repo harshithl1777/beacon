@@ -4,7 +4,7 @@ import { Dropdown, Icon, Button } from 'components';
 import { submitReviewData } from 'redux/actions/contributionsActions';
 import styles from 'containers/ReviewForm.module.scss';
 
-const ReviewForm = ({ submitReviewData }) => {
+const ReviewForm = ({ contributions, submitReviewData }) => {
     const [ratings, setRatings] = useState({ overall: null, cleanliness: null, customerService: null });
     const [comments, setComments] = useState('');
 
@@ -67,7 +67,9 @@ const ReviewForm = ({ submitReviewData }) => {
                 disabled={!(ratings.cleanliness && ratings.customerService && ratings.overall)}
                 className={styles.reviewFormSubmitButton}
                 wrapperClass={styles.reviewFormSubmitButtonWrapper}
-                onClick={() => submitReviewData(ratings, comments)}
+                onClick={() => {
+                    submitReviewData(ratings, comments);
+                }}
             >
                 Finish your contribution
             </Button>

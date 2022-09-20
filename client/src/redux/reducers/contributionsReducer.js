@@ -1,4 +1,10 @@
-import { START_CONTRIBUTION, SUBMIT_PRODUCTS_DATA, SUBMIT_LINE_DATA, SUBMIT_REVIEW_DATA } from 'redux/actions/types';
+import {
+    START_CONTRIBUTION,
+    SUBMIT_PRODUCTS_DATA,
+    SUBMIT_LINE_DATA,
+    SUBMIT_REVIEW_DATA,
+    SUBMIT_CONTRIBUTION,
+} from 'redux/actions/types';
 
 const INITIAL_STATE = {
     target: null,
@@ -30,11 +36,10 @@ const contributionsReducer = (state = INITIAL_STATE, { type, payload }) => {
                 line: {
                     length: payload.lineLength,
                     speed: payload.lineSpeed,
-                    waitTime: payload.lineWaitTime,
+                    wait_time: payload.lineWaitTime,
                 },
             };
         case SUBMIT_REVIEW_DATA:
-            console.log(payload);
             return {
                 ...state,
                 reviews: {
@@ -44,6 +49,8 @@ const contributionsReducer = (state = INITIAL_STATE, { type, payload }) => {
                     comments: payload.comments,
                 },
             };
+        case SUBMIT_CONTRIBUTION:
+            return INITIAL_STATE;
         default:
             return state;
     }
@@ -59,7 +66,7 @@ const scaffoldContributionStateByType = (target) => {
             line: {
                 length: null,
                 speed: null,
-                waitTime: null,
+                wait_time: null,
             },
         };
     } else {

@@ -4,7 +4,7 @@ import { Dropdown, Icon, Button } from 'components';
 import { submitLineData } from 'redux/actions/contributionsActions';
 import styles from 'containers/LineForm.module.scss';
 
-const LineForm = ({ submitLineData }) => {
+const LineForm = ({ contributions, submitLineData }) => {
     const [lineLength, setLineLength] = useState(null);
     const [lineSpeed, setLineSpeed] = useState(null);
     const [lineWaitTime, setLineWaitTime] = useState(null);
@@ -84,7 +84,9 @@ const LineForm = ({ submitLineData }) => {
                 disabled={!(lineLength && lineSpeed && lineWaitTime)}
                 className={styles.lineFormSubmitButton}
                 wrapperClass={styles.lineFormSubmitButtonWrapper}
-                onClick={() => submitLineData({ lineLength, lineSpeed, lineWaitTime })}
+                onClick={() => {
+                    submitLineData({ lineLength, lineSpeed, lineWaitTime });
+                }}
             >
                 Finish your contribution
             </Button>

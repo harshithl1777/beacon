@@ -4,7 +4,7 @@ import { Dropdown, Icon, Button } from 'components';
 import { submitProductsData } from 'redux/actions/contributionsActions';
 import styles from 'containers/ProductsForm.module.scss';
 
-const ProductsForm = ({ submitProductsData }) => {
+const ProductsForm = ({ contributions, submitProductsData }) => {
     const [productData, setProductData] = useState(Array(3).fill({ name: '', stock: '', demand: '' }));
 
     const productOptions = [
@@ -127,7 +127,9 @@ const ProductsForm = ({ submitProductsData }) => {
                 disabled={checkAllProductsData()}
                 className={styles.productsFormSubmitButton}
                 wrapperClass={styles.productsFormSubmitButtonWrapper}
-                onClick={() => submitProductsData(productData)}
+                onClick={() => {
+                    submitProductsData(productData);
+                }}
             >
                 Finish your contribution
             </Button>
