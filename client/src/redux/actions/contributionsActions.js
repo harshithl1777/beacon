@@ -12,9 +12,11 @@ import { useStoreID } from 'services/hooks';
 export const startContributionForm = (target, address, coordinates) => (dispatch) => {
     const storeID = useStoreID(coordinates);
     const payload = {
+        name: address.split(',')[0],
         target,
         address,
         storeID,
+        coordinates,
     };
     dispatch({ type: START_CONTRIBUTION, payload });
 };
@@ -54,15 +56,15 @@ export const submitContribution = (contributions) => async (dispatch) => {
     const storeExists = await storesAPI.get(contributions.storeID);
     let confirmationTypeSuccess = true;
     if (storeExists.success) {
-        const { success } = storesAPI.patch(contributions.storeID, contributions);
+        const { success } = await storesAPI.patch(contributions.storeID, contributions);
         confirmationTypeSuccess = success;
     } else {
-        const { success } = storesAPI.post(contributions);
+        const { success } = await storesAPI.post(contributions);
         confirmationTypeSuccess = success;
     }
     if (confirmationTypeSuccess)
-        showToast.success('Your contribution was successful!', 'Thank you for supporting the community behind Beacon.');
-    else showToast.error('Something went wrong', 'Your contribution was not successful. Try again later.');
+        showToast.success('Your contribution was successful!', 'Thank you for supporting Beacon.');
+    else showToast.error('Something went wrong..', 'Your contribution was unsuccessful. Please try again later.');
     dispatch({ type: SUBMIT_CONTRIBUTION });
     return true;
 };

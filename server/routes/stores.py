@@ -30,18 +30,18 @@ def create_store():
     if target == Target.PRODUCTS.value:
         products_param = body.get("products")
         product_map = {}
-        for product in products_param.values():
+        for product in products_param:
             new_product = Product(name=product.get("name"), stock=product.get("stock"), demand=product.get("demand"))
             product_map[product.get("name")] = new_product
         new_store.products = product_map
     elif target == Target.LINE.value:
-        line_param = body.get("")
+        line_param = body.get("line")
         line = Line(
             length=line_param.get("length"), speed=line_param.get("speed"), wait_time=line_param.get("wait_time")
         )
         new_store.line = line
     else:
-        review_param = body.get("review")
+        review_param = body.get("reviews")
         review = Review(
             overall=review_param.get("overall"),
             cleanliness=review_param.get("cleanliness"),
@@ -84,7 +84,7 @@ def update_store_by_id(store_id: str):
         store = Store.objects.get(id=store_id)
         if target == Target.PRODUCTS.value:
             products_param = body.get("products")
-            for product in products_param.values():
+            for product in products_param:
                 new_product = Product(
                     name=product.get("name"), stock=product.get("stock"), demand=product.get("demand")
                 )
@@ -97,7 +97,7 @@ def update_store_by_id(store_id: str):
             )
             Store.objects(id=store_id).update_one(set__line=line)
         else:
-            review_param = body.get("review")
+            review_param = body.get("reviews")
             review = Review(
                 overall=review_param.get("overall"),
                 cleanliness=review_param.get("cleanliness"),

@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-
 
 import { Protected, Gateway } from 'components';
 import { NavigationBar, LineForm, ProductsForm, ReviewForm } from 'containers';
-import { SignupPage, LoginPage, DataPage, BeginContributionPage } from 'pages';
+import { SignupPage, LoginPage, DataPage, BeginContributionPage, SubmitContributionPage } from 'pages';
 import 'react-toastify/dist/ReactToastify.css';
 import 'app/global.scss';
+import { showToast } from 'services/helpers';
 
 const InteriorLayout = () => (
     <>
@@ -42,6 +43,7 @@ const App = () => (
                     <Route path='/app/contribute/lines' element={<LineForm />} />
                     <Route path='/app/contribute/products' element={<ProductsForm />} />
                     <Route path='/app/contribute/reviews' element={<ReviewForm />} />
+                    <Route path='/app/contribute/submit' element={<SubmitContributionPage />} />
                 </Route>
                 <Route
                     path='/auth/signup'

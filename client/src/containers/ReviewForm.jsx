@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Dropdown, Icon, Button } from 'components';
 import { submitReviewData } from 'redux/actions/contributionsActions';
 import styles from 'containers/ReviewForm.module.scss';
@@ -7,8 +8,7 @@ import styles from 'containers/ReviewForm.module.scss';
 const ReviewForm = ({ contributions, submitReviewData }) => {
     const [ratings, setRatings] = useState({ overall: null, cleanliness: null, customerService: null });
     const [comments, setComments] = useState('');
-
-    console.log(ratings, comments);
+    const navigate = useNavigate();
 
     const ratingsOptions = ['5 stars', '4 stars', '3 stars', '2 stars', '1 star'];
 
@@ -69,6 +69,7 @@ const ReviewForm = ({ contributions, submitReviewData }) => {
                 wrapperClass={styles.reviewFormSubmitButtonWrapper}
                 onClick={() => {
                     submitReviewData(ratings, comments);
+                    navigate('/app/contribute/submit');
                 }}
             >
                 Finish your contribution

@@ -1,0 +1,30 @@
+@import 'src/scss/typography';
+
+.spinnerContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spinnerCircle {
+    width: 60px !important;
+    height: 60px !important;
+    border: 10px solid var(--color-green-200) !important;
+    border-top-color: var(--color-green-600) !important;
+}
+
+.spinnerSubtitle {
+    @include title-1-bold;
+    color: var(--color-navy-600);
+    margin-top: 20px;
+}

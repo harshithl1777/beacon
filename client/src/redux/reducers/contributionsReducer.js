@@ -7,9 +7,11 @@ import {
 } from 'redux/actions/types';
 
 const INITIAL_STATE = {
+    storeID: null,
+    name: null,
     target: null,
     address: null,
-    storeID: null,
+    coordinates: null,
     products: null,
     line: null,
     reviews: null,
@@ -18,11 +20,13 @@ const INITIAL_STATE = {
 const contributionsReducer = (state = INITIAL_STATE, { type, payload }) => {
     switch (type) {
         case START_CONTRIBUTION:
-            const contributionTypeState = scaffoldContributionStateByType(payload.target);
+            const contributionTypeState = scaffoldContributionStateByTarget(payload.target);
             return {
+                storeID: payload.storeID,
+                name: payload.name,
                 target: payload.target,
                 address: payload.address,
-                storeID: payload.storeID,
+                coordinates: payload.coordinates,
                 ...contributionTypeState,
             };
         case SUBMIT_PRODUCTS_DATA:
@@ -56,7 +60,7 @@ const contributionsReducer = (state = INITIAL_STATE, { type, payload }) => {
     }
 };
 
-const scaffoldContributionStateByType = (target) => {
+const scaffoldContributionStateByTarget = (target) => {
     if (target === 'PRODUCTS') {
         return {
             products: [],

@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Dropdown, Icon, Button } from 'components';
 import { submitProductsData } from 'redux/actions/contributionsActions';
 import styles from 'containers/ProductsForm.module.scss';
 
 const ProductsForm = ({ contributions, submitProductsData }) => {
     const [productData, setProductData] = useState(Array(3).fill({ name: '', stock: '', demand: '' }));
+    const navigate = useNavigate();
 
     const productOptions = [
         'Eggs',
@@ -129,6 +131,7 @@ const ProductsForm = ({ contributions, submitProductsData }) => {
                 wrapperClass={styles.productsFormSubmitButtonWrapper}
                 onClick={() => {
                     submitProductsData(productData);
+                    navigate('/app/contribute/submit');
                 }}
             >
                 Finish your contribution

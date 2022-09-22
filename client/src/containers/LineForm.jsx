@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Dropdown, Icon, Button } from 'components';
 import { submitLineData } from 'redux/actions/contributionsActions';
 import styles from 'containers/LineForm.module.scss';
@@ -8,6 +9,7 @@ const LineForm = ({ contributions, submitLineData }) => {
     const [lineLength, setLineLength] = useState(null);
     const [lineSpeed, setLineSpeed] = useState(null);
     const [lineWaitTime, setLineWaitTime] = useState(null);
+    const navigate = useNavigate();
 
     const dropdownValueMappings = {
         'No line was present': 'NO_LINE',
@@ -86,6 +88,7 @@ const LineForm = ({ contributions, submitLineData }) => {
                 wrapperClass={styles.lineFormSubmitButtonWrapper}
                 onClick={() => {
                     submitLineData({ lineLength, lineSpeed, lineWaitTime });
+                    navigate('/app/contribute/submit');
                 }}
             >
                 Finish your contribution
