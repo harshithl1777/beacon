@@ -32,7 +32,7 @@ def new_session():
         validate_social_login(email, social_token) if not password else validate_user(email, password)
     )
     if not authorized:
-        return create_response("Invalid username or password", False, 401)
+        return create_response("Invalid email, password or social token", False, 401)
     else:
         user = matching_user.copy()
         if password:
