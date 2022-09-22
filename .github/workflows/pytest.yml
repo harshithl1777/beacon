@@ -41,5 +41,8 @@ jobs:
               env:
                   ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
                   REFRESH_TOKEN_SECRET: ${{ secrets.REFRESH_TOKEN_SECRET }}
+                  DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+                  DATABASE_URI: ${{ secrets.DATABASE_URI }}
+                  PYTHON_ENV: test
               run: |
                   npm run test
