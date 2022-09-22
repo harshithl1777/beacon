@@ -21,17 +21,6 @@ def test_login_invalid_credentials():
     assert refresh_cookie.get("refresh_token") is None
 
 
-def test_login_invalid_social_token():
-    random_token_key = codecs.encode(os.urandom(64), "hex").decode()
-    random_token = jwt.encode({}, random_token_key)
-    request_body = {"email": "invalid_email", "token": random_token}
-    code, response, refresh_cookie = login(request_body)
-    body = response.get_json()
-    assert code == 401
-    assert body.get("payload") == "Invalid email, password or social token"
-    assert refresh_cookie.get("refresh_token") is None
-
-
 def test_login_success():
     request_body = {"email": "beacontestuser1@gmail.com", "password": "a2aba0aaf5f9e4622a56bbccc2d73189"}
     code, response, refresh_cookie = login(request_body)
