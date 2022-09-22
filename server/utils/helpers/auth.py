@@ -32,9 +32,7 @@ def check_jwt(token: str, type: str) -> Union[dict, bool]:
 def validate_user(email: str, password: str) -> tuple[dict, bool]:
     try:
         matching_user = json.loads(User.objects.get(email=email).to_json())
-        authorized = bcrypt.checkpw(
-            password.encode(), bytes.fromhex(matching_user.get("password"))
-        )
+        authorized = bcrypt.checkpw(password.encode(), bytes.fromhex(matching_user.get("password")))
         return matching_user, authorized
     except DoesNotExist:
         return {}, False

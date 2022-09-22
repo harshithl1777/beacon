@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import App from 'app/App';
 import rootReducer from 'redux/reducers';
@@ -16,7 +16,14 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const enhancers = compose(
+    applyMiddleware(thunk),
+    process.env.REACT_APP_ENV === 'DEVELOPMENT' &&
+        window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+const store = createStore(rootReducer, enhancers);
 
 // Redux store initialization and app rendering
 const container = document.getElementById('root');

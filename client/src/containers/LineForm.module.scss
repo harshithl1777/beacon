@@ -1,0 +1,110 @@
+@import 'src/scss/typography';
+
+.lineFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lineFormLogo {
+    width: 70px;
+    height: 70px;
+    margin-top: 60px;
+}
+
+.headerTextContainer {
+    margin-top: 40px;
+    width: 800px;
+}
+
+.headerText {
+    @include title-1-bold;
+    font-size: 34px;
+    line-height: 40px;
+    text-align: center;
+    color: var(--color-navy-600);
+}
+
+.headerDescriptionText {
+    @include body-1-regular;
+    color: var(--color-navy-600);
+    font-size: 18px;
+    text-align: center;
+    margin-top: 19px;
+    line-height: 24px;
+}
+
+.dropdownsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 61%;
+    margin-top: 40px;
+}
+
+.lineLengthDropdownLabel {
+    @include body-1-bold;
+    font-size: 18px;
+    margin: auto;
+    margin-left: 0;
+}
+
+.lineLengthDropdown {
+    margin-top: 10px;
+    width: 100% !important;
+}
+
+.bottomDropdownsContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+.lineSpeedDropdownContainer {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.lineSpeedDropdownLabel {
+    @include body-1-bold;
+    font-size: 18px;
+    margin: auto;
+    margin-left: 0;
+}
+
+.lineSpeedDropdown {
+    margin-top: 10px;
+    width: 100% !important;
+}
+
+.lineWaitTimeDropdownContainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-right: 0;
+    width: 50%;
+}
+
+.lineWaitTimeDropdownLabel {
+    @include body-1-bold;
+    font-size: 18px;
+    margin: auto;
+    margin-left: 0;
+}
+
+.lineWaitTimeDropdown {
+    margin-top: 10px;
+    width: 100% !important;
+}
+
+.lineFormSubmitButtonWrapper {
+    margin-top: 40px;
+    width: 61%;
+    position: relative;
+    z-index: 10;
+}
+
+.lineFormSubmitButton {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

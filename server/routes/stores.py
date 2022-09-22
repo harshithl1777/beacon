@@ -17,7 +17,6 @@ stores = Blueprint("stores", __name__)
 
 
 @stores.route("/", methods=["POST"])
-@require_access_token
 def create_store():
     body = request.get_json()
     name, address, target = (
@@ -31,7 +30,7 @@ def create_store():
     if target == Target.PRODUCTS.value:
         products_param = body.get("products")
         product_map = {}
-        for product in products_param.values():
+        for product in products_param:
             new_product = Product(name=product.get("name"), stock=product.get("stock"), demand=product.get("demand"))
             product_map[product.get("name")] = new_product
         new_store.products = product_map
@@ -42,7 +41,7 @@ def create_store():
         )
         new_store.line = line
     else:
-        review_param = body.get("review")
+        review_param = body.get("reviews")
         review = Review(
             overall=review_param.get("overall"),
             cleanliness=review_param.get("cleanliness"),
@@ -56,11 +55,8 @@ def create_store():
 
 
 @stores.route("/<string:store_id>", methods=["GET"])
-@require_access_token
 def get_store_by_location(store_id: str):
     try:
-        body = request.get_json()
-        address = body.get("address")
         store = Store.objects.get(id=store_id).to_json()
         return create_response(payload=json.loads(store))
     except DoesNotExist:
@@ -81,7 +77,6 @@ def get_nearest_stores():
 
 
 @stores.route("/<string:store_id>", methods=["PATCH"])
-@require_access_token
 def update_store_by_id(store_id: str):
     body = request.get_json()
     target = body.get("target")
@@ -89,7 +84,7 @@ def update_store_by_id(store_id: str):
         store = Store.objects.get(id=store_id)
         if target == Target.PRODUCTS.value:
             products_param = body.get("products")
-            for product in products_param.values():
+            for product in products_param:
                 new_product = Product(
                     name=product.get("name"), stock=product.get("stock"), demand=product.get("demand")
                 )
@@ -102,7 +97,7 @@ def update_store_by_id(store_id: str):
             )
             Store.objects(id=store_id).update_one(set__line=line)
         else:
-            review_param = body.get("review")
+            review_param = body.get("reviews")
             review = Review(
                 overall=review_param.get("overall"),
                 cleanliness=review_param.get("cleanliness"),

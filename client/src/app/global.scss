@@ -1,9 +1,15 @@
 @import 'src/scss/core';
 
 * {
-	margin: 0;
+    margin: 0;
 }
 
 a {
-	text-decoration: none;
+    text-decoration: none;
+}
+
+.topLine {
+    width: 100%;
+    height: 10px;
+    background-color: var(--color-green-600);
 }

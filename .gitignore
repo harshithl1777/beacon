@@ -25,7 +25,7 @@ yarn-error.log*
 
 /venv
 /server/config/.env.development
-/server/config/.env.test.local
+/server/config/.env.test
 /client/build
 /client/ssl
 /server/config/server.crt

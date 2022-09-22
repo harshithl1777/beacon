@@ -81,33 +81,6 @@ const SearchContainer = () => {
 
     return (
         <div className={styles.searchContainer}>
-            <div className={styles.searchResultsWrapper}>
-                <div className={styles.searchBarWrapper}>
-                    <Icon className={styles.searchIcon} name='IoSearch' color='var(--color-gray-600)' />
-                    <input
-                        className={styles.searchBar}
-                        style={{
-                            borderBottomRightRadius: autocompleteDropdownOpen ? '0px' : '15px',
-                            borderBottomLeftRadius: autocompleteDropdownOpen ? '0px' : '15px',
-                        }}
-                        value={addressState.address}
-                        onChange={(event) =>
-                            setAddressState({ ...addressState, address: event.target.value, changedBy: 'USER_INPUT' })
-                        }
-                        placeholder='Enter an address or point of interest...'
-                    />
-                    <div className={styles.locationIcon} onClick={getGeolocation}>
-                        <Tooltip message='Find your location'>
-                            <Icon size={30} name='IoLocationSharp' color='var(--color-gray-400)' />
-                        </Tooltip>
-                    </div>
-                    <Button wrapperClass={styles.searchButtonWrapper}>Search</Button>
-                </div>
-                {addressState.address &&
-                    autocompleteOptions.length !== 0 &&
-                    autocompleteDropdownOpen &&
-                    renderAutocompleteOptions()}
-            </div>
             <div className={styles.dropdownsContainer}>
                 <MultiSelectDropdown
                     options={['Oranges', 'Apples', 'Milk', 'Chicken']}
@@ -148,6 +121,33 @@ const SearchContainer = () => {
                     options={['5 stars', '4 stars', '3 stars', '2 stars', '1 star', 'Any rating']}
                     placeholder='Ratings'
                 />
+            </div>
+            <div className={styles.searchResultsWrapper}>
+                <div className={styles.searchBarWrapper}>
+                    <Icon className={styles.searchIcon} name='IoSearch' color='var(--color-gray-600)' />
+                    <input
+                        className={styles.searchBar}
+                        style={{
+                            borderBottomRightRadius: autocompleteDropdownOpen ? '0px' : '15px',
+                            borderBottomLeftRadius: autocompleteDropdownOpen ? '0px' : '15px',
+                        }}
+                        value={addressState.address}
+                        onChange={(event) =>
+                            setAddressState({ ...addressState, address: event.target.value, changedBy: 'USER_INPUT' })
+                        }
+                        placeholder='Enter an address or point of interest...'
+                    />
+                    <div className={styles.locationIcon} onClick={getGeolocation}>
+                        <Tooltip message='Find your location'>
+                            <Icon size={30} name='IoLocationSharp' color='var(--color-gray-400)' />
+                        </Tooltip>
+                    </div>
+                    <Button wrapperClass={styles.searchButtonWrapper}>Search</Button>
+                </div>
+                {addressState.address &&
+                    autocompleteOptions.length !== 0 &&
+                    autocompleteDropdownOpen &&
+                    renderAutocompleteOptions()}
             </div>
         </div>
     );

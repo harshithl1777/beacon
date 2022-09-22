@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Icon, Button } from 'components';
 import { logOut } from 'redux/actions/authActions';
 import sliderMeasurements from 'assets/json/sliderMeasurements.json';
@@ -10,6 +11,7 @@ const NavigationBar = ({ logOut }) => {
     const [hoverOption, setHoverOption] = useState(null);
     const [offsetLeft, setOffsetLeft] = useState(-13);
     const [offsetWidth, setOffsetWidth] = useState(91);
+    const navigate = useNavigate();
 
     const navigationOptionClicked = (optionClicked) => {
         setOffsetLeft(sliderMeasurements.offsetLeft[optionClicked] - 2);
@@ -23,7 +25,10 @@ const NavigationBar = ({ logOut }) => {
         <div className={styles.navigationBar}>
             <Icon name='CMLogo' size='medium' color='light' className={styles.navigationBarLogo} draggable='false' />
             <div className={styles.navigationContainer}>
-                <div style={{ left: `${offsetLeft}px`, width: `${offsetWidth}px` }} className={styles.sliderIndicator} />
+                <div
+                    style={{ left: `${offsetLeft}px`, width: `${offsetWidth}px` }}
+                    className={styles.sliderIndicator}
+                />
                 <div className={styles.navigationOptionsContainer}>
                     <div
                         className={styles.navigationOption}
@@ -31,10 +36,16 @@ const NavigationBar = ({ logOut }) => {
                         onMouseLeave={() => setHoverOption(null)}
                         onClick={(e) => navigationOptionClicked(0)}
                     >
-                        <Icon name='CMDatabase' color={activeOption === 0 || hoverOption === 0 ? 'light' : 'faded'} draggable='false' />
+                        <Icon
+                            name='CMDatabase'
+                            color={activeOption === 0 || hoverOption === 0 ? 'light' : 'faded'}
+                            draggable='false'
+                        />
                         <h3
                             className={
-                                activeOption === 0 || hoverOption === 0 ? styles.navigationOptionTextActive : styles.navigationOptionText
+                                activeOption === 0 || hoverOption === 0
+                                    ? styles.navigationOptionTextActive
+                                    : styles.navigationOptionText
                             }
                         >
                             Data
@@ -54,7 +65,9 @@ const NavigationBar = ({ logOut }) => {
                         />
                         <h3
                             className={
-                                activeOption === 1 || hoverOption === 1 ? styles.navigationOptionTextActive : styles.navigationOptionText
+                                activeOption === 1 || hoverOption === 1
+                                    ? styles.navigationOptionTextActive
+                                    : styles.navigationOptionText
                             }
                         >
                             Contributions
@@ -74,7 +87,9 @@ const NavigationBar = ({ logOut }) => {
                         />
                         <h3
                             className={
-                                activeOption === 2 || hoverOption === 2 ? styles.navigationOptionTextActive : styles.navigationOptionText
+                                activeOption === 2 || hoverOption === 2
+                                    ? styles.navigationOptionTextActive
+                                    : styles.navigationOptionText
                             }
                         >
                             Reviews
@@ -84,16 +99,30 @@ const NavigationBar = ({ logOut }) => {
             </div>
             <div className={styles.navigationBarLeftContainer}>
                 <div className={styles.navigationBarButtonsContainer}>
-                    <Button variant='yellow' className={styles.creditsCounterButton} customIcon={<Icon name='CMCompass' color='dark' />}>
+                    <Button
+                        variant='yellow'
+                        className={styles.creditsCounterButton}
+                        customIcon={<Icon name='CMCompass' color='dark' />}
+                    >
                         20 Credits
                     </Button>
-                    <Button className={styles.contributeButton} customIcon={<Icon name='CMContributions' color='dark' />}>
+                    <Button
+                        className={styles.contributeButton}
+                        customIcon={<Icon name='CMContributions' color='dark' />}
+                        onClick={() => navigate('/app/contribute')}
+                    >
                         Contribute
                     </Button>
                 </div>
                 <div className={styles.navigationBarIconsContainer}>
                     <Icon name='CMFeedback' color='light' className={styles.navigationBarIcon} draggable='false' />
-                    <Icon name='CMProfile' color='dark' size='large' className={styles.navigationBarIcon} draggable='false' />
+                    <Icon
+                        name='CMProfile'
+                        color='dark'
+                        size='large'
+                        className={styles.navigationBarIcon}
+                        draggable='false'
+                    />
                 </div>
                 <button onClick={logOutClicked}>Logout</button>
             </div>

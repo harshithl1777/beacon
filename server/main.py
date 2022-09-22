@@ -29,8 +29,6 @@ if os.getenv("FLASK_ENV") == "development":
 connect(host=os.getenv("DATABASE_URI"))
 firebase_admin.initialize_app()
 
-import server.models.stores
-
 
 @app.route("/api/health", methods=["GET"])
 def get_health():
