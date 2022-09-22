@@ -45,4 +45,4 @@ jobs:
                   DATABASE_URI: ${{ secrets.DATABASE_URI }}
                   PYTHON_ENV: test
               run: |
-                  npm run test
+                  npm test
