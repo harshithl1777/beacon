@@ -58,7 +58,7 @@ const NavigationBar = ({ logOut }) => {
                         onClick={(e) => navigationOptionClicked(1)}
                     >
                         <Icon
-                            name='CMContributions'
+                            name='CMReviews'
                             size='medium'
                             color={activeOption === 1 || hoverOption === 1 ? 'light' : 'faded'}
                             draggable='false'
@@ -66,28 +66,6 @@ const NavigationBar = ({ logOut }) => {
                         <h3
                             className={
                                 activeOption === 1 || hoverOption === 1
-                                    ? styles.navigationOptionTextActive
-                                    : styles.navigationOptionText
-                            }
-                        >
-                            Contributions
-                        </h3>
-                    </div>
-                    <div
-                        className={styles.navigationOption}
-                        onMouseEnter={() => setHoverOption(2)}
-                        onMouseLeave={() => setHoverOption(null)}
-                        onClick={(e) => navigationOptionClicked(2)}
-                    >
-                        <Icon
-                            name='CMReviews'
-                            size='medium'
-                            color={activeOption === 2 || hoverOption === 2 ? 'light' : 'faded'}
-                            draggable='false'
-                        />
-                        <h3
-                            className={
-                                activeOption === 2 || hoverOption === 2
                                     ? styles.navigationOptionTextActive
                                     : styles.navigationOptionText
                             }
@@ -116,15 +94,16 @@ const NavigationBar = ({ logOut }) => {
                 </div>
                 <div className={styles.navigationBarIconsContainer}>
                     <Icon name='CMFeedback' color='light' className={styles.navigationBarIcon} draggable='false' />
-                    <Icon
-                        name='CMProfile'
-                        color='dark'
-                        size='large'
-                        className={styles.navigationBarIcon}
-                        draggable='false'
-                    />
+                    <button onClick={logOutClicked} className={styles.logoutButton}>
+                        <Icon
+                            name='IoLogOutOutline'
+                            color='light'
+                            size='large'
+                            className={styles.navigationBarIcon}
+                            draggable='false'
+                        />
+                    </button>
                 </div>
-                <button onClick={logOutClicked}>Logout</button>
             </div>
         </div>
     );

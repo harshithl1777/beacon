@@ -22,5 +22,6 @@ class Target(Enum):
     REVIEWS = "REVIEWS"
 
 
-class Distance(Enum):
-    ANY = "ANY"
+class AnyFilters(Enum):
+    ANY_DISTANCE = "ANY_DISTANCE"
+    ANY_WAIT_TIME = "ANY_WAIT_TIME"

@@ -63,8 +63,8 @@
 .navigationBarLeftContainer {
     display: flex;
     flex-direction: row;
-    position: fixed;
-    right: 30px;
+    margin: auto;
+    margin-right: 0;
 }
 
 .navigationBarButtonsContainer {
@@ -87,7 +87,9 @@
 }
 
 .navigationBarIconsContainer {
-    margin-left: 25px;
+    margin: 0;
+    margin-left: 30px;
+    margin-right: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -99,4 +101,9 @@
         cursor: pointer;
         filter: opacity(0.75);
     }
+}
+
+.logoutButton {
+    background: none;
+    border: none;
 }

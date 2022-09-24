@@ -23,7 +23,7 @@ const BeginContributionPage = ({ contributions, startContributionForm }) => {
         if (addressState.address === '' && autocompleteDropdownOpen) setAutocompleteDropdownOpen(false);
 
         const getAutocompleteResults = async () => {
-            const { results, success } = await radarAPI.autocomplete(addressState.address);
+            const { results, success } = await radarAPI.autocompletePlaces(addressState.address);
             if (success) setAutocompleteOptions(results);
             setAutocompleteDropdownOpen(true);
         };
