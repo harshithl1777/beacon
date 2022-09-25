@@ -5,7 +5,7 @@ import { radarAPI, showToast } from 'services/helpers';
 import optionMappings from 'assets/json/searchOptionMappings.json';
 import styles from 'containers/SearchContainer.module.scss';
 
-const SearchContainer = ({ onAddressChange, onFiltersChange }) => {
+const SearchContainer = ({ onAddressChange, onFiltersChange, onSearchClick, searchRef }) => {
     const [addressState, setAddressState] = useState({ address: '', coordinates: null, changedBy: null });
     const [autocompleteOptions, setAutocompleteOptions] = useState([]);
     const [autocompleteDropdownOpen, setAutocompleteDropdownOpen] = useState(false);
@@ -90,7 +90,7 @@ const SearchContainer = ({ onAddressChange, onFiltersChange }) => {
     };
 
     return (
-        <div className={styles.searchContainer}>
+        <div className={styles.searchContainer} ref={searchRef}>
             <div className={styles.dropdownsContainer}>
                 <MultiSelectDropdown
                     options={['Oranges', 'Apples', 'Milk', 'Chicken']}
@@ -153,7 +153,19 @@ const SearchContainer = ({ onAddressChange, onFiltersChange }) => {
                             <Icon size={30} name='IoLocationSharp' color='var(--color-gray-400)' />
                         </Tooltip>
                     </div>
-                    <Button wrapperClass={styles.searchButtonWrapper}>Search</Button>
+                    <Button
+                        disabled={
+                            !(
+                                addressState.address &&
+                                addressState.coordinates &&
+                                addressState.changedBy !== 'USER_INPUT'
+                            )
+                        }
+                        onClick={onSearchClick}
+                        wrapperClass={styles.searchButtonWrapper}
+                    >
+                        Search
+                    </Button>
                 </div>
                 {addressState.address &&
                     autocompleteOptions.length !== 0 &&

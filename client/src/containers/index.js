@@ -5,6 +5,8 @@ export { default as SearchContainer } from 'containers/SearchContainer';
 export { default as LineForm } from 'containers/LineForm';
 export { default as ProductsForm } from 'containers/ProductsForm';
 export { default as ReviewForm } from 'containers/ReviewForm';
+export { default as DataSlider } from 'containers/DataSlider';
+export { default as DataResult } from 'containers/DataResult';
 
 const defaultImportError = () => {
     console.error(

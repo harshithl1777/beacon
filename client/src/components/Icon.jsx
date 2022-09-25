@@ -29,9 +29,20 @@ const Icon = (props) => {
     const IconComponent = ionicons[name];
 
     return custom ? (
-        <img {...rest} className={className} alt={name} src={customIcons[`${name}-${size}-${color}`]} />
+        <img
+            draggable={false}
+            {...rest}
+            className={className}
+            alt={name}
+            src={customIcons[`${name}-${size}-${color}`]}
+        />
     ) : (
-        <IconComponent color={colors[color] || color} size={sizes[size] || size} className={className} />
+        <IconComponent
+            draggable={false}
+            color={colors[color] || color}
+            size={sizes[size] || size}
+            className={className}
+        />
     );
 };
 

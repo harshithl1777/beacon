@@ -1,0 +1,115 @@
+@import 'src/scss/typography';
+
+.resultContainer {
+    width: 766px;
+    height: 388px;
+    background-color: var(--color-navy-600);
+    box-shadow: 0px 0px 20px rgba(0, 28, 54, 0.2);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topContentWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.leftContentWrapper {
+    margin-top: 19px;
+    margin-left: 19px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.storeIconWrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.storeDetailsWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 14px;
+}
+
+.storeName {
+    @include header-1-bold;
+    color: var(--color-white);
+}
+
+.storeAddress {
+    @include body-3-regular;
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--color-white);
+}
+
+.tagsWrapper {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.likeButtonWrapper {
+    margin: auto;
+    margin-top: 20px;
+    margin-right: 22px;
+}
+
+.likeButton {
+    padding: 6px 16px;
+    align-items: center;
+    font-size: 12px;
+    height: 35px;
+    gap: 0px;
+    border-radius: 9px;
+    color: white;
+}
+
+.dataSlider {
+    margin-top: 30px;
+}
+
+.dataTable {
+    width: 722px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 15px;
+}
+
+.headerRow {
+    background-color: rgba(206, 214, 224, 0.1);
+    height: 37px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+}
+
+.headerText {
+    @include body-3-bold;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-600);
+}
+
+.headerText:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 75px;
+}
+
+.headerText:last-child {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}

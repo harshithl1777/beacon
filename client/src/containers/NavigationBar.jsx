@@ -81,6 +81,7 @@ const NavigationBar = ({ logOut }) => {
                         variant='yellow'
                         className={styles.creditsCounterButton}
                         customIcon={<Icon name='CMCompass' color='dark' />}
+                        style={{ pointerEvents: 'none' }}
                     >
                         20 Credits
                     </Button>
@@ -93,7 +94,13 @@ const NavigationBar = ({ logOut }) => {
                     </Button>
                 </div>
                 <div className={styles.navigationBarIconsContainer}>
-                    <Icon name='CMFeedback' color='light' className={styles.navigationBarIcon} draggable='false' />
+                    <Icon
+                        name='CMFeedback'
+                        color='light'
+                        className={styles.navigationBarIcon}
+                        draggable='false'
+                        onClick={() => window.open('mailto:hello@harshith.dev')}
+                    />
                     <button onClick={logOutClicked} className={styles.logoutButton}>
                         <Icon
                             name='IoLogOutOutline'

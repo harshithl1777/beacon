@@ -1,16 +1,49 @@
-import { useEffect, useState } from 'react';
-import { SearchContainer } from 'containers';
+import { useState, useRef } from 'react';
+import { DataResult, SearchContainer } from 'containers';
 import { storesAPI } from 'services/api';
+import { showToast } from 'services/helpers';
+import sampleStore from 'assets/json/sampleStore.json';
+import noResultsImage from 'assets/images/noResults.svg';
 import styles from 'pages/DataPage.module.scss';
 
 const SearchPage = () => {
     const [addressState, setAddressState] = useState(null);
     const [filters, setFilters] = useState({});
+    const [results, setResults] = useState(null);
+    const searchRef = useRef(null);
 
-    const getNearestStores = async () => {
-        const queryParams = { coordinates: addressState.coordinates, ...filters };
-        const response = await storesAPI.get('', {}, { data: btoa(JSON.stringify(queryParams)) });
-        console.log(response);
+    const searchButtonClicked = async () => {
+        if (true) {
+            const queryParams = { coordinates: addressState.coordinates, ...filters };
+            const { payload } = await storesAPI.get('', {}, { data: btoa(JSON.stringify(queryParams)) });
+            setResults(payload);
+            setTimeout(() => {
+                searchRef.current.scrollIntoView({ behavior: 'smooth' });
+            }, 10);
+        } else {
+            showToast.error(
+                'Not enough credits',
+                'You need at least 2 credits for a search. Try contributing to get some more.'
+            );
+        }
+    };
+
+    const renderSearchResults = () => {
+        console.log(results.length);
+        if (results.length > 0) return results.map((store) => <DataResult store={store} />);
+        return (
+            <div className={styles.noResultsContainer}>
+                <img className={styles.noResultsImage} src={noResultsImage} alt='no results' />
+                <h3 className={styles.noResultsHeader}>No results found</h3>
+                <p className={styles.noResultsSubtitle}>
+                    Hmm... it looks like no stores match that search. Try changing up the filters or{' '}
+                    <a className={styles.contributeLink} href='/app/contribute'>
+                        contribute
+                    </a>{' '}
+                    to add a store into our database.
+                </p>
+            </div>
+        );
     };
 
     return (
@@ -28,8 +61,13 @@ const SearchPage = () => {
             <SearchContainer
                 onAddressChange={(addressState) => setAddressState(addressState)}
                 onFiltersChange={(filters) => setFilters(filters)}
+                onSearchClick={searchButtonClicked}
+                searchRef={searchRef}
             />
-            <button onClick={getNearestStores}>Search stories</button>
+            {results === null ? null : renderSearchResults()}
+            <div style={{ marginTop: '150px' }}>
+                <DataResult store={sampleStore.payload[0]} />
+            </div>
         </div>
     );
 };
