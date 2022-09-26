@@ -59,3 +59,10 @@
     color: var(--color-green-600);
     font-weight: bold;
 }
+
+.resultsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 150px;
+}

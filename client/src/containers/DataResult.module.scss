@@ -2,13 +2,18 @@
 
 .resultContainer {
     width: 766px;
-    height: 388px;
     background-color: var(--color-navy-600);
     box-shadow: 0px 0px 20px rgba(0, 28, 54, 0.2);
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-height: 390px;
+    padding-bottom: 15px;
+}
+
+.reviewTabOpen {
+    padding-bottom: 30px;
 }
 
 .topContentWrapper {
@@ -61,29 +66,44 @@
     gap: 10px;
 }
 
-.likeButtonWrapper {
-    margin: auto;
-    margin-top: 20px;
-    margin-right: 22px;
+.ratingTagWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    width: fit-content;
+    height: 24px;
+    background-color: rgba(248, 109, 31, 0.15);
 }
 
-.likeButton {
-    padding: 6px 16px;
-    align-items: center;
-    font-size: 12px;
-    height: 35px;
-    gap: 0px;
-    border-radius: 9px;
-    color: white;
+.ratingStars {
+    margin-bottom: 1px;
 }
 
 .dataSlider {
     margin-top: 30px;
 }
 
+.dataTableContainer {
+    position: relative;
+    height: 250px;
+    overflow: scroll;
+    margin-top: 15px;
+}
+
 .dataTable {
     width: 722px;
     border-collapse: separate;
+    table-layout: fixed;
+    border-spacing: 0 10px;
+}
+
+.linesTable {
+    width: 722px;
+    border-collapse: separate;
+    table-layout: fixed;
     border-spacing: 0 10px;
     margin-top: 15px;
 }
@@ -112,4 +132,106 @@
 .headerText:last-child {
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+td {
+    text-align: center;
+}
+
+.tagCell {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.textCell {
+    @include body-3-regular;
+    color: var(--color-white);
+}
+
+.reviewsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-height: 260px;
+    overflow: scroll;
+    margin-top: 30px;
+    width: 722px;
+}
+
+.reviewContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reviewTopContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.personIconWrapper {
+    background-color: var(--color-green-600);
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewTextContent {
+    margin-left: 7px;
+}
+
+.reviewUsername {
+    @include header-2-bold;
+    color: var(--color-white);
+}
+
+.reviewDateTime {
+    @include body-3-regular;
+    color: var(--color-white);
+    font-weight: 300;
+}
+
+.ratingsWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviewRatingTag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    background: rgba(248, 109, 31, 0.15);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 24px;
+    border-radius: 5px;
+}
+
+.reviewRatingTagText {
+    @include body-3-medium;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--color-yellow-600);
+}
+
+.reviewComments {
+    @include body-3-regular;
+    color: var(--color-white);
+}
+
+.noData {
+    @include title-3-bold;
+    color: var(--color-gray-600);
+    margin-top: 50px;
+    padding-bottom: 40px;
 }

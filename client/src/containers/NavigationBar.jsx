@@ -14,8 +14,8 @@ const NavigationBar = ({ logOut }) => {
     const navigate = useNavigate();
 
     const navigationOptionClicked = (optionClicked) => {
-        setOffsetLeft(sliderMeasurements.offsetLeft[optionClicked] - 2);
-        setOffsetWidth(sliderMeasurements.offsetWidth[optionClicked] + 4);
+        setOffsetLeft(sliderMeasurements.offsetLeft[optionClicked]);
+        setOffsetWidth(sliderMeasurements.offsetWidth[optionClicked]);
         setActiveOption(optionClicked);
     };
 
@@ -49,28 +49,6 @@ const NavigationBar = ({ logOut }) => {
                             }
                         >
                             Data
-                        </h3>
-                    </div>
-                    <div
-                        className={styles.navigationOption}
-                        onMouseEnter={() => setHoverOption(1)}
-                        onMouseLeave={() => setHoverOption(null)}
-                        onClick={(e) => navigationOptionClicked(1)}
-                    >
-                        <Icon
-                            name='CMReviews'
-                            size='medium'
-                            color={activeOption === 1 || hoverOption === 1 ? 'light' : 'faded'}
-                            draggable='false'
-                        />
-                        <h3
-                            className={
-                                activeOption === 1 || hoverOption === 1
-                                    ? styles.navigationOptionTextActive
-                                    : styles.navigationOptionText
-                            }
-                        >
-                            Reviews
                         </h3>
                     </div>
                 </div>

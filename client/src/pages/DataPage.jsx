@@ -29,7 +29,6 @@ const SearchPage = () => {
     };
 
     const renderSearchResults = () => {
-        console.log(results.length);
         if (results.length > 0) return results.map((store) => <DataResult store={store} />);
         return (
             <div className={styles.noResultsContainer}>
@@ -64,10 +63,7 @@ const SearchPage = () => {
                 onSearchClick={searchButtonClicked}
                 searchRef={searchRef}
             />
-            {results === null ? null : renderSearchResults()}
-            <div style={{ marginTop: '150px' }}>
-                <DataResult store={sampleStore.payload[0]} />
-            </div>
+            {results === null ? null : <div className={styles.resultsWrapper}>{renderSearchResults()}</div>}
         </div>
     );
 };

@@ -51,13 +51,29 @@
                     },
                     "name": "rice",
                     "stock": "MODERATE"
+                },
+                "beef": {
+                    "demand": "LOW",
+                    "last_updated": {
+                        "$date": 1663820156869
+                    },
+                    "name": "beef",
+                    "stock": "MODERATE"
+                },
+                "noodles": {
+                    "demand": "LOW",
+                    "last_updated": {
+                        "$date": 1663820156869
+                    },
+                    "name": "noodles",
+                    "stock": "MODERATE"
                 }
             },
             "rating": 4.7,
             "reviews": [
                 {
                     "cleanliness": 4,
-                    "comments": "Moderately good store.",
+                    "comments": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu",
                     "created_at": {
                         "$date": 1663820404014
                     },
@@ -67,7 +83,7 @@
                 },
                 {
                     "cleanliness": 4,
-                    "comments": "good store",
+                    "comments": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. ",
                     "created_at": {
                         "$date": 1663964908608
                     },

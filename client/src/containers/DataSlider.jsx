@@ -3,16 +3,17 @@ import classnames from 'classnames';
 import sliderMeasurements from 'assets/json/dataSliderMeasurements.json';
 import styles from 'containers/DataSlider.module.scss';
 
-const DataSlider = ({ className }) => {
+const DataSlider = ({ className, onActiveOptionChange, store }) => {
     const [activeOption, setActiveOption] = useState(0);
     const [hoverOption, setHoverOption] = useState(null);
     const [offsetLeft, setOffsetLeft] = useState(0);
-    const [offsetWidth, setOffsetWidth] = useState(72);
+    const [offsetWidth, setOffsetWidth] = useState(92);
 
     const dataOptionClicked = (optionClicked) => {
         setOffsetLeft(sliderMeasurements.offsetLeft[optionClicked]);
         setOffsetWidth(sliderMeasurements.offsetWidth[optionClicked]);
         setActiveOption(optionClicked);
+        onActiveOptionChange(optionClicked);
     };
 
     return (
@@ -33,7 +34,7 @@ const DataSlider = ({ className }) => {
                                 : styles.dataOptionText
                         }
                     >
-                        Products
+                        Products ({Object.keys(store.products).length})
                     </h3>
                 </div>
                 <div
@@ -50,6 +51,22 @@ const DataSlider = ({ className }) => {
                         }
                     >
                         Lines
+                    </h3>
+                </div>
+                <div
+                    className={styles.dataOption}
+                    onMouseEnter={() => setHoverOption(2)}
+                    onMouseLeave={() => setHoverOption(null)}
+                    onClick={(e) => dataOptionClicked(2)}
+                >
+                    <h3
+                        className={
+                            activeOption === 2 || hoverOption === 2
+                                ? styles.dataOptionTextActive
+                                : styles.dataOptionText
+                        }
+                    >
+                        Reviews ({store.reviews.length})
                     </h3>
                 </div>
             </div>

@@ -117,11 +117,11 @@ const SearchContainer = ({ onAddressChange, onFiltersChange, onSearchClick, sear
                     width={210}
                     options={[
                         'No wait time',
-                        'Less than 15 mins',
-                        '15 to 30 mins',
-                        '30 to 50 mins',
-                        'Over 50 mins',
-                        'Any wait time',
+                        '5 to 10 minutes',
+                        '10 to 20 minutes',
+                        '20 to 40 minutes',
+                        '40 to 60 minutes',
+                        'More than 60 minutes',
                     ]}
                     placeholder='Wait times'
                     onOptionSelect={(option) => setFilters({ ...filters, wait_time: optionMappings[option] })}

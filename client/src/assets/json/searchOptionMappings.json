@@ -10,10 +10,10 @@
     "3 stars": 3,
     "2 stars": 2,
     "Any rating": 1,
-    "No wait time": "NO_LINE",
-    "Less than 15 mins": "LESS_THAN_15",
-    "15 to 30 mins": "15_TO_30",
-    "30 to 50 mins": "30_TO_50",
-    "Over 50 mins": "MORE_THAN_50",
-    "Any wait time": "ANY_WAIT_TIME"
+    "No wait time": "NO_WAIT",
+    "5 to 10 minutes": "5_TO_10",
+    "10 to 20 minutes": "10_TO_20",
+    "20 to 40 minutes": "20_TO_40",
+    "40 to 60 minutes": "40_TO_60",
+    "More than 60 minutes": "MORE_THAN_60"
 }

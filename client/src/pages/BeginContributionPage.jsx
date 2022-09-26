@@ -40,7 +40,8 @@ const BeginContributionPage = ({ contributions, startContributionForm }) => {
     const handleAutocompleteOptionSelect = (option) => {
         setAutocompleteDropdownOpen(false);
         setAddressState({
-            address: (option.placeLabel !== undefined ? `${option.placeLabel}, ` : '') + option.formattedAddress,
+            name: option.placeLabel,
+            address: option.formattedAddress,
             coordinates: { latitude: option.latitude, longitude: option.longitude },
             changedBy: 'OPTION_SELECT',
         });
@@ -102,7 +103,7 @@ const BeginContributionPage = ({ contributions, startContributionForm }) => {
                                 borderBottomRightRadius: autocompleteDropdownOpen ? '0px' : '15px',
                                 borderBottomLeftRadius: autocompleteDropdownOpen ? '0px' : '15px',
                             }}
-                            value={addressState.address}
+                            value={`${addressState.name}, ${addressState.address}`}
                             onChange={(event) =>
                                 setAddressState({
                                     ...addressState,
@@ -148,7 +149,14 @@ const BeginContributionPage = ({ contributions, startContributionForm }) => {
                 disabled={!(addressState.coordinates && checkboxChecked && contributionType)}
                 className={styles.contributionStartButton}
                 wrapperClass={styles.contributionStartButtonWrapper}
-                onClick={() => startContributionForm(contributionType, addressState.address, addressState.coordinates)}
+                onClick={() =>
+                    startContributionForm(
+                        contributionType,
+                        addressState.name,
+                        addressState.address,
+                        addressState.coordinates
+                    )
+                }
             >
                 Start your contribution
             </Button>
