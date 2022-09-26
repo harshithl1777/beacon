@@ -17,6 +17,7 @@ stores = Blueprint("stores", __name__)
 
 
 @stores.route("/", methods=["POST"])
+@require_access_token
 def create_store():
     body = request.get_json()
     name, address, target = (
@@ -56,6 +57,7 @@ def create_store():
 
 
 @stores.route("/<string:store_id>", methods=["GET"])
+@require_access_token
 def get_store_by_location(store_id: str):
     try:
         store = Store.objects.get(id=store_id).to_json()
@@ -65,7 +67,7 @@ def get_store_by_location(store_id: str):
 
 
 @stores.route("/", methods=["GET"])
-# @require_access_token
+@require_access_token
 def get_nearest_stores():
     body = json.loads(base64.b64decode(request.args.get("data")).decode("utf-8"))
     coordinates = [body.get("coordinates").get("longitude"), body.get("coordinates").get("latitude")]
@@ -100,6 +102,7 @@ def get_nearest_stores():
 
 
 @stores.route("/<string:store_id>", methods=["PATCH"])
+@require_access_token
 def update_store_by_id(store_id: str):
     body = request.get_json()
     target = body.get("target")
