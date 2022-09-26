@@ -11,7 +11,7 @@ from server.models.stores import Store
 from server.models.product import Product
 from server.models.line import Line
 from server.models.review import Review
-from server.utils.types import Target, AnyFilters
+from server.utils.types import Target, AnyFilters, LineWaitTime
 
 stores = Blueprint("stores", __name__)
 
@@ -76,11 +76,16 @@ def get_nearest_stores():
         body.get("products"),
     )
 
-    args = dict(coordinates__near=coordinates, rating__gt=min_rating)
+    args = dict(coordinates__near=coordinates)
     if max_distance != AnyFilters.ANY_DISTANCE.value:
         args["coordinates__max_distance"] = max_distance
+    if min_rating != AnyFilters.ANY_RATING.value:
+        args["rating__gt"] = min_rating
     if wait_time != AnyFilters.ANY_WAIT_TIME.value:
-        args["line__wait_time"] = wait_time
+        allowed_values = [
+            LineWaitTime.VALUES.value[index] for index in range(LineWaitTime.VALUES.value.index(wait_time) + 1)
+        ]
+        args["line__wait_time__in"] = allowed_values
 
     stores = json.loads(Store.objects(**args).to_json())
     filtered_stores = [

@@ -9,7 +9,7 @@
     "4 stars": 4,
     "3 stars": 3,
     "2 stars": 2,
-    "Any rating": 1,
+    "Any rating": "ANY_RATING",
     "No wait time": "NO_WAIT",
     "5 to 10 minutes": "5_TO_10",
     "10 to 20 minutes": "10_TO_20",
