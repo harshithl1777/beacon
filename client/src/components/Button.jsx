@@ -45,7 +45,9 @@ const Button = (props) => {
                     onClick={onClick}
                 >
                     {!loading && getIconToRender()}
-                    {loading && <Spinner className={styles.buttonSpinner} color={variant === 'secondary' ? 'light' : 'dark'} />}
+                    {loading && (
+                        <Spinner className={styles.buttonSpinner} color={variant === 'secondary' ? 'light' : 'dark'} />
+                    )}
                     <p>{children}</p>
                 </button>
             </Tooltip>

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Icon, Checkbox } from 'components';
 import styles from 'components/MultiSelectDropdown.module.scss';
 
@@ -9,6 +9,8 @@ const MultiSelectDropdown = (props) => {
     const [dropdownActive, setDropdownActive] = useState(false);
     const [selectedOptions, setSelectedOptions] = useState([]);
 
+    useEffect(() => onOptionsChange(selectedOptions), [selectedOptions]);
+
     const handleSelect = (option) => {
         if (!selectedOptions.includes(option)) {
             setSelectedOptions([...selectedOptions, option]);
@@ -16,7 +18,6 @@ const MultiSelectDropdown = (props) => {
             const newSelectedOptions = selectedOptions.filter((selectedOption) => selectedOption !== option);
             setSelectedOptions(newSelectedOptions);
         }
-        onOptionsChange(selectedOptions);
     };
 
     const getOptionsList = () => {
@@ -24,11 +25,17 @@ const MultiSelectDropdown = (props) => {
             <div className={styles.dropdownOptionsContainer} tabIndex='0'>
                 {options.map((option) => (
                     <div
-                        className={classnames(styles.dropdownOption, selectedOptions.includes(option) && styles.selected)}
+                        className={classnames(
+                            styles.dropdownOption,
+                            selectedOptions.includes(option) && styles.selected
+                        )}
                         onClick={() => handleSelect(option)}
                         key={option}
                     >
-                        <Checkbox key={selectedOptions.includes(option)} forcedStatus={selectedOptions.includes(option)} />
+                        <Checkbox
+                            key={selectedOptions.includes(option)}
+                            forcedStatus={selectedOptions.includes(option)}
+                        />
                         <h3 className={styles.dropdownOptionText}>{option}</h3>
                     </div>
                 ))}
@@ -53,9 +60,17 @@ const MultiSelectDropdown = (props) => {
 
     return (
         <div className={classnames(styles.dropdownContainer, className)} style={{ width }} onBlur={handleBlur}>
-            <button className={classnames(styles.dropdownButtonContainer, className)} onClick={() => setDropdownActive(true)}>
+            <button
+                className={classnames(styles.dropdownButtonContainer, className)}
+                onClick={() => setDropdownActive(true)}
+            >
                 <h3 className={styles.dropdownTextPlaceholder}>{getDropdownLabel() || placeholder}</h3>
-                <Icon name='IoChevronDown' color='var(--color-gray-600)' size={22} className={styles.dropdownChevronIcon} />
+                <Icon
+                    name='IoChevronDown'
+                    color='var(--color-gray-600)'
+                    size={22}
+                    className={styles.dropdownChevronIcon}
+                />
             </button>
             {dropdownActive && getOptionsList()}
         </div>

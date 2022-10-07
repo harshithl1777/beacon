@@ -2,15 +2,23 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { MultiSelectDropdown, Icon, Dropdown, Button, Tooltip } from 'components';
 import { radarAPI, showToast } from 'services/helpers';
+import optionMappings from 'assets/json/searchOptionMappings.json';
 import styles from 'containers/SearchContainer.module.scss';
 
-const SearchContainer = () => {
+const SearchContainer = ({ onAddressChange, onFiltersChange, onSearchClick, searchRef }) => {
     const [addressState, setAddressState] = useState({ address: '', coordinates: null, changedBy: null });
     const [autocompleteOptions, setAutocompleteOptions] = useState([]);
     const [autocompleteDropdownOpen, setAutocompleteDropdownOpen] = useState(false);
+    const [filters, setFilters] = useState({
+        products: [],
+        distance: 'ANY_DISTANCE',
+        wait_time: 'ANY_WAIT_TIME',
+        ratings: 1,
+    });
 
     useEffect(() => {
         if (addressState.address === '' && autocompleteDropdownOpen) setAutocompleteDropdownOpen(false);
+        if (addressState.changedBy !== 'USER_INPUT') onAddressChange(addressState);
 
         const getAutocompleteResults = async () => {
             const { results, success } = await radarAPI.autocomplete(addressState.address);
@@ -26,6 +34,8 @@ const SearchContainer = () => {
             clearTimeout(timeoutID);
         };
     }, [addressState]);
+
+    useEffect(() => onFiltersChange(filters), [filters]);
 
     const getGeolocation = () => {
         const toastID = showToast.loading('Retrieving your location', '', { autoClose: false });
@@ -80,12 +90,15 @@ const SearchContainer = () => {
     };
 
     return (
-        <div className={styles.searchContainer}>
+        <div className={styles.searchContainer} ref={searchRef}>
             <div className={styles.dropdownsContainer}>
                 <MultiSelectDropdown
                     options={['Oranges', 'Apples', 'Milk', 'Chicken']}
                     width={258}
                     placeholder='Required Food'
+                    onOptionsChange={(selectedOptions) => {
+                        setFilters({ ...filters, products: selectedOptions });
+                    }}
                 />
                 <Dropdown
                     width={225}
@@ -98,28 +111,26 @@ const SearchContainer = () => {
                         'Any distance',
                     ]}
                     placeholder='Distance'
+                    onOptionSelect={(option) => setFilters({ ...filters, distance: optionMappings[option] })}
                 />
                 <Dropdown
                     width={210}
                     options={[
                         'No wait time',
-                        '5 to 10 mins',
-                        '10 to 20 mins',
-                        '20 to 40 mins',
-                        '40 mins to 1 hour',
-                        'Over 1 hour',
+                        '5 to 10 minutes',
+                        '10 to 20 minutes',
+                        '20 to 40 minutes',
+                        '40 to 60 minutes',
+                        'More than 60 minutes',
                     ]}
                     placeholder='Wait times'
-                />
-                <Dropdown
-                    width={250}
-                    options={['In stock', 'Moderate stock', 'Low stock', 'Any stock level']}
-                    placeholder='Minimum stock level'
+                    onOptionSelect={(option) => setFilters({ ...filters, wait_time: optionMappings[option] })}
                 />
                 <Dropdown
                     width={177}
-                    options={['5 stars', '4 stars', '3 stars', '2 stars', '1 star', 'Any rating']}
+                    options={['5 stars', '4 stars', '3 stars', '2 stars', 'Any rating']}
                     placeholder='Ratings'
+                    onOptionSelect={(option) => setFilters({ ...filters, ratings: optionMappings[option] })}
                 />
             </div>
             <div className={styles.searchResultsWrapper}>
@@ -142,7 +153,19 @@ const SearchContainer = () => {
                             <Icon size={30} name='IoLocationSharp' color='var(--color-gray-400)' />
                         </Tooltip>
                     </div>
-                    <Button wrapperClass={styles.searchButtonWrapper}>Search</Button>
+                    <Button
+                        disabled={
+                            !(
+                                addressState.address &&
+                                addressState.coordinates &&
+                                addressState.changedBy !== 'USER_INPUT'
+                            )
+                        }
+                        onClick={onSearchClick}
+                        wrapperClass={styles.searchButtonWrapper}
+                    >
+                        Search
+                    </Button>
                 </div>
                 {addressState.address &&
                     autocompleteOptions.length !== 0 &&

@@ -20,7 +20,7 @@ const reverseGeocode = async (coordinates) => {
 
 const autocomplete = async (query) => {
     try {
-        const params = { query, limit: 5 };
+        const params = { query, limit: 5, layers: 'place,address,intersection,street,neighborhood,postalCode' };
         const { data } = await radarInstance.get('/search/autocomplete', { params });
         return { results: data.addresses, success: true };
     } catch (error) {
@@ -29,14 +29,13 @@ const autocomplete = async (query) => {
     }
 };
 
-const autocompletePlaces = async (coordinates) => {
+const autocompletePlaces = async (query) => {
     try {
-        const params = { coordinates, categories: 'food-grocery, food-wholesaler', limit: 5 };
-        const { data } = await radarInstance.get('/search/places', { params });
-        return { results: data.places, success: true };
+        const params = { query, limit: 5, layers: 'place' };
+        const { data } = await radarInstance.get('/search/autocomplete', { params });
+        return { results: data.addresses, success: true };
     } catch (error) {
         showToast.error('Unable to load autocomplete results');
-        console.error(error);
         return { error, success: false };
     }
 };

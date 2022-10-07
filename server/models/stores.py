@@ -8,6 +8,7 @@ from mongoengine.fields import (
     ListField,
     PointField,
     MapField,
+    FloatField,
 )
 
 from server.models.product import Product
@@ -23,5 +24,6 @@ class Store(Document):
     coordinates = PointField(required=True, unique=True)
     products = MapField(EmbeddedDocumentField(Product), default={})
     line = EmbeddedDocumentField(Line, null=True)
+    rating = FloatField(min_value=1.0, null=True)
     reviews = ListField(EmbeddedDocumentField(Review), default=[])
     last_updated = DateTimeField(default=datetime.utcnow())

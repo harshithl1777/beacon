@@ -1,0 +1,139 @@
+{
+    "payload": [
+        {
+            "_id": "0d69f3b1943e816ebdd175fe376760b3",
+            "address": "Cosimo's No Frills, 449 Parliament Street, Old Toronto, Toronto, ON M5A 3A3 CAN",
+            "coordinates": {
+                "coordinates": [-79.36712, 43.66351],
+                "type": "Point"
+            },
+            "last_updated": {
+                "$date": 1663967149669
+            },
+            "line": {
+                "last_updated": {
+                    "$date": 1663820156903
+                },
+                "length": "NO_LINE",
+                "speed": "FAST",
+                "wait_time": "NO_WAIT"
+            },
+            "name": "Cosimo's No Frills",
+            "products": {
+                "apples": {
+                    "demand": "HIGH",
+                    "last_updated": {
+                        "$date": 1663966911775
+                    },
+                    "name": "apples",
+                    "stock": "OUT_OF_STOCK"
+                },
+                "bagel": {
+                    "demand": "MODERATE",
+                    "last_updated": {
+                        "$date": 1663820156869
+                    },
+                    "name": "bagel",
+                    "stock": "HIGH"
+                },
+                "onions": {
+                    "demand": "LOW",
+                    "last_updated": {
+                        "$date": 1663820156869
+                    },
+                    "name": "onions",
+                    "stock": "MODERATE"
+                },
+                "rice": {
+                    "demand": "LOW",
+                    "last_updated": {
+                        "$date": 1663820156869
+                    },
+                    "name": "rice",
+                    "stock": "MODERATE"
+                },
+                "beef": {
+                    "demand": "LOW",
+                    "last_updated": {
+                        "$date": 1663820156869
+                    },
+                    "name": "beef",
+                    "stock": "MODERATE"
+                },
+                "noodles": {
+                    "demand": "LOW",
+                    "last_updated": {
+                        "$date": 1663820156869
+                    },
+                    "name": "noodles",
+                    "stock": "MODERATE"
+                }
+            },
+            "rating": 4.7,
+            "reviews": [
+                {
+                    "cleanliness": 4,
+                    "comments": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu",
+                    "created_at": {
+                        "$date": 1663820404014
+                    },
+                    "customer_service": 2,
+                    "likes": 0,
+                    "overall": 3
+                },
+                {
+                    "cleanliness": 4,
+                    "comments": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. ",
+                    "created_at": {
+                        "$date": 1663964908608
+                    },
+                    "customer_service": 5,
+                    "likes": 0,
+                    "overall": 5
+                },
+                {
+                    "cleanliness": 4,
+                    "comments": "good store",
+                    "created_at": {
+                        "$date": 1663964984170
+                    },
+                    "customer_service": 5,
+                    "likes": 0,
+                    "overall": 5
+                },
+                {
+                    "cleanliness": 4,
+                    "comments": "good store",
+                    "created_at": {
+                        "$date": 1663965071676
+                    },
+                    "customer_service": 5,
+                    "likes": 0,
+                    "overall": 5
+                },
+                {
+                    "cleanliness": 4,
+                    "comments": "good store",
+                    "created_at": {
+                        "$date": 1663965118959
+                    },
+                    "customer_service": 5,
+                    "likes": 0,
+                    "overall": 5
+                },
+                {
+                    "cleanliness": 4,
+                    "comments": "good store",
+                    "created_at": {
+                        "$date": 1663965118959
+                    },
+                    "customer_service": 5,
+                    "likes": 0,
+                    "overall": 5
+                }
+            ],
+            "likes": 4
+        }
+    ],
+    "success": true
+}

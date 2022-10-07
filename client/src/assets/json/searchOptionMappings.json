@@ -1,0 +1,19 @@
+{
+    "Less than 3 km": 3,
+    "3 to 5 km": 5,
+    "5 to 10 km": 10,
+    "10 to 20 km": 20,
+    "20 to 50 km": 50,
+    "Any distance": "ANY_DISTANCE",
+    "5 stars": 5,
+    "4 stars": 4,
+    "3 stars": 3,
+    "2 stars": 2,
+    "Any rating": "ANY_RATING",
+    "No wait time": "NO_WAIT",
+    "5 to 10 minutes": "5_TO_10",
+    "10 to 20 minutes": "10_TO_20",
+    "20 to 40 minutes": "20_TO_40",
+    "40 to 60 minutes": "40_TO_60",
+    "More than 60 minutes": "MORE_THAN_60"
+}

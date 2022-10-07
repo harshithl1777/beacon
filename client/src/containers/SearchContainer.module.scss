@@ -50,7 +50,7 @@
     gap: 26px;
     position: absolute;
     top: 140px;
-    z-index: 0;
+    z-index: 1000;
 }
 
 .locationIcon {
@@ -76,7 +76,7 @@
     padding: 10px;
     box-sizing: border-box;
     position: absolute;
-    z-index: 100;
+    z-index: 10000;
 }
 
 .autocompleteOptionButton {

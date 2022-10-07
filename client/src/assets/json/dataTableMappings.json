@@ -1,0 +1,25 @@
+{
+    "NO_WAIT": ["NO WAIT TIME", "green"],
+    "5_TO_10": ["5 TO 10 MINS", "yellow"],
+    "10_TO_20": ["10 TO 20 MINS", "yellow"],
+    "20_TO_40": ["20 TO 40 MINS", "orange"],
+    "40_TO_60": ["40 TO 60 MINS", "red"],
+    "MORE_THAN_60": ["MORE THAN 60 MINS", "red"],
+    "NO_LINE": ["NO LINE", "green"],
+    "LESS_THAN_15": ["LESS THAN 15 PEOPLE", "yellow"],
+    "15_TO_30": ["15 TO 30 PEOPLE", "orange"],
+    "30_TO_50": ["30 TO 50 PEOPLE", "orange"],
+    "MORE_THAN_50": ["OVER 50 PEOPLE", "red"],
+    "OUT_OF_STOCK": ["OUT OF STOCK", "red"],
+    "LOW": ["LOW", "orange"],
+    "MODERATE": ["MODERATE", "yellow"],
+    "HIGH": ["HIGH", "green"],
+    "SLOW": ["SLOW", "red"],
+    "FAST": ["FAST", "green"],
+    "backgrounds": {
+        "red": "rgba(221, 46, 68, 0.15)",
+        "orange": "rgba(255, 126, 33, 0.15)",
+        "yellow": "rgba(248, 109, 31, 0.15)",
+        "green": "rgba(50, 211, 202, 0.15)"
+    }
+}

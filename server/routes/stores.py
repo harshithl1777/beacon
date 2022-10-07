@@ -1,9 +1,9 @@
-import secrets
 import json
 import hashlib
+import base64
 from datetime import datetime
 from flask import Blueprint, request
-from mongoengine.errors import DoesNotExist, ValidationError
+from mongoengine.errors import DoesNotExist
 
 from server.utils.helpers.routes import create_response
 from server.utils.decorators import require_access_token
@@ -11,12 +11,13 @@ from server.models.stores import Store
 from server.models.product import Product
 from server.models.line import Line
 from server.models.review import Review
-from server.utils.types import Target, Distance
+from server.utils.types import Target, AnyFilters, LineWaitTime
 
 stores = Blueprint("stores", __name__)
 
 
 @stores.route("/", methods=["POST"])
+@require_access_token
 def create_store():
     body = request.get_json()
     name, address, target = (
@@ -49,12 +50,14 @@ def create_store():
             comments=review_param.get("comments"),
         )
         new_store.reviews.append(review)
+        new_store.rating = float(review_param.get("overall"))
     new_store.save()
 
     return create_response(payload=json.loads(new_store.to_json()), code=201)
 
 
 @stores.route("/<string:store_id>", methods=["GET"])
+@require_access_token
 def get_store_by_location(store_id: str):
     try:
         store = Store.objects.get(id=store_id).to_json()
@@ -66,17 +69,40 @@ def get_store_by_location(store_id: str):
 @stores.route("/", methods=["GET"])
 @require_access_token
 def get_nearest_stores():
-    body = request.get_json()
+    body = json.loads(base64.b64decode(request.args.get("data")).decode("utf-8"))
     coordinates = [body.get("coordinates").get("longitude"), body.get("coordinates").get("latitude")]
-    max_distance = body.get("max_distance")
-    if max_distance == Distance.ANY.value:
-        stores = Store.objects(coordinates__near=coordinates).to_json()
-    else:
-        stores = Store.objects(coordinates__near=coordinates, coordinates__max_distance=(max_distance * 1000)).to_json()
-    return create_response(json.loads(stores))
+    max_distance, min_rating, wait_time, products = (
+        body.get("distance"),
+        body.get("ratings"),
+        body.get("wait_time"),
+        body.get("products"),
+    )
+
+    args = dict(coordinates__near=coordinates)
+    if max_distance != AnyFilters.ANY_DISTANCE.value:
+        args["coordinates__max_distance"] = max_distance
+    if min_rating != AnyFilters.ANY_RATING.value:
+        args["rating__gt"] = min_rating
+    if wait_time != AnyFilters.ANY_WAIT_TIME.value:
+        allowed_values = [
+            LineWaitTime.VALUES.value[index] for index in range(LineWaitTime.VALUES.value.index(wait_time) + 1)
+        ]
+        args["line__wait_time__in"] = allowed_values
+
+    stores = json.loads(Store.objects(**args).to_json())
+    filtered_stores = [
+        store
+        for store in stores
+        if all(
+            product in store["products"] and store["products"][product]["stock"] != "OUT_OF_STOCK"
+            for product in products
+        )
+    ]
+    return create_response(filtered_stores)
 
 
 @stores.route("/<string:store_id>", methods=["PATCH"])
+@require_access_token
 def update_store_by_id(store_id: str):
     body = request.get_json()
     target = body.get("target")
@@ -105,6 +131,11 @@ def update_store_by_id(store_id: str):
                 comments=review_param.get("comments"),
             )
             Store.objects(id=store_id).update_one(push__reviews=review)
+            Store.objects(id=store_id).update_one(
+                set__rating=(
+                    ((store.rating * (len(store.reviews) - 1)) + review_param.get("overall")) / len(store.reviews)
+                )
+            )
         Store.objects(id=store_id).update_one(set__last_updated=datetime.utcnow())
 
         return create_response(json.loads(Store.objects(id=store_id).to_json()))

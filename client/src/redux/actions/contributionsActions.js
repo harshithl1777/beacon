@@ -9,10 +9,10 @@ import { storesAPI } from 'services/api';
 import { showToast } from 'services/helpers';
 import { useStoreID } from 'services/hooks';
 
-export const startContributionForm = (target, address, coordinates) => (dispatch) => {
+export const startContributionForm = (target, name, address, coordinates) => (dispatch) => {
     const storeID = useStoreID(coordinates);
     const payload = {
-        name: address.split(',')[0],
+        name,
         target,
         address,
         storeID,
