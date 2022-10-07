@@ -1,0 +1,107 @@
+@import 'src/scss/typography';
+
+.landingPageContainer {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-green-600);
+}
+
+.navigationBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 120px;
+}
+
+.navigationLeftContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    gap: 70px;
+}
+
+.navigationBarLogo {
+    margin-left: 35px;
+}
+
+.navigationBarLink {
+    @include header-1-regular;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--color-navy-600);
+}
+
+.navigationRightContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin: auto;
+    margin-right: 30px;
+}
+
+.landingContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 120px;
+}
+
+.landingLeftContent {
+    display: flex;
+    flex-direction: column;
+    margin-left: 75px;
+}
+
+.headerCaption {
+    @include body-1-regular;
+    font-weight: 800;
+    color: var(--color-navy-600);
+}
+
+.landingHeader {
+    @include title-1-bold;
+    font-weight: 800;
+    font-size: 45px;
+    width: 700px;
+    line-height: 50px;
+    margin-top: 10px;
+}
+
+.landingDescription {
+    @include body-1-regular;
+    font-size: 18px;
+    color: var(--color-navy-600);
+    margin-top: 20px;
+    line-height: 30px;
+    width: 650px;
+}
+
+.landingButtonContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+}
+
+.landingContentImage {
+    margin: auto;
+    margin-right: 75px;
+}
+
+.footerBar {
+    height: 70px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: var(--color-navy-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.builtByText {
+    @include header-1-regular;
+    font-weight: 400;
+    color: var(--color-white);
+}
