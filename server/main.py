@@ -12,6 +12,7 @@ if os.getenv("FLASK_ENV") == "development":
 from server.routes.users import users
 from server.routes.auth import auth
 from server.routes.stores import stores
+from server.config.firebase import instantiate_firebase_config
 
 
 def create_app() -> Flask:
@@ -27,6 +28,8 @@ app = create_app()
 if os.getenv("FLASK_ENV") == "development":
     flask_cors.CORS(app, supports_credentials=True)
 connect(host=os.getenv("DATABASE_URI"))
+
+instantiate_firebase_config()
 firebase_admin.initialize_app()
 
 

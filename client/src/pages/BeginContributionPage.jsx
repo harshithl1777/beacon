@@ -7,7 +7,7 @@ import { startContributionForm } from 'redux/actions/contributionsActions';
 import styles from 'pages/BeginContributionPage.module.scss';
 
 const BeginContributionPage = ({ contributions, startContributionForm }) => {
-    const [addressState, setAddressState] = useState({ address: '', coordinates: null, changedBy: null });
+    const [addressState, setAddressState] = useState({ name: '', address: '', coordinates: null, changedBy: null });
     const [autocompleteOptions, setAutocompleteOptions] = useState([]);
     const [autocompleteDropdownOpen, setAutocompleteDropdownOpen] = useState(false);
     const [checkboxChecked, setCheckboxChecked] = useState(false);
@@ -58,8 +58,7 @@ const BeginContributionPage = ({ contributions, startContributionForm }) => {
                     >
                         <Icon name='CMMapPin' size='medium' color='dark' />
                         <p className={styles.autocompleteOptionText}>
-                            {(option.placeLabel !== undefined ? `${option.placeLabel}, ` : '') +
-                                option.formattedAddress}
+                            {(option.placeLabel !== undefined ? `${option.placeLabel}, ` : '') + option.formattedAddress}
                         </p>
                     </button>
                 ))}
@@ -103,7 +102,7 @@ const BeginContributionPage = ({ contributions, startContributionForm }) => {
                                 borderBottomRightRadius: autocompleteDropdownOpen ? '0px' : '15px',
                                 borderBottomLeftRadius: autocompleteDropdownOpen ? '0px' : '15px',
                             }}
-                            value={`${addressState.name}, ${addressState.address}`}
+                            value={addressState.address}
                             onChange={(event) =>
                                 setAddressState({
                                     ...addressState,
@@ -150,12 +149,7 @@ const BeginContributionPage = ({ contributions, startContributionForm }) => {
                 className={styles.contributionStartButton}
                 wrapperClass={styles.contributionStartButtonWrapper}
                 onClick={() =>
-                    startContributionForm(
-                        contributionType,
-                        addressState.name,
-                        addressState.address,
-                        addressState.coordinates
-                    )
+                    startContributionForm(contributionType, addressState.name, addressState.address, addressState.coordinates)
                 }
             >
                 Start your contribution
