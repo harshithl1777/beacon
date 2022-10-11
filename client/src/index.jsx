@@ -16,12 +16,7 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
-const enhancers = compose(
-    applyMiddleware(thunk),
-    process.env.REACT_APP_ENV === 'DEVELOPMENT' &&
-        window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const enhancers = compose(applyMiddleware(thunk));
 
 const store = createStore(rootReducer, enhancers);
 
