@@ -1,9 +1,17 @@
 import json
 import os
+from pathlib import Path
 
 
 def instantiate_firebase_config():
-    with open("./server/config/firebase_config.json", "w+", encoding="utf-8") as f:
+    filename = (
+        "./config/firebase_config.json"
+        if os.getenv("FLASK_ENV") == "development"
+        else "./server/config/firebase_config.json"
+    )
+    file = Path(filename)
+    file.touch(exist_ok=True)
+    with open(filename, "w", encoding="utf-8") as f:
         firebase_config = {
             "type": os.getenv("FIREBASE_TYPE"),
             "project_id": os.getenv("FIREBASE_PROJECT_ID"),
