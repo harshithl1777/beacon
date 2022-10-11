@@ -3,7 +3,7 @@ import os
 
 
 def instantiate_firebase_config():
-    with open("./config/firebase_config.json", "w", encoding="utf-8") as f:
+    with open("./server/config/firebase_config.json", "w+", encoding="utf-8") as f:
         firebase_config = {
             "type": os.getenv("FIREBASE_TYPE"),
             "project_id": os.getenv("FIREBASE_PROJECT_ID"),
