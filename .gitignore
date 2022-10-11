@@ -32,3 +32,4 @@ yarn-error.log*
 /server/config/server.key
 /server/config/firebase_config.json
 /client/.env
+**/.env
