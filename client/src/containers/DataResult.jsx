@@ -22,16 +22,8 @@ const DataResult = ({ store }) => {
                 <h3 className={styles.noData}>No Product Data Available</h3>
             );
         else if (selectedTab === 1)
-            return store.line !== null ? (
-                renderLinesContent()
-            ) : (
-                <h3 className={styles.noData}>No Lines Data Available</h3>
-            );
-        return store.reviews.length > 0 ? (
-            renderReviewsContent()
-        ) : (
-            <h3 className={styles.noData}>No Reviews Available</h3>
-        );
+            return store.line !== null ? renderLinesContent() : <h3 className={styles.noData}>No Lines Data Available</h3>;
+        return store.reviews.length > 0 ? renderReviewsContent() : <h3 className={styles.noData}>No Reviews Available</h3>;
     };
 
     const renderLinesContent = () => (
@@ -85,7 +77,7 @@ const DataResult = ({ store }) => {
     const renderReviewsContent = () => (
         <div className={styles.reviewsContainer}>
             {store.reviews.map((review) => (
-                <div className={styles.reviewContainer}>
+                <div className={styles.reviewContainer} key={Math.random()}>
                     <div className={styles.reviewTopContent}>
                         <div className={styles.personIconWrapper}>
                             <Icon name='IoPersonCircleSharp' size={30} />
@@ -190,13 +182,10 @@ const DataResult = ({ store }) => {
     );
 
     return (
-        <div className={classnames(styles.resultContainer, selectedTab === 2 && styles.reviewTabOpen)}>
+        <div key={Math.random()} className={classnames(styles.resultContainer, selectedTab === 2 && styles.reviewTabOpen)}>
             <div className={styles.topContentWrapper}>
                 <div className={styles.leftContentWrapper}>
-                    <div
-                        className={styles.storeIconWrapper}
-                        style={{ backgroundColor: `var(--color-${randomColor}-600)` }}
-                    >
+                    <div className={styles.storeIconWrapper} style={{ backgroundColor: `var(--color-${randomColor}-600)` }}>
                         <Icon name='IoStorefront' size='large' className={styles.storeIcon} />
                     </div>
                     <div className={styles.storeDetailsWrapper}>
@@ -221,11 +210,7 @@ const DataResult = ({ store }) => {
                     </div>
                 </div>
             </div>
-            <DataSlider
-                className={styles.dataSlider}
-                store={store}
-                onActiveOptionChange={(index) => setSelectedTab(index)}
-            />
+            <DataSlider className={styles.dataSlider} store={store} onActiveOptionChange={(index) => setSelectedTab(index)} />
             {renderTabContent()}
         </div>
     );
