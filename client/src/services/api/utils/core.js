@@ -7,7 +7,7 @@ import { checkTokenExpiry } from 'services/helpers';
 const BASE_URL = process.env.REACT_APP_BASE_API_URL || 'http://localhost:5002/api';
 axios.defaults.withCredentials = true;
 
-axios.interceptors.request.use((config) => {
+axios.interceptors.request.use(async (config) => {
     const url = config.url;
     if (!url.includes('/auth/session')) {
         const currentState = store.getState();
@@ -15,7 +15,8 @@ axios.interceptors.request.use((config) => {
         if (isLoggedIn) {
             const accessToken = currentState.auth.accessToken;
             const tokenExpiry = checkTokenExpiry(accessToken);
-            if (!tokenExpiry) refreshSession();
+            if (!tokenExpiry) await refreshSession();
+            config.headers = { Authorization: `Bearer ${store.getState().auth.accessToken}` };
         }
     }
     return config;

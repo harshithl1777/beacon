@@ -62,8 +62,7 @@ export const submitContribution = (contributions) => async (dispatch) => {
         const { success } = await storesAPI.post(contributions);
         confirmationTypeSuccess = success;
     }
-    if (confirmationTypeSuccess)
-        showToast.success('Your contribution was successful!', 'Thank you for supporting Beacon.');
+    if (confirmationTypeSuccess) showToast.success('Your contribution was successful!', 'Thank you for supporting Beacon.');
     else showToast.error('Something went wrong..', 'Your contribution was unsuccessful. Please try again later.');
     dispatch({ type: SUBMIT_CONTRIBUTION });
     return true;

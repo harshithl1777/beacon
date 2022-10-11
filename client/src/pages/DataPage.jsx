@@ -4,7 +4,7 @@ import { storesAPI } from 'services/api';
 import noResultsImage from 'assets/images/noResults.svg';
 import styles from 'pages/DataPage.module.scss';
 
-const SearchPage = () => {
+const DataPage = () => {
     const [addressState, setAddressState] = useState(null);
     const [filters, setFilters] = useState({});
     const [results, setResults] = useState(null);
@@ -20,7 +20,7 @@ const SearchPage = () => {
     };
 
     const renderSearchResults = () => {
-        if (results.length > 0) return results.map((store) => <DataResult store={store} />);
+        if (results.length > 0) return results.map((store) => <DataResult key={store.id} store={store} />);
         return (
             <div className={styles.noResultsContainer}>
                 <img className={styles.noResultsImage} src={noResultsImage} alt='no results' />
@@ -40,12 +40,12 @@ const SearchPage = () => {
         <div className={styles.dataPageContainer}>
             <div className={styles.headerTextContainer}>
                 <h3 className={styles.headerText}>
-                    Find <span className={styles.headerColorText}>all the data</span> you need to make <br /> decisions
-                    on <span className={styles.headerColorText}>where to shop</span>
+                    Find <span className={styles.headerColorText}>all the data</span> you need to make <br /> decisions on{' '}
+                    <span className={styles.headerColorText}>where to shop</span>
                 </h3>
                 <p className={styles.headerDescriptionText}>
-                    To start, just start typing your address or hit the location button to give us a starting search
-                    point. Then, select any products you’re looking for and hit search!
+                    To start, just start typing your address or hit the location button to give us a starting search point. Then,
+                    select any products you’re looking for and hit search!
                 </p>
             </div>
             <SearchContainer
@@ -59,4 +59,4 @@ const SearchPage = () => {
     );
 };
 
-export default SearchPage;
+export default DataPage;
