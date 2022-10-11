@@ -8,4 +8,4 @@ cmds = ['python -m venv /opt/venv && . /opt/venv/bin/activate && pip install -r 
 cmds = ['npm run build']
 
 [start]
-cmd = 'npm run production'
+cmd = 'gunicorn server.main:app'
