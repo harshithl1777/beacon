@@ -83,10 +83,7 @@ export const logInWithSocials = (service) => async (dispatch) => {
 
         const errorMessage = error.toString();
         if (errorMessage === 'Error: Account does not exist') {
-            showToast.error(
-                'Account does not exist',
-                "It seems like you haven't yet signed up with this social account."
-            );
+            showToast.error('Account does not exist', "It seems like you haven't yet signed up with this social account.");
         }
 
         dispatch({
@@ -185,6 +182,6 @@ export const refreshSession = () => async (dispatch) => {
 
 export const logOut = () => async (dispatch) => {
     const response = await authAPI.remove();
-    window.location.href = process.env.REACT_APP_CLIENT_URL + '/auth/login';
+    window.location.href = '/auth/login';
     dispatch({ type: LOG_OUT, ...response });
 };

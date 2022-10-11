@@ -4,7 +4,7 @@ import { handleResponse, handleError } from 'services/api/utils/response';
 import { refreshSession } from 'redux/actions/authActions';
 import { checkTokenExpiry } from 'services/helpers';
 
-const BASE_URL = 'http://localhost:5002/api' || process.env.REACT_APP_BASE_API_URL;
+const BASE_URL = process.env.REACT_APP_BASE_API_URL || 'http://localhost:5002/api';
 axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use((config) => {
