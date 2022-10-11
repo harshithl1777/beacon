@@ -1,19 +1,19 @@
 import { ToastContainer } from 'react-toastify';
-import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 
 import { Protected, Gateway } from 'components';
 import { NavigationBar, LineForm, ProductsForm, ReviewForm } from 'containers';
-import { SignupPage, LoginPage, DataPage, BeginContributionPage, SubmitContributionPage } from 'pages';
+import {
+    SignupPage,
+    LoginPage,
+    DataPage,
+    BeginContributionPage,
+    SubmitContributionPage,
+    LandingPage,
+    Error404Page,
+} from 'pages';
 import 'react-toastify/dist/ReactToastify.css';
 import 'app/global.scss';
-import { showToast } from 'services/helpers';
-
-const InteriorLayout = () => (
-    <>
-        <NavigationBar />
-        <Outlet />
-    </>
-);
 
 const ContributionLayout = () => (
     <>
@@ -26,24 +26,57 @@ const App = () => (
     <>
         <Router>
             <Routes>
-                <Route path='/' element={<InteriorLayout />}>
-                    <Route index element={<Navigate to='/app/data' />} />
-                    <Route
-                        path='/app/data'
-                        element={
-                            // <Protected>
-                            // 	<NavigationBar />
-                            // </Protected>
+                <Route exact path='/' element={<LandingPage />} />
+                <Route
+                    path='/app/data'
+                    element={
+                        <Protected>
+                            <NavigationBar />
                             <DataPage />
+                        </Protected>
+                    }
+                />
+                <Route path='/' element={<ContributionLayout />}>
+                    <Route
+                        path='/app/contribute'
+                        element={
+                            <Protected>
+                                <BeginContributionPage />
+                            </Protected>
                         }
                     />
-                </Route>
-                <Route path='/' element={<ContributionLayout />}>
-                    <Route path='/app/contribute' element={<BeginContributionPage />} />
-                    <Route path='/app/contribute/lines' element={<LineForm />} />
-                    <Route path='/app/contribute/products' element={<ProductsForm />} />
-                    <Route path='/app/contribute/reviews' element={<ReviewForm />} />
-                    <Route path='/app/contribute/submit' element={<SubmitContributionPage />} />
+                    <Route
+                        path='/app/contribute/lines'
+                        element={
+                            <Protected>
+                                <LineForm />
+                            </Protected>
+                        }
+                    />
+                    <Route
+                        path='/app/contribute/products'
+                        element={
+                            <Protected>
+                                <ProductsForm />
+                            </Protected>
+                        }
+                    />
+                    <Route
+                        path='/app/contribute/reviews'
+                        element={
+                            <Protected>
+                                <ReviewForm />
+                            </Protected>
+                        }
+                    />
+                    <Route
+                        path='/app/contribute/submit'
+                        element={
+                            <Protected>
+                                <SubmitContributionPage />
+                            </Protected>
+                        }
+                    />
                 </Route>
                 <Route
                     path='/auth/signup'
@@ -61,7 +94,7 @@ const App = () => (
                         </Gateway>
                     }
                 />
-                <Route path='*' element={<div>404</div>} />
+                <Route path='*' element={<Error404Page />} />
             </Routes>
         </Router>
         <ToastContainer />

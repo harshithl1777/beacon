@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Rating from 'react-rating';
 import classnames from 'classnames';
 import seedrandom from 'seedrandom';
-import { Button, Icon, Tag } from 'components';
+import { Icon, Tag } from 'components';
 import { convertDateTime } from 'services/helpers';
 import DataSlider from 'containers/DataSlider';
 import dataMappings from 'assets/json/dataTableMappings.json';
