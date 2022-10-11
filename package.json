@@ -4,8 +4,6 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "preinstall": "cd client && npm install",
-        "postinstall": "npm run build",
         "server": "cd server && FLASK_ENV=development flask run -h localhost -p 5002",
         "client": "cd client && npm start",
         "production": "gunicorn --bind 0.0.0.0:$PORT server.main:app",
