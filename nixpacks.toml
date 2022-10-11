@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ['python38', 'gcc', 'nodejs-16_x', 'npm-8_x']
+
+[phases.build]
+cmds = ['python -m venv /opt/venv && . /opt/venv/bin/activate && pip install -r requirements.txt', 'cd client && npm install', 'npm run build']
+
+[start]
+cmd = 'npm run production'
